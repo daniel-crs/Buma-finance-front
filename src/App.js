@@ -1,8 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
 
-dad
-
 function App() {
   return (
     <div className="App">
@@ -17,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Project Buma finance
         </a>
       </header>
     </div>
