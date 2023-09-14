@@ -1,0 +1,33 @@
+#addButton {
+    display: inline-flex;
+    height: 35px;
+    padding: 0px;
+    background: #562B82;
+    text-decoration: none;
+    outline: none;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 1.2em;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+#addButton:hover {
+    background: #A366E1;
+}
+
+.addButton-icon, .addButton-text {
+    display: inline-flex;
+    align-items: center;
+    color: #ffffff;
+    height: 100%;
+}
+
+.addButton-icon {
+    padding: 0 2.5px 0 15px;
+    font-size: 1.4em;
+}
+
+.addButton-text {
+    padding: 0 15px 0 2.5px;
+}
