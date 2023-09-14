@@ -1,9 +1,11 @@
+import Header from "../../components/Header";
+import SideBar from "../../components/SideBar";
+
 function Product() {
   return (
     <div>
-      <div>
-        <h1>Hello Product Page !!!</h1>
-      </div>
+      <Header />
+      <SideBar />
     </div>
   );
 }
