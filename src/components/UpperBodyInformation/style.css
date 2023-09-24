@@ -4,6 +4,10 @@
     align-items: flex-start;
 }
 
+#upperBodyInfo h1 {
+    color: #562B82;
+}
+
 #buttonSpace {
     display: flex;
     gap: 25px;

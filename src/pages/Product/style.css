@@ -3,5 +3,117 @@
     width: 88vw;
     margin-top: 50px;
     margin-left: 125px;
-    border: 1px solid red;
+}
+
+.listBackground {
+    margin-top: 25px;
+    background: #F5F5F6;
+    width: 88Vw;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.ListContainer {
+    width: 86vw;
+    border-radius: 1em;
+    border-collapse: separate;
+    border-spacing: 0 5px;
+    
+}
+
+.listLines {
+    background-color: #ffffff;
+    height: 35px;
+    outline: 1px solid #B2B2B2;
+    border-radius: 10px;
+}
+
+.checkboxArea {
+    width: 3vw;
+    text-align: center;
+}
+
+.nameArea {
+    width: 33vw;
+}
+
+.categoriaArea {
+    width: 20vw;
+}
+
+.valorArea {
+    width: 20vw;
+}
+
+.opcaoArea {
+    width: 10vw;
+    text-align: center;
+}
+
+.iconsCustom {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 15px;
+    font-size: 1.2em;
+}
+
+.customCheckbox input {
+    display: none;
+}
+
+.customCheckbox input + label::before {
+    content: '';
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    background-color: white;
+    display: inline-block;
+    border: 1px solid gray;
+    vertical-align: middle;
+    margin-right: 4px;
+    margin-bottom: 3px;
+}
+
+.customCheckbox input:checked + label::before {
+    background: #562B82;
+}
+
+@media (min-width: 2000px) {
+    #bodyContainer {
+        width: 92vw;
+    }
+
+    .listBackground {
+        width: 92Vw;
+    }
+    
+    .ListContainer {
+        width: 90vw;
+    }
+
+    .checkboxArea {
+        width: 3vw;
+        text-align: center;
+    }
+    
+    .nameArea {
+        width: 39vw;
+    }
+    
+    .categoriaArea {
+        width: 20vw;
+    }
+    
+    .valorArea {
+        width: 20vw;
+    }
+    
+    .opcaoArea {
+        width: 5vw;
+        text-align: center;
+    }
 }
