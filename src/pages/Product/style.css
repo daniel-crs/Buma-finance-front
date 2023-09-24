@@ -1,0 +1,7 @@
+#bodyContainer {
+    height: 65vh;
+    width: 88vw;
+    margin-top: 50px;
+    margin-left: 125px;
+    border: 1px solid red;
+}

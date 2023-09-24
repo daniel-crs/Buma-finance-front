@@ -31,3 +31,9 @@ header {
 .userName:hover {
     color: #562B82;
 }
+
+@media (min-width: 2000px) {
+    header {
+        padding: 0.8vh 2.5vw;
+    }
+}

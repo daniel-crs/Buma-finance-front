@@ -2,8 +2,8 @@
     position: fixed;
     margin-top: 40px;
     margin-left: 20px;
-    width: 70px;
-    height: 550px;
+    width: 60px;
+    height: 80vh;
     background: #562B82;
     border-radius: 10px;
     display: flex;
@@ -20,14 +20,47 @@
 .sidebarElements {
     color: #ffffff;
     background: #562B82;
-    height: 30px;
-    width: 30px;
+    border: none;
+    height: 25px;
+    width: 25px;
+}
+
+.popoverContainer {
+    background:#A366E1 !important;
+    border: none !important;
+    margin-left: 10px;
+    padding: 0 35px 0 5px;
+}
+
+.popoverBasic {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.popoverElement {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.popoverIcon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.popoverElement:hover {
+    color: #562B82;
+    margin-left: 5px;
+    background-size: 50%;
+    border-radius: 5px;
 }
 
 .sidebarElements:hover {
     color: #A366E1;
-    height: 35px;
-    width: 35px;
+    height: 40px;
+    width: 40px;
+    margin: 5px 0;
 }
 
 #activeElements {
@@ -35,14 +68,45 @@
     align-items: center;
     justify-content: center;
     background: #A366E1;
-    height: 50px;
-    width: 50px;
+    height: 45px;
+    width: 45px;
     border-radius: 10px;
 }
 
 #active {
     color: #ffffff;
     background-color: #A366E1;
-    height: 30px;
-    width: 30px;
+    height: 25px;
+    width: 25px;
+}
+
+@media (min-width: 2000px) {
+    #container {
+        width: 70px;
+        height: 80vh;
+    }
+
+    .sidebarElements {
+        height: 30px;
+        width: 30px;
+    }
+
+    .popoverContainer {
+        margin-left: 15px;
+    }
+
+    .sidebarElements:hover {
+        height: 40px;
+        width: 40px;
+    }
+
+    #activeElements { 
+        height: 50px;
+        width: 50px;
+    }
+
+    #active {
+        height: 30px;
+        width: 30px;
+    }
 }

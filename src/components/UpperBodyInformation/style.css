@@ -1,0 +1,10 @@
+#upperBodyInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+#buttonSpace {
+    display: flex;
+    gap: 25px;
+}
