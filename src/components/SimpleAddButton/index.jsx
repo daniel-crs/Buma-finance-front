@@ -3,12 +3,13 @@ import "./style.css";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 
-import ProductForm from "../form/ProductForm";
+// import ProductForm from "../form/ProductForm";
+import ServiceForm from "../form/ServiceForm";
 
 import { HiPlus } from "react-icons/hi";
 
 function SimpleAddButton() {
-  const [modalShow, setModalShow] = useState(false);
+  const [productModalShow, setModalShow] = useState(false);
 
   return (
     <>
@@ -19,7 +20,7 @@ function SimpleAddButton() {
         <span className="addButton-text">Product</span>
       </Button>
 
-      <ProductForm show={modalShow} onHide={() => setModalShow(false)} />
+      <ServiceForm show={productModalShow} onHide={() => setModalShow(false)} />
     </>
   );
 }
