@@ -1,11 +1,11 @@
-import "./style.css";
+import "../style.css";
 
-import Header from "../../components/Header";
-import SideBar from "../../components/SideBar";
-import UpperBodyInformation from "../../components/UpperBodyInformation";
-import BtnDelete from "../../components/BtnDelete";
-import TableHeader from "./components/TableHeader";
-import TableData from "./components/TableData";
+import Header from "../../../components/Header";
+import SideBar from "../../../components/SideBar";
+import UpperBodyInformation from "../../../components/UpperBodyInformation";
+import BtnDelete from "../../../components/BtnDelete";
+import TableHeader from "../components/TableHeader";
+import TableData from "../components/TableData";
 
 function Product() {
   return (
@@ -18,36 +18,35 @@ function Product() {
         <div className="listBackground">
           <table className="ListContainer">
             <TableHeader />
-
             <TableData
               productId={"1"}
               nome={"Iphone 12"}
               categoria={"Celular"}
-              valor={"4.000,00"}
+              valor={"R$ 4.000,00"}
             />
             <TableData
               productId={"2"}
               nome={"GTX 1080 TI"}
               categoria={"Componente de PC"}
-              valor={"18.000,00"}
+              valor={"R$ 18.000,00"}
             />
             <TableData
               productId={"3"}
               nome={"Cobertor com o rosto do zanon"}
               categoria={"Decoração"}
-              valor={"350,00"}
+              valor={"R$ 350,00"}
             />
             <TableData
               productId={"4"}
               nome={"Funko do Goku"}
               categoria={"Decoração"}
-              valor={"50,00"}
+              valor={"R$ 50,00"}
             />
             <TableData
               productId={"5"}
               nome={"Teclado GT29"}
               categoria={"Componente de PC"}
-              valor={"525,00"}
+              valor={"R$ 525,00"}
             />
           </table>
         </div>
