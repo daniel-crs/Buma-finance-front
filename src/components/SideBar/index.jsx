@@ -38,7 +38,7 @@ function SideBar() {
   const popoverService = (
     <Popover className="popoverContainer">
       <Popover.Body className="popoverBasic">
-        <a className="popoverElement" href="/">
+        <a className="popoverElement" href="/Service">
           <MdOutlineDesignServices className="popoverIcon" />
           Service
         </a>
@@ -89,16 +89,26 @@ function SideBar() {
       <div className="spaceBetweenElements">
         {(() => {
           const isProductUrl = location.pathname === "/Product";
+          const isServiceUrl = location.pathname === "/Service";
+
           return (
             <OverlayTrigger
               trigger="click"
               placement="right"
               overlay={popoverService}
             >
-              <div id={isProductUrl && "activeElements"}>
+              <div
+                id={
+                  (isProductUrl && "activeElements") ||
+                  (isServiceUrl && "activeElements")
+                }
+              >
                 <BsBoxSeamFill
-                  id={isProductUrl && "active"}
-                  className={!isProductUrl && "sidebarElements"}
+                  id={(isProductUrl && "active") || (isServiceUrl && "active")}
+                  className={
+                    (!isProductUrl && "sidebarElements") ||
+                    (!isServiceUrl && "sidebarElements")
+                  }
                 />
               </div>
             </OverlayTrigger>
