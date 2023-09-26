@@ -1,0 +1,23 @@
+#deleteButtonSpace {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+#deleteButton {
+    height: 35px;
+    width: 120px;
+    margin-top: 150px;
+    background: #E61818;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 1.2em;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+#deleteButton:hover {
+    background: #c51818;
+}
