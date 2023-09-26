@@ -1,13 +1,13 @@
 #deleteButtonSpace {
     display: flex;
     justify-content: flex-end;
-    align-items: flex-end;
 }
 
 #deleteButton {
     height: 35px;
     width: 120px;
-    margin-top: 150px;
+    margin-top: 50px;
+    margin-bottom: 50px;
     background: #E61818;
     border: none;
     outline: none;

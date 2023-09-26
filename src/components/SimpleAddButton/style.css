@@ -3,7 +3,7 @@
     height: 35px;
     padding: 0px;
     background: #562B82;
-    text-decoration: none;
+    border: none;
     outline: none;
     border-radius: 10px;
     overflow: hidden;
@@ -30,4 +30,8 @@
 
 .addButton-text {
     padding: 0 15px 0 2.5px;
+}
+
+.modalContainer {
+    text-decoration: none;
 }

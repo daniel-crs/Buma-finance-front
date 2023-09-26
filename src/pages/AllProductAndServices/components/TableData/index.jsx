@@ -12,7 +12,7 @@ function TableData({ productId, nome, categoria, valor }) {
       </td>
       <td className="nameArea">{nome}</td>
       <td className="categoriaArea">{categoria}</td>
-      <td className="valorArea">R$ {valor}</td>
+      <td className="valorArea">{valor}</td>
       <td className="opcaoArea">
         <div className="iconsCustom">
           <FaTrash />
