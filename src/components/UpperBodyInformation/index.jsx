@@ -3,12 +3,12 @@ import "./style.css";
 import SimpleAddButton from "../SimpleAddButton";
 import FilterButton from "../FilterButton";
 
-function UpperBodyInformation() {
+function UpperBodyInformation({ pageTitle }) {
   return (
     <div id="upperBodyInfo">
-      <h1>Product</h1>
+      <h1>{pageTitle}</h1>
       <div id="buttonSpace">
-        <SimpleAddButton />
+        <SimpleAddButton modalChange={pageTitle} />
         <FilterButton />
       </div>
     </div>

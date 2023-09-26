@@ -3,12 +3,12 @@ import "./style.css";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 
-// import ProductForm from "../form/ProductForm";
+import ProductForm from "../form/ProductForm";
 import ServiceForm from "../form/ServiceForm";
 
 import { HiPlus } from "react-icons/hi";
 
-function SimpleAddButton() {
+function SimpleAddButton({ modalChange }) {
   const [productModalShow, setModalShow] = useState(false);
 
   return (
@@ -17,10 +17,26 @@ function SimpleAddButton() {
         <span className="addButton-icon">
           <HiPlus />
         </span>
-        <span className="addButton-text">Product</span>
+        <span className="addButton-text">{modalChange}</span>
       </Button>
 
-      <ServiceForm show={productModalShow} onHide={() => setModalShow(false)} />
+      {(() => {
+        if (modalChange === "Produto") {
+          return (
+            <ProductForm
+              show={productModalShow}
+              onHide={() => setModalShow(false)}
+            />
+          );
+        } else if (modalChange === "Serviço") {
+          return (
+            <ServiceForm
+              show={productModalShow}
+              onHide={() => setModalShow(false)}
+            />
+          );
+        }
+      })()}
     </>
   );
 }

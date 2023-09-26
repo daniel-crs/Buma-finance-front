@@ -25,7 +25,7 @@ function ProductForm(showModal) {
               </div>
 
               <div className="spaceBetweenFields">
-                <div>
+                <div className="twoElementsArea">
                   <label className="spaceOnTop" htmlFor="valor">
                     Valor
                   </label>
@@ -36,7 +36,7 @@ function ProductForm(showModal) {
                   </div>
                 </div>
 
-                <div>
+                <div className="twoElementsArea">
                   <label className="spaceOnTop" htmlFor="categoria">
                     Categoria
                   </label>

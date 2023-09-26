@@ -13,7 +13,7 @@ function Service() {
       <Header />
       <SideBar />
       <div id="bodyContainer">
-        <UpperBodyInformation />
+        <UpperBodyInformation pageTitle={"Serviço"} />
 
         <div className="listBackground">
           <table className="ListContainer">

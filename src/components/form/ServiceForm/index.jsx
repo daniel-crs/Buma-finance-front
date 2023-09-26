@@ -28,7 +28,7 @@ function ServiceForm(showModal) {
               </div>
 
               <div className="spaceBetweenFields">
-                <div>
+                <div className="twoElementsArea">
                   <label className="spaceOnTop" htmlFor="valor">
                     Valor
                   </label>
@@ -48,7 +48,7 @@ function ServiceForm(showModal) {
                   </div>
                 </div>
 
-                <div>
+                <div className="twoElementsArea">
                   <label className="spaceOnTop" htmlFor="categoria">
                     Categoria
                   </label>

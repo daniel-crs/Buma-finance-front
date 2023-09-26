@@ -13,7 +13,7 @@ function Product() {
       <Header />
       <SideBar />
       <div id="bodyContainer">
-        <UpperBodyInformation />
+        <UpperBodyInformation pageTitle={"Produto"} />
 
         <div className="listBackground">
           <table className="ListContainer">
