@@ -36,6 +36,7 @@ function Product() {
                 nome={Products.name}
                 categoria={Products.productID}
                 valor={Products.sell_price}
+                pageTitle={"Produto"}
               />
             ))}
           </table>
