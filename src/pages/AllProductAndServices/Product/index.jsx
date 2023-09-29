@@ -10,12 +10,10 @@ import TableData from "../components/TableData";
 import { useEffect, useState } from "react";
 
 function Product() {
-  const [data, setData] = useState("");
-
-  const url = "http://localhost:1337/api/work-lists";
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch(url)
+    fetch("http://localhost:3000/product")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
