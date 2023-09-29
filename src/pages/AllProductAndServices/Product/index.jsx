@@ -11,14 +11,13 @@ import { useEffect, useState } from "react";
 
 function Product() {
   const [data, setData] = useState([]);
+  const url = "http://localhost:3000/product";
 
   useEffect(() => {
-    fetch("http://localhost:3000/product")
+    fetch(url)
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
-
-  console.log(data);
 
   return (
     <div>

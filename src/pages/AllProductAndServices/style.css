@@ -53,12 +53,22 @@
     text-align: center;
 }
 
-.iconsCustom {
+.iconsPosition {
     display: flex;
     justify-content: center;
     text-align: center;
+    padding-bottom: 1px;
     gap: 15px;
+}
+
+.iconCustom {
     font-size: 1.2em;
+    color: #000;
+}
+
+.iconCustom:hover {
+    font-size: 1.2em;
+    color: #562B82;
 }
 
 .customCheckbox input {

@@ -3,8 +3,8 @@ import "./style.css";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 
-import ProductForm from "../form/ProductForm";
-import ServiceForm from "../form/ServiceForm";
+import ProductForm from "../../pages/AllProductAndServices/components/ProductForm";
+import ServiceForm from "../../pages/AllProductAndServices/components/ServiceForm";
 
 import { HiPlus } from "react-icons/hi";
 
