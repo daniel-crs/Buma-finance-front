@@ -1,15 +1,18 @@
 import "./style.css";
 
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
+
 import { useEffect, useState } from "react";
 
-function ProductModal({ product, isOpen, setModalOpen }) {
+function ServiceModal({ service, isOpen, setModalOpen }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/product/${product}`)
+    fetch(`http://localhost:3000/service/${service}`)
       .then((res) => res.json())
       .then((data) => setData(data));
-  }, [product]);
+  }, [service]);
 
   console.log(data);
 
@@ -18,7 +21,7 @@ function ProductModal({ product, isOpen, setModalOpen }) {
       <div className="backgroundStyle">
         <div className="modalStyle">
           <div>
-            <h3 className="formTitle">Adicionar Produto</h3>
+            <h3 className="formTitle">Adicionar Serviços</h3>
           </div>
 
           <form>
@@ -30,7 +33,7 @@ function ProductModal({ product, isOpen, setModalOpen }) {
                   className="fieldNameLine"
                   id="title"
                   type="text"
-                  placeholder="Ex: Placa de video Geforce RTX 3060"
+                  placeholder="Ex: Desenvolvimento de aplicativo mobile."
                   value={data.name}
                 />
               </div>
@@ -43,12 +46,21 @@ function ProductModal({ product, isOpen, setModalOpen }) {
                   <br></br>
                   <div className="valueContainer">
                     <p className="reiasValue">R$</p>
-                    <input
-                      className="elementsArea"
-                      id="valor"
-                      type="text"
-                      value={data.sell_price}
-                    />
+                    <OverlayTrigger
+                      overlay={
+                        <Tooltip>
+                          Caso o serviço não tenha valor definido, deixar em
+                          branco para constar como "A negociar".
+                        </Tooltip>
+                      }
+                    >
+                      <input
+                        className="elementsArea"
+                        id="valor"
+                        type="text"
+                        value={data.sell_price}
+                      />
+                    </OverlayTrigger>
                   </div>
                 </div>
 
@@ -58,9 +70,11 @@ function ProductModal({ product, isOpen, setModalOpen }) {
                   </label>
                   <br></br>
                   <select id="categoria" className="dropdowCustom">
-                    <option>{data.productID}</option>
-                    <option value="aplicativos">Component de PC</option>
-                    <option value="software">Decoração</option>
+                    <option value="site">{data.serviceId}</option>
+                    <option value="aplicativos">Software</option>
+                    <option value="software">
+                      Arquitetura de computadores
+                    </option>
                   </select>
                 </div>
               </div>
@@ -107,4 +121,4 @@ function ProductModal({ product, isOpen, setModalOpen }) {
   return null;
 }
 
-export default ProductModal;
+export default ServiceModal;

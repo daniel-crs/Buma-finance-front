@@ -30,10 +30,11 @@ function Service() {
             <TableHeader />
             {data.map((Services) => (
               <TableData
-                productId={Services.id}
+                serviceId={Services.id}
                 nome={Services.name}
                 categoria={Services.serviceID}
                 valor={Services.sell_price}
+                pageTitle={"Serviço"}
               />
             ))}
           </table>

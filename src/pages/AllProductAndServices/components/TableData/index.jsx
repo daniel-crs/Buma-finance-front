@@ -1,15 +1,21 @@
 import { FaTrash } from "react-icons/fa";
 import { MdModeEdit } from "react-icons/md";
 import ProductModal from "../ProductModal";
-import ServiceForm from "../ServiceForm";
+import ServiceModal from "../ServiceModal";
 
 import Button from "react-bootstrap/Button";
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function TableData({ pageTitle, productId, nome, categoria, valor }) {
-  const [productModalShow, setModalShow] = useState(false);
+function TableData({
+  pageTitle,
+  serviceId,
+  productId,
+  nome,
+  categoria,
+  valor,
+}) {
   const [openModal, setOpenModal] = useState(false);
 
   return (
@@ -45,9 +51,10 @@ function TableData({ pageTitle, productId, nome, categoria, valor }) {
               );
             } else if (pageTitle === "Serviço") {
               return (
-                <ServiceForm
-                  show={productModalShow}
-                  onHide={() => setModalShow(false)}
+                <ServiceModal
+                  isOpen={openModal}
+                  setModalOpen={() => setOpenModal(!openModal)}
+                  service={serviceId}
                 />
               );
             }
