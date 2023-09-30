@@ -1,25 +1,16 @@
 import { FaTrash } from "react-icons/fa";
 import { MdModeEdit } from "react-icons/md";
-import ProductForm from "../ProductForm";
+import ProductModal from "../ProductModal";
 import ServiceForm from "../ServiceForm";
 
 import Button from "react-bootstrap/Button";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function TableData({ pageTitle, productId, nome, categoria, valor }) {
   const [productModalShow, setModalShow] = useState(false);
-
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    fetch(`http://localhost:3000/product/${productId}`)
-      .then((res) => res.json())
-      .then((data) => setData(data));
-  }, [productId]);
-
-  console.log(data);
+  const [openModal, setOpenModal] = useState(false);
 
   return (
     <tr className="listLines">
@@ -37,7 +28,7 @@ function TableData({ pageTitle, productId, nome, categoria, valor }) {
           <Link className="iconCustom">
             <FaTrash />
           </Link>
-          <Button onClick={() => setModalShow(true)}>
+          <Button onClick={() => setOpenModal(true)}>
             <span className="iconCustom">
               <MdModeEdit />
             </span>
@@ -46,9 +37,10 @@ function TableData({ pageTitle, productId, nome, categoria, valor }) {
           {(() => {
             if (pageTitle === "Produto") {
               return (
-                <ProductForm
-                  show={productModalShow}
-                  onHide={() => setModalShow(false)}
+                <ProductModal
+                  isOpen={openModal}
+                  setModalOpen={() => setOpenModal(!openModal)}
+                  product={productId}
                 />
               );
             } else if (pageTitle === "Serviço") {
