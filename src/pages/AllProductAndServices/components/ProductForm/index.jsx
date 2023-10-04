@@ -4,28 +4,22 @@ import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 
 function ProductForm(showModal) {
+  const url = "http://localhost:3000/product";
+  const [name, setName] = useState("");
+  const [sell_price, setSell_price] = useState("");
+  const [code, setCode] = useState("");
 
-  const CreateProduct = () => {
-    const url = "http://localhost:8000/product";
-    const [name, setName] = useState('');
-    const [sell_price, setSell_price] = useState('');
-    const [code, setCode] = useState('');
-    const [productID, setProductID] = useState('');
-  
-    const HandleSubmit = (e)=> {
-      e.preventDefault();
-      const Product = { name , sell_price, code, productID };
-  
-      fetch(url, {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(Product)
-      })
-      .then(()=> {
-        console.log("New product added");
-      })
-    }
-  }
+  const HandleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(JSON.stringify({ name, sell_price, code, productID: 7 }));
+
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, sell_price, code, productID: 7 }),
+    }).then((res) => res.json());
+  };
 
   return (
     <>
@@ -35,18 +29,18 @@ function ProductForm(showModal) {
             <h3 className="formTitle">Adicionar Produto</h3>
           </div>
 
-          <form onSubmit={CreateProduct.HandleSubmit}>
+          <form onSubmit={HandleSubmit}>
             <fieldset className="formContainer">
               <div>
                 <label htmlFor="title">Nome</label>
                 <br></br>
                 <input
                   className="fieldNameLine"
-                  value={CreateProduct.name}
                   id="title"
                   type="text"
-                  onChange={(e) => setName(e.target.value)}
                   placeholder="Ex: Placa de video Geforce RTX 3060"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                 />
               </div>
 
@@ -58,7 +52,13 @@ function ProductForm(showModal) {
                   <br></br>
                   <div className="valueContainer">
                     <p className="reiasValue">R$</p>
-                    <input className="elementsArea" id="valor" type="text" />
+                    <input
+                      className="elementsArea"
+                      id="valor"
+                      type="text"
+                      value={sell_price}
+                      onChange={(e) => setSell_price(e.target.value)}
+                    />
                   </div>
                 </div>
 
@@ -78,7 +78,13 @@ function ProductForm(showModal) {
               <div>
                 <label htmlFor="codigo">Código de identificação</label>
                 <br></br>
-                <input className="fieldCodigoLine" id="codigo" type="text" />
+                <input
+                  className="fieldCodigoLine"
+                  id="codigo"
+                  type="text"
+                  value={code}
+                  onChange={(e) => setCode(e.target.value)}
+                />
               </div>
 
               <div>
@@ -98,9 +104,16 @@ function ProductForm(showModal) {
               <button
                 className="saveButton"
                 type="button"
-                onClick={showModal.onHide}
+                onClick={HandleSubmit}
               >
                 Salvar
+              </button>
+              <button
+                className="saveButton"
+                type="button"
+                onClick={showModal.onHide}
+              >
+                sair
               </button>
             </div>
           </form>

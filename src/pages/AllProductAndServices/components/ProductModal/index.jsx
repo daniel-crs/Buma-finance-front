@@ -3,15 +3,28 @@ import "./style.css";
 import { useEffect, useState } from "react";
 
 function ProductModal({ product, isOpen, setModalOpen }) {
-  const [data, setData] = useState([]);
+  const [name, setName] = useState("");
+  const [sell_price, setSell_price] = useState("");
+  const [code, setCode] = useState("");
 
   useEffect(() => {
     fetch(`http://localhost:3000/product/${product}`)
       .then((res) => res.json())
-      .then((data) => setData(data));
+      .then((data) => {
+        setName(data.name);
+        setSell_price(data.sell_price);
+        setCode(data.code);
+      });
   }, [product]);
 
-  console.log(data);
+  const updateUser = () => {
+    console.log(JSON.stringify({ name, sell_price, code, productID: 7 }));
+    fetch(`http://localhost:3000/product/${product}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, sell_price, code, productID: 7 }),
+    }).then((response) => response.json());
+  };
 
   if (isOpen) {
     return (
@@ -31,7 +44,8 @@ function ProductModal({ product, isOpen, setModalOpen }) {
                   id="title"
                   type="text"
                   placeholder="Ex: Placa de video Geforce RTX 3060"
-                  value={data.name}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                 />
               </div>
 
@@ -47,7 +61,8 @@ function ProductModal({ product, isOpen, setModalOpen }) {
                       className="elementsArea"
                       id="valor"
                       type="text"
-                      value={data.sell_price}
+                      value={sell_price}
+                      onChange={(e) => setSell_price(e.target.value)}
                     />
                   </div>
                 </div>
@@ -58,7 +73,7 @@ function ProductModal({ product, isOpen, setModalOpen }) {
                   </label>
                   <br></br>
                   <select id="categoria" className="dropdowCustom">
-                    <option>{data.productID}</option>
+                    <option value="aplicativos">Component</option>
                     <option value="aplicativos">Component de PC</option>
                     <option value="software">Decoração</option>
                   </select>
@@ -72,7 +87,8 @@ function ProductModal({ product, isOpen, setModalOpen }) {
                   className="fieldCodigoLine"
                   id="codigo"
                   type="text"
-                  value={data.code}
+                  value={code}
+                  onChange={(e) => setCode(e.target.value)}
                 />
               </div>
 
@@ -91,7 +107,10 @@ function ProductModal({ product, isOpen, setModalOpen }) {
 
             <div className="buttonPosition">
               <button
-                onClick={setModalOpen}
+                onClick={() => {
+                  updateUser();
+                  setModalOpen(false);
+                }}
                 className="saveButton"
                 type="button"
               >

@@ -6,7 +6,6 @@ import ServiceModal from "../ServiceModal";
 import Button from "react-bootstrap/Button";
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 function TableData({
   pageTitle,
@@ -31,9 +30,11 @@ function TableData({
       <td className="valorArea">{valor}</td>
       <td className="opcaoArea">
         <div className="iconsPosition">
-          <Link className="iconCustom">
-            <FaTrash />
-          </Link>
+          <Button onClick={() => setOpenModal(true)}>
+            <span className="iconCustom">
+              <FaTrash />
+            </span>
+          </Button>
           <Button onClick={() => setOpenModal(true)}>
             <span className="iconCustom">
               <MdModeEdit />
