@@ -18,7 +18,6 @@ function ProductModal({ product, isOpen, setModalOpen }) {
   }, [product]);
 
   const updateUser = () => {
-    console.log(JSON.stringify({ name, sell_price, code, productID: 7 }));
     fetch(`http://localhost:3000/product/${product}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },

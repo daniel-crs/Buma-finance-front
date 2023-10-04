@@ -17,6 +17,12 @@ function TableData({
 }) {
   const [openModal, setOpenModal] = useState(false);
 
+  const deleteProduct = () => {
+    fetch(`http://localhost:3000/product/${productId}`, {
+      method: "DELETE",
+    });
+  };
+
   return (
     <tr className="listLines">
       <td className="checkboxArea">
@@ -30,7 +36,7 @@ function TableData({
       <td className="valorArea">{valor}</td>
       <td className="opcaoArea">
         <div className="iconsPosition">
-          <Button onClick={() => setOpenModal(true)}>
+          <Button onClick={() => deleteProduct()}>
             <span className="iconCustom">
               <FaTrash />
             </span>

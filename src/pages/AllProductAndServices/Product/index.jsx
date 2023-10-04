@@ -34,8 +34,9 @@ function Product() {
                 key={i}
                 productId={Products.id}
                 nome={Products.name}
-                categoria={Products.productID}
                 valor={Products.sell_price}
+                codigo={Product.code}
+                categoria={Products.productID}
                 pageTitle={"Produto"}
               />
             ))}
