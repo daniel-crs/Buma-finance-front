@@ -1,11 +1,28 @@
 import "./style.css";
 
+import { useState } from "react";
+
 import Modal from "react-bootstrap/Modal";
 
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
 function ServiceForm(showModal) {
+  const url = "http://localhost:3000/service";
+  const [name, setName] = useState("");
+  const [sell_price, setSell_price] = useState("");
+  const [code, setCode] = useState("");
+
+  const createService = (e) => {
+    e.preventDefault();
+
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, sell_price, code, serviceID: 1 }),
+    }).then((res) => res.json());
+  };
+
   return (
     <>
       <Modal {...showModal} size="lg" centered>
@@ -14,7 +31,7 @@ function ServiceForm(showModal) {
             <h3 className="formTitle">Adicionar Serviços</h3>
           </div>
 
-          <form>
+          <form onSubmit={createService}>
             <fieldset className="formContainer">
               <div>
                 <label htmlFor="title">Nome</label>
@@ -24,6 +41,8 @@ function ServiceForm(showModal) {
                   id="title"
                   type="text"
                   placeholder="Ex: Desenvolvimento de aplicativo mobile."
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                 />
               </div>
 
@@ -43,7 +62,13 @@ function ServiceForm(showModal) {
                         </Tooltip>
                       }
                     >
-                      <input className="elementsArea" id="valor" type="text" />
+                      <input
+                        className="elementsArea"
+                        id="valor"
+                        type="text"
+                        value={sell_price}
+                        onChange={(e) => setSell_price(e.target.value)}
+                      />
                     </OverlayTrigger>
                   </div>
                 </div>
@@ -66,7 +91,13 @@ function ServiceForm(showModal) {
               <div>
                 <label htmlFor="codigo">Código de identificação</label>
                 <br></br>
-                <input className="fieldCodigoLine" id="codigo" type="text" />
+                <input
+                  className="fieldCodigoLine"
+                  id="codigo"
+                  type="text"
+                  value={code}
+                  onChange={(e) => setCode(e.target.value)}
+                />
               </div>
 
               <div>
@@ -86,9 +117,16 @@ function ServiceForm(showModal) {
               <button
                 className="saveButton"
                 type="button"
-                onClick={showModal.onHide}
+                onClick={createService}
               >
                 Salvar
+              </button>
+              <button
+                className="saveButton"
+                type="button"
+                onClick={showModal.onHide}
+              >
+                Sair
               </button>
             </div>
           </form>

@@ -12,8 +12,6 @@ function ProductForm(showModal) {
   const HandleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(JSON.stringify({ name, sell_price, code, productID: 7 }));
-
     fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

@@ -28,8 +28,9 @@ function Service() {
         <div className="listBackground">
           <table className="ListContainer">
             <TableHeader />
-            {data.map((Services) => (
+            {data.map((Services, i) => (
               <TableData
+                key={i}
                 serviceId={Services.id}
                 nome={Services.name}
                 categoria={Services.serviceID}

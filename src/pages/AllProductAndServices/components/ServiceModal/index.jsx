@@ -6,15 +6,27 @@ import Tooltip from "react-bootstrap/Tooltip";
 import { useEffect, useState } from "react";
 
 function ServiceModal({ service, isOpen, setModalOpen }) {
-  const [data, setData] = useState([]);
+  const [name, setName] = useState("");
+  const [sell_price, setSell_price] = useState("");
+  const [code, setCode] = useState("");
 
   useEffect(() => {
     fetch(`http://localhost:3000/service/${service}`)
       .then((res) => res.json())
-      .then((data) => setData(data));
+      .then((data) => {
+        setName(data.name);
+        setSell_price(data.sell_price);
+        setCode(data.code);
+      });
   }, [service]);
 
-  console.log(data);
+  const updateService = () => {
+    fetch(`http://localhost:3000/service/${service}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, sell_price, code, serviceID: 1 }),
+    }).then((res) => res.json());
+  };
 
   if (isOpen) {
     return (
@@ -34,7 +46,8 @@ function ServiceModal({ service, isOpen, setModalOpen }) {
                   id="title"
                   type="text"
                   placeholder="Ex: Desenvolvimento de aplicativo mobile."
-                  value={data.name}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                 />
               </div>
 
@@ -58,7 +71,8 @@ function ServiceModal({ service, isOpen, setModalOpen }) {
                         className="elementsArea"
                         id="valor"
                         type="text"
-                        value={data.sell_price}
+                        value={sell_price}
+                        onChange={(e) => setSell_price(e.target.value)}
                       />
                     </OverlayTrigger>
                   </div>
@@ -70,7 +84,7 @@ function ServiceModal({ service, isOpen, setModalOpen }) {
                   </label>
                   <br></br>
                   <select id="categoria" className="dropdowCustom">
-                    <option value="site">{data.serviceId}</option>
+                    <option value="site">Design</option>
                     <option value="aplicativos">Software</option>
                     <option value="software">
                       Arquitetura de computadores
@@ -86,7 +100,8 @@ function ServiceModal({ service, isOpen, setModalOpen }) {
                   className="fieldCodigoLine"
                   id="codigo"
                   type="text"
-                  value={data.code}
+                  value={code}
+                  onChange={(e) => setCode(e.target.value)}
                 />
               </div>
 
@@ -105,7 +120,10 @@ function ServiceModal({ service, isOpen, setModalOpen }) {
 
             <div className="buttonPosition">
               <button
-                onClick={setModalOpen}
+                onClick={() => {
+                  updateService();
+                  setModalOpen(false);
+                }}
                 className="saveButton"
                 type="button"
               >

@@ -23,6 +23,12 @@ function TableData({
     });
   };
 
+  const deleteService = () => {
+    fetch(`http://localhost:3000/service/${serviceId}`, {
+      method: "DELETE",
+    });
+  };
+
   return (
     <tr className="listLines">
       <td className="checkboxArea">
@@ -36,11 +42,26 @@ function TableData({
       <td className="valorArea">{valor}</td>
       <td className="opcaoArea">
         <div className="iconsPosition">
-          <Button onClick={() => deleteProduct()}>
-            <span className="iconCustom">
-              <FaTrash />
-            </span>
-          </Button>
+          {(() => {
+            if (pageTitle === "Produto") {
+              return (
+                <Button onClick={() => deleteProduct()}>
+                  <span className="iconCustom">
+                    <FaTrash />
+                  </span>
+                </Button>
+              );
+            } else if (pageTitle === "Serviço") {
+              return (
+                <Button onClick={() => deleteService()}>
+                  <span className="iconCustom">
+                    <FaTrash />
+                  </span>
+                </Button>
+              );
+            }
+          })()}
+
           <Button onClick={() => setOpenModal(true)}>
             <span className="iconCustom">
               <MdModeEdit />
