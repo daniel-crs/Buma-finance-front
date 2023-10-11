@@ -61,6 +61,15 @@
     gap: 15px;
 }
 
+.iconBtnBackground {
+    background: none !important;
+    border: none !important;
+}
+
+.iconBtnBackground:hover {
+    background: #562B82 !important;
+}
+
 .iconCustom {
     font-size: 1.2em;
     color: #000;
@@ -68,7 +77,6 @@
 
 .iconCustom:hover {
     font-size: 1.2em;
-    color: #562B82;
 }
 
 .customCheckbox input {

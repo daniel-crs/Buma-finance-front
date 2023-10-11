@@ -1,7 +1,8 @@
-import "./style.css";
+import "../../style/modal/style.css";
 
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import { MdOutlineClose } from "react-icons/md";
 
 import { useEffect, useState } from "react";
 
@@ -32,12 +33,22 @@ function ServiceModal({ service, isOpen, setModalOpen }) {
     return (
       <div className="backgroundStyle">
         <div className="modalStyle">
-          <div>
-            <h3 className="formTitle">Adicionar Serviços</h3>
+          <div id="headerContainer">
+            <div className="customTile">
+              <h3>Editar Serviços</h3>
+            </div>
+
+            <div className="customExitIcon">
+              <MdOutlineClose
+                onClick={() => {
+                  setModalOpen(false);
+                }}
+              />
+            </div>
           </div>
 
-          <form>
-            <fieldset className="formContainer">
+          <form id="Container">
+            <fieldset className="formCustom">
               <div>
                 <label htmlFor="title">Nome</label>
                 <br></br>
@@ -63,7 +74,7 @@ function ServiceModal({ service, isOpen, setModalOpen }) {
                       overlay={
                         <Tooltip>
                           Caso o serviço não tenha valor definido, deixar em
-                          branco para constar como "A negociar".
+                          branco para constar como "A negociar"
                         </Tooltip>
                       }
                     >

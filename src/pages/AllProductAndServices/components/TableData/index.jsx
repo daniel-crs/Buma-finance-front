@@ -39,13 +39,16 @@ function TableData({
       </td>
       <td className="nameArea">{nome}</td>
       <td className="categoriaArea">{categoria}</td>
-      <td className="valorArea">{valor}</td>
+      <td className="valorArea">R$ {valor}</td>
       <td className="opcaoArea">
         <div className="iconsPosition">
           {(() => {
             if (pageTitle === "Produto") {
               return (
-                <Button onClick={() => deleteProduct()}>
+                <Button
+                  className="iconBtnBackground"
+                  onClick={() => deleteProduct()}
+                >
                   <span className="iconCustom">
                     <FaTrash />
                   </span>
@@ -53,7 +56,10 @@ function TableData({
               );
             } else if (pageTitle === "Serviço") {
               return (
-                <Button onClick={() => deleteService()}>
+                <Button
+                  className="iconBtnBackground"
+                  onClick={() => deleteService()}
+                >
                   <span className="iconCustom">
                     <FaTrash />
                   </span>
@@ -62,7 +68,10 @@ function TableData({
             }
           })()}
 
-          <Button onClick={() => setOpenModal(true)}>
+          <Button
+            className="iconBtnBackground"
+            onClick={() => setOpenModal(true)}
+          >
             <span className="iconCustom">
               <MdModeEdit />
             </span>

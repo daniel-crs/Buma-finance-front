@@ -19,30 +19,46 @@
     color: black;
 }
 
-.formTitle {
-    color: #562B82;
-    margin-top: 5px;
-    margin-left: 10px;
-    margin-bottom: 15px;
+#headerContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
-.formContainer {
-    width: 95%;
-    margin-left: 20px;
+.customTile {
+    margin-left: 25px;
 }
 
-.formContainer label {
+.customExitIcon {
+    font-size: 1.6em;
+    margin-right: 25px;
+    cursor: pointer;
+}
+
+#Container {
+    width: 88%;
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+.formCustom {
+    text-align: start;
+}
+
+.formCustom label {
     font-size: 1.2em;
     margin-bottom: 2.5px;
     cursor: pointer;
 }
 
-.formContainer input {
+.formCustom input {
     border: none;
     border: 1px solid gray;
     border-radius: 5px;
     cursor: pointer;
     height: 35px;
+    padding-left: 15px;
 }
 
 .fieldNameLine {
@@ -121,7 +137,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px 0;
+    margin: 20px 0 30px 0 !important;
 }
 
 .saveButton {
