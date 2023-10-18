@@ -5,6 +5,7 @@ import "./style/global.css";
 import Home from "./pages/Home";
 import Product from "./pages/AllProductAndServices/Product";
 import Service from "./pages/AllProductAndServices/Service";
+import Client from "./pages/Client";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/Product" element={<Product />} />
         <Route path="/Service" element={<Service />} />
+        <Route path="/Client" element={<Client />} />
       </Routes>
     </Router>
   );
