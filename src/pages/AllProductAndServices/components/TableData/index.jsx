@@ -1,7 +1,34 @@
 import { FaTrash } from "react-icons/fa";
 import { MdModeEdit } from "react-icons/md";
+import ProductModal from "../ProductModal";
+import ServiceModal from "../ServiceModal";
 
-function TableData({ productId, nome, categoria, valor }) {
+import Button from "react-bootstrap/Button";
+
+import { useState } from "react";
+
+function TableData({
+  pageTitle,
+  serviceId,
+  productId,
+  nome,
+  categoria,
+  valor,
+}) {
+  const [openModal, setOpenModal] = useState(false);
+
+  const deleteProduct = () => {
+    fetch(`http://localhost:3000/product/${productId}`, {
+      method: "DELETE",
+    });
+  };
+
+  const deleteService = () => {
+    fetch(`http://localhost:3000/service/${serviceId}`, {
+      method: "DELETE",
+    });
+  };
+
   return (
     <tr className="listLines">
       <td className="checkboxArea">
@@ -12,11 +39,63 @@ function TableData({ productId, nome, categoria, valor }) {
       </td>
       <td className="nameArea">{nome}</td>
       <td className="categoriaArea">{categoria}</td>
-      <td className="valorArea">{valor}</td>
+      <td className="valorArea">R$ {valor}</td>
       <td className="opcaoArea">
-        <div className="iconsCustom">
-          <FaTrash />
-          <MdModeEdit />
+        <div className="iconsPosition">
+          {(() => {
+            if (pageTitle === "Produto") {
+              return (
+                <Button
+                  className="iconBtnBackground"
+                  onClick={() => deleteProduct()}
+                >
+                  <span className="iconCustom">
+                    <FaTrash />
+                  </span>
+                </Button>
+              );
+            } else if (pageTitle === "Serviço") {
+              return (
+                <Button
+                  className="iconBtnBackground"
+                  onClick={() => deleteService()}
+                >
+                  <span className="iconCustom">
+                    <FaTrash />
+                  </span>
+                </Button>
+              );
+            }
+          })()}
+
+          <Button
+            className="iconBtnBackground"
+            onClick={() => setOpenModal(true)}
+          >
+            <span className="iconCustom">
+              <MdModeEdit />
+            </span>
+          </Button>
+
+          {(() => {
+            if (pageTitle === "Produto") {
+              return (
+                <ProductModal
+                  isOpen={openModal}
+                  setModalOpen={() => setOpenModal(!openModal)}
+                  product={productId}
+                />
+              );
+            } else if (pageTitle === "Serviço") {
+              return (
+                <ServiceModal
+                  isOpen={openModal}
+                  setModalOpen={() => setOpenModal(!openModal)}
+                  service={serviceId}
+                />
+              );
+            }
+          })()}
         </div>
       </td>
     </tr>

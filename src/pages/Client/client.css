@@ -21,6 +21,17 @@
     border-radius: 1em;
     border-collapse: separate;
     border-spacing: 0 5px;
+}
+
+.titlePosition {
+    font-size: 1.2em;
+}
+
+.ListContainer {
+    width: 86vw;
+    border-radius: 1em;
+    border-collapse: separate;
+    border-spacing: 0 5px;
     
 }
 
@@ -37,15 +48,19 @@
 }
 
 .nameArea {
-    width: 33vw;
+    width: 17vw;
 }
 
-.categoriaArea {
-    width: 20vw;
+.empresaArea {
+    width: 17vw;
 }
 
-.valorArea {
-    width: 20vw;
+.emailArea {
+    width: 27vw;
+}
+
+.telefoneArea {
+    width: 12vw;
 }
 
 .opcaoArea {
@@ -120,15 +135,19 @@
     }
     
     .nameArea {
-        width: 39vw;
+        width: 13vw;
     }
     
-    .categoriaArea {
-        width: 20vw;
+    .empresaArea {
+        width: 13vw;
     }
     
-    .valorArea {
-        width: 20vw;
+    .emailArea {
+        width: 31vw;
+    }
+    
+    .telefoneArea {
+        width: 14vw;
     }
     
     .opcaoArea {

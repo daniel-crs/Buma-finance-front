@@ -1,21 +1,54 @@
-import "./style.css";
-
-import Modal from "react-bootstrap/Modal";
+import "../../style/modal/style.css";
 
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import { MdOutlineClose } from "react-icons/md";
 
-function ServiceForm(showModal) {
-  return (
-    <>
-      <Modal {...showModal} size="lg" centered>
-        <Modal.Body>
-          <div>
-            <h3 className="formTitle">Adicionar Serviços</h3>
+import { useEffect, useState } from "react";
+
+function ServiceModal({ service, isOpen, setModalOpen }) {
+  const [name, setName] = useState("");
+  const [sell_price, setSell_price] = useState("");
+  const [code, setCode] = useState("");
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/service/${service}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setName(data.name);
+        setSell_price(data.sell_price);
+        setCode(data.code);
+      });
+  }, [service]);
+
+  const updateService = () => {
+    fetch(`http://localhost:3000/service/${service}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, sell_price, code, serviceID: 1 }),
+    }).then((res) => res.json());
+  };
+
+  if (isOpen) {
+    return (
+      <div className="backgroundStyle">
+        <div className="modalStyle">
+          <div id="headerContainer">
+            <div className="customTile">
+              <h3>Editar Serviços</h3>
+            </div>
+
+            <div className="customExitIcon">
+              <MdOutlineClose
+                onClick={() => {
+                  setModalOpen(false);
+                }}
+              />
+            </div>
           </div>
 
-          <form>
-            <fieldset className="formContainer">
+          <form id="Container">
+            <fieldset className="formCustom">
               <div>
                 <label htmlFor="title">Nome</label>
                 <br></br>
@@ -24,6 +57,8 @@ function ServiceForm(showModal) {
                   id="title"
                   type="text"
                   placeholder="Ex: Desenvolvimento de aplicativo mobile."
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                 />
               </div>
 
@@ -39,11 +74,17 @@ function ServiceForm(showModal) {
                       overlay={
                         <Tooltip>
                           Caso o serviço não tenha valor definido, deixar em
-                          branco para constar como "A negociar".
+                          branco para constar como "A negociar"
                         </Tooltip>
                       }
                     >
-                      <input className="elementsArea" id="valor" type="text" />
+                      <input
+                        className="elementsArea"
+                        id="valor"
+                        type="text"
+                        value={sell_price}
+                        onChange={(e) => setSell_price(e.target.value)}
+                      />
                     </OverlayTrigger>
                   </div>
                 </div>
@@ -66,7 +107,13 @@ function ServiceForm(showModal) {
               <div>
                 <label htmlFor="codigo">Código de identificação</label>
                 <br></br>
-                <input className="fieldCodigoLine" id="codigo" type="text" />
+                <input
+                  className="fieldCodigoLine"
+                  id="codigo"
+                  type="text"
+                  value={code}
+                  onChange={(e) => setCode(e.target.value)}
+                />
               </div>
 
               <div>
@@ -84,18 +131,23 @@ function ServiceForm(showModal) {
 
             <div className="buttonPosition">
               <button
+                onClick={() => {
+                  updateService();
+                  setModalOpen(false);
+                }}
                 className="saveButton"
                 type="button"
-                onClick={showModal.onHide}
               >
                 Salvar
               </button>
             </div>
           </form>
-        </Modal.Body>
-      </Modal>
-    </>
-  );
+        </div>
+      </div>
+    );
+  }
+
+  return null;
 }
 
-export default ServiceForm;
+export default ServiceModal;

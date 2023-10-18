@@ -23,7 +23,7 @@ function SideBar() {
   const popoverClient = (
     <Popover className="popoverContainer">
       <Popover.Body className="popoverBasic">
-        <a className="popoverElement" href="/Product">
+        <a className="popoverElement" href="/Client">
           <LuBuilding className="popoverIcon" />
           Cliente
         </a>
@@ -75,15 +75,24 @@ function SideBar() {
       </div>
 
       <div className="spaceBetweenElements">
-        <OverlayTrigger
-          trigger="click"
-          placement="right"
-          overlay={popoverClient}
-        >
-          <div>
-            <BsFillPeopleFill className="sidebarElements" />
-          </div>
-        </OverlayTrigger>
+        {(() => {
+          const isClientUrl = location.pathname === "/Client";
+
+          return (
+            <OverlayTrigger
+              trigger="click"
+              placement="right"
+              overlay={popoverClient}
+            >
+              <div id={isClientUrl && "activeElements"}>
+                <BsFillPeopleFill
+                  id={isClientUrl && "active"}
+                  className={!isClientUrl && "sidebarElements"}
+                />
+              </div>
+            </OverlayTrigger>
+          );
+        })()}
       </div>
 
       <div className="spaceBetweenElements">
