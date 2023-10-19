@@ -4,7 +4,7 @@ import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 
 function ProductForm(showModal) {
-  const url = "http://localhost:3000/product";
+  const url = "http://localhost:8000/product";
   const [name, setName] = useState("");
   const [sell_price, setSell_price] = useState("");
   const [code, setCode] = useState("");

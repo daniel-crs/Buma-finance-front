@@ -9,7 +9,7 @@ function ProductModal({ product, isOpen, setModalOpen }) {
   const [code, setCode] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:3000/product/${product}`)
+    fetch(`http://localhost:8000/product/${product}`)
       .then((res) => res.json())
       .then((data) => {
         setName(data.name);

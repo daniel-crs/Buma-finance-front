@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 
 function Product() {
   const [data, setData] = useState([]);
-  const url = "http://localhost:3000/product";
+  const url = "http://localhost:8000/product";
 
   useEffect(() => {
     fetch(url)

@@ -8,7 +8,7 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
 function ServiceForm(showModal) {
-  const url = "http://localhost:3000/service";
+  const url = "http://localhost:8000/service";
   const [name, setName] = useState("");
   const [sell_price, setSell_price] = useState("");
   const [code, setCode] = useState("");

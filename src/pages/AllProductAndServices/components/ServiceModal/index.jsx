@@ -12,7 +12,7 @@ function ServiceModal({ service, isOpen, setModalOpen }) {
   const [code, setCode] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:3000/service/${service}`)
+    fetch(`http://localhost:8000/service/${service}`)
       .then((res) => res.json())
       .then((data) => {
         setName(data.name);
@@ -22,7 +22,7 @@ function ServiceModal({ service, isOpen, setModalOpen }) {
   }, [service]);
 
   const updateService = () => {
-    fetch(`http://localhost:3000/service/${service}`, {
+    fetch(`http://localhost:8000/service/${service}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, sell_price, code, serviceID: 1 }),
