@@ -3,7 +3,7 @@ import { MdModeEdit } from "react-icons/md";
 
 import Button from "react-bootstrap/Button";
 
-function TableData() {
+function TableData({ legalId, nome, company, email, telefone }) {
   return (
     <tr className="listLines">
       <td className="checkboxArea">
@@ -12,10 +12,10 @@ function TableData() {
           <label htmlFor={1}></label>
         </div>
       </td>
-      <td className="nameArea">Lucas</td>
-      <td className="empresaArea">Magalu</td>
-      <td className="emailArea">magalu123@gmail.com</td>
-      <td className="telefoneArea">61995532712</td>
+      <td className="nameArea">{nome}</td>
+      <td className="empresaArea">{company}</td>
+      <td className="emailArea">{email}</td>
+      <td className="telefoneArea">{telefone}</td>
       <td className="opcaoArea">
         <div className="iconsPosition">
           <Button className="iconBtnBackground">

@@ -5,8 +5,24 @@ import SideBar from "../../components/SideBar";
 import UpperBodyInformation from "../../components/UpperBodyInformation";
 import TableHeader from "./components/TableHeader";
 import TableData from "./components/TableData";
+import { useEffect, useState } from "react";
 
 function Client() {
+  const [legal, setLegal] = useState([]);
+  const [physical, setPhysical] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8000/legalcustomer")
+      .then((res) => res.json())
+      .then((legal) => setLegal(legal));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:8000/physicalcustomer")
+      .then((res) => res.json())
+      .then((physical) => setPhysical(physical));
+  }, []);
+
   return (
     <div>
       <Header />
@@ -17,16 +33,32 @@ function Client() {
         <div className="listBackground">
           <table className="ListContainer">
             <TableHeader />
-
-            <TableData />
+            {legal.map((LegalCustomers, i) => (
+              <TableData
+                key={i}
+                legalId={LegalCustomers.id}
+                nome={LegalCustomers.name}
+                company={LegalCustomers.company_name}
+                email={LegalCustomers.email}
+                telefone={LegalCustomers.telephone}
+              />
+            ))}
           </table>
         </div>
 
         <div className="listBackground">
           <table className="ListContainer">
             <TableHeader />
-
-            <TableData />
+            {physical.map((PhysicalCustomer, i) => (
+              <TableData
+                key={i}
+                legalId={PhysicalCustomer.id}
+                nome={PhysicalCustomer.name}
+                company={PhysicalCustomer.company_name}
+                email={PhysicalCustomer.email}
+                telefone={PhysicalCustomer.telephone}
+              />
+            ))}
           </table>
         </div>
       </div>
