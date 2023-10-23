@@ -1,9 +1,13 @@
 import { FaTrash } from "react-icons/fa";
 import { MdModeEdit } from "react-icons/md";
+import { useState } from "react";
 
 import Button from "react-bootstrap/Button";
+import ModalStandard from "../ModalStandard";
 
 function TableData({ legalId, nome, company, email, telefone }) {
+  const [openModal, setOpenModal] = useState(false);
+
   return (
     <tr className="listLines">
       <td className="checkboxArea">
@@ -24,11 +28,20 @@ function TableData({ legalId, nome, company, email, telefone }) {
             </span>
           </Button>
 
-          <Button className="iconBtnBackground">
+          <Button
+            className="iconBtnBackground"
+            onClick={() => setOpenModal(true)}
+          >
             <span className="iconCustom">
               <MdModeEdit />
             </span>
           </Button>
+
+          <ModalStandard
+            isOpen={openModal}
+            setModalOpen={() => setOpenModal(!openModal)}
+            legal={legalId}
+          />
         </div>
       </td>
     </tr>
