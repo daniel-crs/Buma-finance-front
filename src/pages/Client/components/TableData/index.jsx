@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import Button from "react-bootstrap/Button";
 import ModalStandard from "../ModalStandard";
+import PhysicalModal from "../PhysicalModal";
 
 function TableData({
   legalId,
@@ -12,7 +13,7 @@ function TableData({
   company,
   email,
   telefone,
-  deleteIdentify,
+  identify,
 }) {
   const [openModal, setOpenModal] = useState(false);
 
@@ -47,7 +48,7 @@ function TableData({
       <td className="opcaoArea">
         <div className="iconsPosition">
           {(() => {
-            if (deleteIdentify === "legal") {
+            if (identify === "legal") {
               return (
                 <Button
                   className="iconBtnBackground"
@@ -58,7 +59,7 @@ function TableData({
                   </span>
                 </Button>
               );
-            } else if (deleteIdentify === "physical") {
+            } else if (identify === "physical") {
               return (
                 <Button
                   className="iconBtnBackground"
@@ -81,11 +82,25 @@ function TableData({
             </span>
           </Button>
 
-          <ModalStandard
-            legal={legalId}
-            isOpen={openModal}
-            setModalOpen={() => setOpenModal(!openModal)}
-          />
+          {(() => {
+            if (identify === "legal") {
+              return (
+                <ModalStandard
+                  legal={legalId}
+                  isOpen={openModal}
+                  setModalOpen={() => setOpenModal(!openModal)}
+                />
+              );
+            } else if (identify === "physical") {
+              return (
+                <PhysicalModal
+                  physical={physicalId}
+                  isOpen={openModal}
+                  setModalOpen={() => setOpenModal(!openModal)}
+                />
+              );
+            }
+          })()}
         </div>
       </td>
     </tr>
