@@ -1,33 +1,36 @@
+import { useEffect, useState } from "react";
 import "./style.css";
 
 import { MdOutlineClose } from "react-icons/md";
 
 function ModalStandard({ legal, isOpen, setModalOpen }) {
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [telephone, setTelephone] = useState("");
-  // const [CNPJ, setCnpj] = useState("");
-  // const [company_name, setCompany_name] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [telephone, setTelephone] = useState("");
+  const [CNPJ, setCnpj] = useState("");
+  const [company_name, setCompany_name] = useState("");
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:8000/legalcustomer/${legal}`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setName(data.name);
-  //       setEmail(data.email);
-  //       setTelephone(data.telephone);
-  //       setCnpj(data.CNPJ);
-  //       setCompany_name(data.company_name);
-  //     });
-  // }, [legal]);
+  useEffect(() => {
+    if (!legal) return;
 
-  // const updateLegalClient = () => {
-  //   fetch(`http://localhost:8000/legalcustomer/${legal}`, {
-  //     method: "PUT",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({ name, email, telephone, CNPJ, company_name }),
-  //   }).then((res) => res.json());
-  // };
+    fetch(`http://localhost:8000/legalcustomer/${legal}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setName(data.name);
+        setEmail(data.email);
+        setTelephone(data.telephone);
+        setCnpj(data.CNPJ);
+        setCompany_name(data.company_name);
+      });
+  }, [legal]);
+
+  const updateLegalClient = () => {
+    fetch(`http://localhost:8000/legalcustomer/${legal}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, telephone, CNPJ, company_name }),
+    }).then((response) => response.json());
+  };
 
   if (isOpen) {
     return (
@@ -58,6 +61,8 @@ function ModalStandard({ legal, isOpen, setModalOpen }) {
                     id="nome"
                     className="clientFieldArea"
                     placeholder="Ex: Lucas Silva"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                   />
                 </div>
 
@@ -69,6 +74,8 @@ function ModalStandard({ legal, isOpen, setModalOpen }) {
                     id="empresa"
                     className="clientFieldArea"
                     placeholder="Ex: Magazine Luiza"
+                    value={company_name}
+                    onChange={(e) => setCompany_name(e.target.value)}
                   />
                 </div>
               </div>
@@ -77,7 +84,13 @@ function ModalStandard({ legal, isOpen, setModalOpen }) {
                 <div className="clientEmailArea">
                   <label htmlFor="email">E-mail</label>
                   <br />
-                  <input type="text" id="email" className="clientFieldArea" />
+                  <input
+                    type="text"
+                    id="email"
+                    className="clientFieldArea"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
                 </div>
 
                 <div className="clientTelefoneArea">
@@ -87,6 +100,8 @@ function ModalStandard({ legal, isOpen, setModalOpen }) {
                     type="text"
                     id="telefone"
                     className="clientFieldArea"
+                    value={telephone}
+                    onChange={(e) => setTelephone(e.target.value)}
                   />
                 </div>
               </div>
@@ -105,7 +120,13 @@ function ModalStandard({ legal, isOpen, setModalOpen }) {
                 <div className="standardElementArea">
                   <label htmlFor="cnpj">CNPJ</label>
                   <br />
-                  <input type="text" id="cnpj" className="clientFieldArea" />
+                  <input
+                    type="text"
+                    id="cnpj"
+                    className="clientFieldArea"
+                    value={CNPJ}
+                    onChange={(e) => setCnpj(e.target.value)}
+                  />
                 </div>
               </div>
 
@@ -119,6 +140,7 @@ function ModalStandard({ legal, isOpen, setModalOpen }) {
             <div className="buttonPosition">
               <button
                 onClick={() => {
+                  updateLegalClient();
                   setModalOpen(false);
                 }}
                 className="saveButton"

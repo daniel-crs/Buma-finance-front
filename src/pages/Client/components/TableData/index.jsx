@@ -20,20 +20,24 @@ function TableData({
     fetch(`http://localhost:8000/legalcustomer/${legalId}`, {
       method: "DELETE",
     });
+
+    window.location.reload();
   };
 
   const deletePhysicalClient = () => {
     fetch(`http://localhost:8000/physicalcustomer/${physicalId}`, {
       method: "DELETE",
     });
+
+    window.location.reload();
   };
 
   return (
     <tr className="listLines">
       <td className="checkboxArea">
         <div className="customCheckbox">
-          <input id={1} type="checkbox" />
-          <label htmlFor={1}></label>
+          <input id={legalId} type="checkbox" />
+          <label htmlFor={legalId}></label>
         </div>
       </td>
       <td className="nameArea">{nome}</td>
@@ -78,9 +82,9 @@ function TableData({
           </Button>
 
           <ModalStandard
+            legal={legalId}
             isOpen={openModal}
             setModalOpen={() => setOpenModal(!openModal)}
-            legal={legalId}
           />
         </div>
       </td>
