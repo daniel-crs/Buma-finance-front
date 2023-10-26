@@ -27,7 +27,7 @@ function Form({ isOpen, setModalOpen }) {
         <div className="modalStyle">
           <div id="headerContainer">
             <div className="clientTypeTitle">
-              <h3>Adicionar Cliente Juridico</h3>
+              <h3>Adicionar Pessoa Juridico</h3>
             </div>
 
             <div className="clientExitIcon">
