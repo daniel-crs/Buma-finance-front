@@ -1,33 +1,25 @@
+import { useState } from "react";
 import "./style.css";
 
 import { MdOutlineClose } from "react-icons/md";
 
-function ModalStandard({ legal, isOpen, setModalOpen }) {
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [telephone, setTelephone] = useState("");
-  // const [CNPJ, setCnpj] = useState("");
-  // const [company_name, setCompany_name] = useState("");
+function Form({ isOpen, setModalOpen }) {
+  const url = "http://localhost:8000/legalcustomer";
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [telephone, setTelephone] = useState("");
+  const [CNPJ, setCnpj] = useState("");
+  const [company_name, setCompany_name] = useState("");
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:8000/legalcustomer/${legal}`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setName(data.name);
-  //       setEmail(data.email);
-  //       setTelephone(data.telephone);
-  //       setCnpj(data.CNPJ);
-  //       setCompany_name(data.company_name);
-  //     });
-  // }, [legal]);
+  console.log(JSON.stringify({ name, email, telephone, CNPJ, company_name }));
 
-  // const updateLegalClient = () => {
-  //   fetch(`http://localhost:8000/legalcustomer/${legal}`, {
-  //     method: "PUT",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({ name, email, telephone, CNPJ, company_name }),
-  //   }).then((res) => res.json());
-  // };
+  const createLegalClient = () => {
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, telephone, CNPJ, company_name }),
+    }).then((res) => res.json());
+  };
 
   if (isOpen) {
     return (
@@ -35,7 +27,7 @@ function ModalStandard({ legal, isOpen, setModalOpen }) {
         <div className="modalStyle">
           <div id="headerContainer">
             <div className="clientTypeTitle">
-              <h3>Editar Cliente Juridico</h3>
+              <h3>Adicionar Cliente Juridico</h3>
             </div>
 
             <div className="clientExitIcon">
@@ -47,7 +39,7 @@ function ModalStandard({ legal, isOpen, setModalOpen }) {
             </div>
           </div>
 
-          <form id="Container">
+          <form id="Container" onSubmit={createLegalClient}>
             <fieldset className="formCustom">
               <div className="multipleFields">
                 <div className="standardElementArea">
@@ -58,6 +50,8 @@ function ModalStandard({ legal, isOpen, setModalOpen }) {
                     id="nome"
                     className="clientFieldArea"
                     placeholder="Ex: Lucas Silva"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                   />
                 </div>
 
@@ -69,6 +63,8 @@ function ModalStandard({ legal, isOpen, setModalOpen }) {
                     id="empresa"
                     className="clientFieldArea"
                     placeholder="Ex: Magazine Luiza"
+                    value={company_name}
+                    onChange={(e) => setCompany_name(e.target.value)}
                   />
                 </div>
               </div>
@@ -77,7 +73,13 @@ function ModalStandard({ legal, isOpen, setModalOpen }) {
                 <div className="clientEmailArea">
                   <label htmlFor="email">E-mail</label>
                   <br />
-                  <input type="text" id="email" className="clientFieldArea" />
+                  <input
+                    type="text"
+                    id="email"
+                    className="clientFieldArea"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
                 </div>
 
                 <div className="clientTelefoneArea">
@@ -87,6 +89,8 @@ function ModalStandard({ legal, isOpen, setModalOpen }) {
                     type="text"
                     id="telefone"
                     className="clientFieldArea"
+                    value={telephone}
+                    onChange={(e) => setTelephone(e.target.value)}
                   />
                 </div>
               </div>
@@ -105,7 +109,13 @@ function ModalStandard({ legal, isOpen, setModalOpen }) {
                 <div className="standardElementArea">
                   <label htmlFor="cnpj">CNPJ</label>
                   <br />
-                  <input type="text" id="cnpj" className="clientFieldArea" />
+                  <input
+                    type="text"
+                    id="cnpj"
+                    className="clientFieldArea"
+                    value={CNPJ}
+                    onChange={(e) => setCnpj(e.target.value)}
+                  />
                 </div>
               </div>
 
@@ -119,6 +129,7 @@ function ModalStandard({ legal, isOpen, setModalOpen }) {
             <div className="buttonPosition">
               <button
                 onClick={() => {
+                  createLegalClient();
                   setModalOpen(false);
                 }}
                 className="saveButton"
@@ -136,4 +147,4 @@ function ModalStandard({ legal, isOpen, setModalOpen }) {
   return null;
 }
 
-export default ModalStandard;
+export default Form;

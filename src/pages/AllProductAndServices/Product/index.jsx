@@ -24,7 +24,7 @@ function Product() {
       <Header />
       <SideBar />
       <div id="bodyContainer">
-        <UpperBodyInformation pageTitle={"Produto"} />
+        <UpperBodyInformation pageTitle={"Produto"} simpleButton={true} />
 
         <div className="listBackground">
           <table className="ListContainer">

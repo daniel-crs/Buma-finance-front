@@ -1,0 +1,124 @@
+.backgroundStyle {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+.modalStyle {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    background-color: #fff;
+    border-radius: 10px;
+    color: black;
+}
+
+#headerContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.clientTypeTitle {
+    color: #562B82;
+    margin-left: 25px;
+}
+
+.clientExitIcon {
+    font-size: 1.6em;
+    margin-right: 25px;
+    cursor: pointer;
+}
+
+#Container {
+    width: 88%;
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+.formCustom {
+    text-align: start;
+}
+
+.formCustom label {
+    font-size: 1.2em;
+    margin-bottom: 2.5px;
+    cursor: pointer;
+}
+
+.formCustom input {
+    border: none;
+    border: 1px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 35px;
+    padding-left: 15px;
+}
+
+input::placeholder {
+    padding-left: 5px;
+    font-size: 0.9em;
+}
+
+.fieldNameLine {
+    width: 100%;
+}
+
+.multipleFields {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.standardElementArea {
+    width: 49%;
+}
+
+.clientEmailArea {
+    width: 65%;
+}
+
+.clientTelefoneArea {
+    width: 33%;
+}
+
+.clientEnderecoArea {
+    width: 100%;
+}
+ 
+.clientFieldArea {
+    width: 100% !important;
+    border-radius: 5px !important;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+.buttonPosition {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0 30px 0 !important;
+}
+
+.saveButton {
+    height: 35px;
+    width: 140px;
+    background: #562B82;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 1.2em;
+    font-weight: 300;
+    cursor: pointer;
+    color: #fff;
+}

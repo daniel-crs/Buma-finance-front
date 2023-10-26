@@ -28,7 +28,7 @@ function Client() {
       <Header />
       <SideBar />
       <div id="bodyContainer">
-        <UpperBodyInformation pageTitle={"Cliente"} />
+        <UpperBodyInformation pageTitle={"Cliente"} simpleButton={false} />
 
         <div className="listBackground">
           <table className="ListContainer">
@@ -52,7 +52,7 @@ function Client() {
             {physical.map((PhysicalCustomer, i) => (
               <TableData
                 key={i}
-                legalId={PhysicalCustomer.id}
+                physicalId={PhysicalCustomer.id}
                 nome={PhysicalCustomer.name}
                 company={PhysicalCustomer.company_name}
                 email={PhysicalCustomer.email}
