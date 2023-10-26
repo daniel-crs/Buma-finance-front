@@ -13,6 +13,7 @@ function TableData({
   company,
   email,
   telefone,
+  cpf,
   identify,
 }) {
   const [openModal, setOpenModal] = useState(false);
@@ -94,7 +95,11 @@ function TableData({
             } else if (identify === "physical") {
               return (
                 <PhysicalModal
-                  physical={physicalId}
+                  id={physicalId}
+                  physical_name={nome}
+                  physical_email={email}
+                  physical_telefone={telefone}
+                  physical_cpf={cpf}
                   isOpen={openModal}
                   setModalOpen={() => setOpenModal(!openModal)}
                 />

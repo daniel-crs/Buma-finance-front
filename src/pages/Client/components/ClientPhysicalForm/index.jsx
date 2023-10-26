@@ -18,6 +18,8 @@ function ClientPhysicalForm({ isOpen, setModalOpen }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, telephone, CPF }),
     }).then((res) => res.json());
+
+    window.location.reload();
   };
 
   if (isOpen) {

@@ -1,8 +1,32 @@
 import "./style.css";
 
+import { useState } from "react";
 import { MdOutlineClose } from "react-icons/md";
 
-function PhysicalModal({ isOpen, setModalOpen }) {
+function PhysicalModal({
+  id,
+  physical_name,
+  physical_email,
+  physical_telefone,
+  physical_cpf,
+  isOpen,
+  setModalOpen,
+}) {
+  const [name, setName] = useState(physical_name);
+  const [email, setEmail] = useState(physical_email);
+  const [telephone, setTelephone] = useState(physical_telefone);
+  const [CPF, setCpf] = useState(physical_cpf);
+
+  const updatePhysicalClient = () => {
+    fetch(`http://localhost:8000/physicalcustomer/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, telephone, CPF }),
+    }).then((response) => response.json());
+
+    window.location.reload();
+  };
+
   if (isOpen) {
     return (
       <div className="physicalClient-backgroundStyle">
@@ -32,6 +56,8 @@ function PhysicalModal({ isOpen, setModalOpen }) {
                     id="nome"
                     className="clientFieldArea"
                     placeholder="Ex: Lucas Silva"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                   />
                 </div>
 
@@ -54,6 +80,8 @@ function PhysicalModal({ isOpen, setModalOpen }) {
                   type="text"
                   id="email"
                   className="physicalClient-clientFieldArea"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
 
@@ -65,6 +93,8 @@ function PhysicalModal({ isOpen, setModalOpen }) {
                     type="text"
                     id="Telefone"
                     className="physicalClient-clientFieldArea"
+                    value={telephone}
+                    onChange={(e) => setTelephone(e.target.value)}
                   />
                 </div>
 
@@ -75,6 +105,8 @@ function PhysicalModal({ isOpen, setModalOpen }) {
                     type="text"
                     id="cnpj"
                     className="physicalClient-clientFieldArea"
+                    value={CPF}
+                    onChange={(e) => setCpf(e.target.value)}
                   />
                 </div>
               </div>
@@ -93,6 +125,7 @@ function PhysicalModal({ isOpen, setModalOpen }) {
             <div className="physicalClient-buttonPosition">
               <button
                 onClick={() => {
+                  updatePhysicalClient();
                   setModalOpen(false);
                 }}
                 className="physicalClient-saveButton"

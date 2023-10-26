@@ -55,9 +55,9 @@ function Client() {
                 key={i}
                 physicalId={PhysicalCustomer.id}
                 nome={PhysicalCustomer.name}
-                company={PhysicalCustomer.company_name}
                 email={PhysicalCustomer.email}
                 telefone={PhysicalCustomer.telephone}
+                cpf={PhysicalCustomer.CPF}
                 identify={"physical"}
               />
             ))}
