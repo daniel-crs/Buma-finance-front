@@ -41,6 +41,7 @@ function Client() {
                 company={LegalCustomers.company_name}
                 email={LegalCustomers.email}
                 telefone={LegalCustomers.telephone}
+                deleteIdentify={"legal"}
               />
             ))}
           </table>
@@ -57,6 +58,7 @@ function Client() {
                 company={PhysicalCustomer.company_name}
                 email={PhysicalCustomer.email}
                 telefone={PhysicalCustomer.telephone}
+                deleteIdentify={"physical"}
               />
             ))}
           </table>

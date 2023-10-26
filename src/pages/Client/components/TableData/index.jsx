@@ -5,11 +5,25 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import ModalStandard from "../ModalStandard";
 
-function TableData({ legalId, nome, company, email, telefone }) {
+function TableData({
+  legalId,
+  physicalId,
+  nome,
+  company,
+  email,
+  telefone,
+  deleteIdentify,
+}) {
   const [openModal, setOpenModal] = useState(false);
 
   const deleteLegalClient = () => {
     fetch(`http://localhost:8000/legalcustomer/${legalId}`, {
+      method: "DELETE",
+    });
+  };
+
+  const deletePhysicalClient = () => {
+    fetch(`http://localhost:8000/physicalcustomer/${physicalId}`, {
       method: "DELETE",
     });
   };
@@ -28,14 +42,31 @@ function TableData({ legalId, nome, company, email, telefone }) {
       <td className="telefoneArea">{telefone}</td>
       <td className="opcaoArea">
         <div className="iconsPosition">
-          <Button
-            className="iconBtnBackground"
-            onClick={() => deleteLegalClient()}
-          >
-            <span className="iconCustom">
-              <FaTrash />
-            </span>
-          </Button>
+          {(() => {
+            if (deleteIdentify === "legal") {
+              return (
+                <Button
+                  className="iconBtnBackground"
+                  onClick={() => deleteLegalClient()}
+                >
+                  <span className="iconCustom">
+                    <FaTrash />
+                  </span>
+                </Button>
+              );
+            } else if (deleteIdentify === "physical") {
+              return (
+                <Button
+                  className="iconBtnBackground"
+                  onClick={() => deletePhysicalClient()}
+                >
+                  <span className="iconCustom">
+                    <FaTrash />
+                  </span>
+                </Button>
+              );
+            }
+          })()}
 
           <Button
             className="iconBtnBackground"
