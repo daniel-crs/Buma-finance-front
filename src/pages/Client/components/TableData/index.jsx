@@ -8,6 +8,12 @@ import ModalStandard from "../ModalStandard";
 function TableData({ legalId, nome, company, email, telefone }) {
   const [openModal, setOpenModal] = useState(false);
 
+  const deleteLegalClient = () => {
+    fetch(`http://localhost:8000/legalcustomer/${legalId}`, {
+      method: "DELETE",
+    });
+  };
+
   return (
     <tr className="listLines">
       <td className="checkboxArea">
@@ -22,7 +28,10 @@ function TableData({ legalId, nome, company, email, telefone }) {
       <td className="telefoneArea">{telefone}</td>
       <td className="opcaoArea">
         <div className="iconsPosition">
-          <Button className="iconBtnBackground">
+          <Button
+            className="iconBtnBackground"
+            onClick={() => deleteLegalClient()}
+          >
             <span className="iconCustom">
               <FaTrash />
             </span>
