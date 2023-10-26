@@ -1,5 +1,5 @@
 import "./style.css";
-import Form from "../../pages/Client/components/Form";
+import ClientLegalForm from "../../pages/Client/components/ClientLegalForm";
 import ClientPhysicalForm from "../../pages/Client/components/ClientPhysicalForm";
 import Button from "react-bootstrap/Button";
 
@@ -30,7 +30,7 @@ function AdvancedAddButton() {
         </div>
       </div>
 
-      <Form
+      <ClientLegalForm
         isOpen={clientLegalModalShow}
         setModalOpen={() => setLegalModalShow(!clientLegalModalShow)}
       />

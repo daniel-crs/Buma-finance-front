@@ -3,7 +3,7 @@ import "./style.css";
 
 import { MdOutlineClose } from "react-icons/md";
 
-function Form({ isOpen, setModalOpen }) {
+function ClientLegalForm({ isOpen, setModalOpen }) {
   const url = "http://localhost:8000/legalcustomer";
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -23,14 +23,14 @@ function Form({ isOpen, setModalOpen }) {
 
   if (isOpen) {
     return (
-      <div className="backgroundStyle">
-        <div className="modalStyle">
-          <div id="headerContainer">
-            <div className="clientTypeTitle">
+      <div className="legalClient-backgroundStyle">
+        <div className="legalClient-modalStyle">
+          <div id="legalClient-headerContainer">
+            <div className="legalClient-clientTypeTitle">
               <h3>Adicionar Pessoa Juridico</h3>
             </div>
 
-            <div className="clientExitIcon">
+            <div className="legalClient-clientExitIcon">
               <MdOutlineClose
                 onClick={() => {
                   setModalOpen(false);
@@ -39,29 +39,29 @@ function Form({ isOpen, setModalOpen }) {
             </div>
           </div>
 
-          <form id="Container" onSubmit={createLegalClient}>
-            <fieldset className="formCustom">
-              <div className="multipleFields">
-                <div className="standardElementArea">
+          <form id="legalClient-Container" onSubmit={createLegalClient}>
+            <fieldset className="legalClient-formCustom">
+              <div className="legalClient-multipleFields">
+                <div className="legalClient-standardElementArea">
                   <label htmlFor="nome">Nome</label>
                   <br />
                   <input
                     type="text"
                     id="nome"
-                    className="clientFieldArea"
+                    className="legalClient-clientFieldArea"
                     placeholder="Ex: Lucas Silva"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
 
-                <div className="standardElementArea">
+                <div className="legalClient-standardElementArea">
                   <label htmlFor="empresa">Empresa</label>
                   <br />
                   <input
                     type="text"
                     id="empresa"
-                    className="clientFieldArea"
+                    className="legalClient-clientFieldArea"
                     placeholder="Ex: Magazine Luiza"
                     value={company_name}
                     onChange={(e) => setCompany_name(e.target.value)}
@@ -69,70 +69,74 @@ function Form({ isOpen, setModalOpen }) {
                 </div>
               </div>
 
-              <div className="multipleFields">
-                <div className="clientEmailArea">
+              <div className="legalClient-multipleFields">
+                <div className="legalClient-clientEmailArea">
                   <label htmlFor="email">E-mail</label>
                   <br />
                   <input
                     type="text"
                     id="email"
-                    className="clientFieldArea"
+                    className="legalClient-clientFieldArea"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
 
-                <div className="clientTelefoneArea">
+                <div className="legalClient-clientTelefoneArea">
                   <label htmlFor="telefone">Telefone</label>
                   <br />
                   <input
                     type="text"
                     id="telefone"
-                    className="clientFieldArea"
+                    className="legalClient-clientFieldArea"
                     value={telephone}
                     onChange={(e) => setTelephone(e.target.value)}
                   />
                 </div>
               </div>
 
-              <div className="multipleFields">
-                <div className="standardElementArea">
+              <div className="legalClient-multipleFields">
+                <div className="legalClient-standardElementArea">
                   <label htmlFor="razaoSocial">Razão Social</label>
                   <br />
                   <input
                     type="text"
                     id="razaoSocial"
-                    className="clientFieldArea"
+                    className="legalClient-clientFieldArea"
                   />
                 </div>
 
-                <div className="standardElementArea">
+                <div className="legalClient-standardElementArea">
                   <label htmlFor="cnpj">CNPJ</label>
                   <br />
                   <input
                     type="text"
                     id="cnpj"
-                    className="clientFieldArea"
+                    className="legalClient-clientFieldArea"
                     value={CNPJ}
                     onChange={(e) => setCnpj(e.target.value)}
                   />
                 </div>
               </div>
 
-              <div className="clientEnderecoArea">
+              <div className="legalClient-clientEnderecoArea">
                 <label htmlFor="endereco">Endereço</label>
                 <br />
-                <input type="text" id="endereco" className="clientFieldArea" />
+                <input
+                  type="text"
+                  id="endereco"
+                  className="legalClient-clientFieldArea"
+                />
               </div>
             </fieldset>
 
-            <div className="buttonPosition">
+            <div className="legalClient-buttonPosition">
               <button
                 onClick={() => {
                   createLegalClient();
                   setModalOpen(false);
                 }}
-                className="saveButton"
+                className="legalClient-saveButton"
                 type="button"
               >
                 Salvar
@@ -147,4 +151,4 @@ function Form({ isOpen, setModalOpen }) {
   return null;
 }
 
-export default Form;
+export default ClientLegalForm;
