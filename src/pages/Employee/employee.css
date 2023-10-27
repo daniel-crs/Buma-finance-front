@@ -1,0 +1,114 @@
+#employee-bodyContainer {
+    height: 65vh;
+    width: 88vw;
+    margin-top: 50px;
+    margin-left: 125px;
+}
+
+.employee-listBackground {
+    margin-top: 25px;
+    background: #F5F5F6;
+    width: 88Vw;
+    border-radius: 10px;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.employee-titleArea {
+    display: flex;
+    justify-content: space-between;
+}
+
+.employee-title h3 {
+    font-size: 1.4em;
+    margin: 5px 35px 15px 35px;
+}
+
+.employee-tableContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.employee-listContainer {
+    width: 84vw;
+    border-radius: 1em;
+    border-collapse: separate;
+    border-spacing: 0 5px;
+}
+
+.employee-listLines {
+    background-color: #ffffff;
+    height: 35px;
+    outline: 1px solid #B2B2B2;
+    border-radius: 10px;
+}
+
+.employee-checkboxArea {
+    width: 4vw;
+    text-align: center;
+}
+
+.employee-customCheckbox input {
+    display: none;
+}
+
+.employee-customCheckbox input + label::before {
+    content: '';
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    background-color: white;
+    display: inline-block;
+    border: 1px solid gray;
+    vertical-align: middle;
+    margin-right: 4px;
+    margin-bottom: 3px;
+    cursor: pointer;
+}
+
+.employee-customCheckbox input:checked + label::before {
+    background: #562B82;
+}
+
+.employee-nameArea {
+    width: 22vw;
+}
+
+.employee-emailArea {
+    width: 24vw;
+}
+
+.employee-telefoneArea {
+    width: 24vw;
+}
+
+.employee-opcaoArea {
+    width: 10vw;
+    text-align: center;
+}
+
+.employee-iconsPosition {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 1px;
+    gap: 15px;
+}
+
+.employee-iconBtnBackground {
+    background: none !important;
+    border: none !important;
+}
+
+.employee-iconBtnBackground:hover {
+    background: #562B82 !important;
+}
+
+.employee-iconCustom {
+    font-size: 1.2em;
+    color: #000;
+}
+
+.employee-iconCustom:hover {
+    font-size: 1.2em;
+}
