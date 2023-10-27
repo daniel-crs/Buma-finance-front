@@ -20,12 +20,18 @@ function AdvancedAddButton() {
           <span className="addButton-text">Adicionar</span>
         </Button>
         <div className="dropdown-content">
-          <Button onClick={() => setLegalModalShow(true)}>
-            Pessoa juridico
+          <Button
+            className="dropdown-item"
+            onClick={() => setLegalModalShow(true)}
+          >
+            Cliente juridico
           </Button>
 
-          <Button onClick={() => setPhysicalModalShow(true)}>
-            Pessoa física
+          <Button
+            className="dropdown-item"
+            onClick={() => setPhysicalModalShow(true)}
+          >
+            Cliente física
           </Button>
         </div>
       </div>

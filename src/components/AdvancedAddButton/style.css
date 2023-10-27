@@ -50,17 +50,17 @@
   display: block;
 }
 
-.dropdown-content button {
+.dropdown-item {
   display: block;
-  color: #FFFFFF;
-  padding: 10px;
-  width: 100%;
+  color: #FFFFFF !important;
+  padding: 10px !important;
+  width: 100% !important;
   text-align: start;
   border: none;
-  background: #562B82;
+  background: #562B82 !important;
 }
 
-.dropdown-content button:hover {
-  color: #FFFFFF;
-  background-color: #A366E1;
+.dropdown-item:hover {
+  color: #FFFFFF !important;
+  background-color: #A366E1 !important;
 }

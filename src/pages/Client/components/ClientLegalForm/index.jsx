@@ -19,6 +19,8 @@ function ClientLegalForm({ isOpen, setModalOpen }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, telephone, CNPJ, company_name }),
     }).then((res) => res.json());
+
+    window.location.reload();
   };
 
   if (isOpen) {

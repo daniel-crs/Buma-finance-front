@@ -44,12 +44,6 @@ function Client() {
                 identify={"legal"}
               />
             ))}
-          </table>
-        </div>
-
-        <div className="listBackground">
-          <table className="ListContainer">
-            <TableHeader />
             {physical.map((PhysicalCustomer, i) => (
               <TableData
                 key={i}
