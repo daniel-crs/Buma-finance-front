@@ -3,18 +3,24 @@ import "../../style/form.css";
 import { useState } from "react";
 import { MdOutlineClose } from "react-icons/md";
 
-function EmployeeForm({ isOpen, setModalOpen }) {
-  const url = "http://localhost:8000/employees";
-  const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
-  const [email, setEmail] = useState("");
+function EmployeeModal({
+  id,
+  employeeNome,
+  employeeTelefone,
+  employeeEmail,
+  isOpen,
+  setModalOpen,
+}) {
+  const [name, setName] = useState(employeeNome);
+  const [number, setNumber] = useState(employeeTelefone);
+  const [email, setEmail] = useState(employeeEmail);
 
-  const createEmplooye = () => {
-    fetch(url, {
-      method: "POST",
+  const updateEmployee = () => {
+    fetch(`http://localhost:8000/employees/${id}`, {
+      method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, number, email, role: 1 }),
-    }).then((res) => res.json());
+    }).then((response) => response.json());
 
     window.location.reload();
   };
@@ -37,7 +43,7 @@ function EmployeeForm({ isOpen, setModalOpen }) {
             </div>
           </div>
 
-          <form id="employee-Container" onSubmit={createEmplooye}>
+          <form id="employee-Container">
             <fieldset className="employee-formCustom">
               <div className="employee-clientNameArea">
                 <label htmlFor="nome">Nome</label>
@@ -104,7 +110,7 @@ function EmployeeForm({ isOpen, setModalOpen }) {
             <div className="employee-buttonPosition">
               <button
                 onClick={() => {
-                  createEmplooye();
+                  updateEmployee();
                   setModalOpen(false);
                 }}
                 className="employee-saveButton"
@@ -122,4 +128,4 @@ function EmployeeForm({ isOpen, setModalOpen }) {
   return null;
 }
 
-export default EmployeeForm;
+export default EmployeeModal;

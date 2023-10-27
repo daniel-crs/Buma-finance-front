@@ -51,9 +51,9 @@ function Employee() {
                     <TableData
                       key={i}
                       employeeId={employee.id}
-                      nome={employee.name}
+                      name={employee.name}
                       email={employee.email}
-                      telefone={employee.number}
+                      number={employee.number}
                     />
                   ))}
               </table>
