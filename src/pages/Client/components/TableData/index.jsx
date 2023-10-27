@@ -3,7 +3,7 @@ import { MdModeEdit } from "react-icons/md";
 import { useState } from "react";
 
 import Button from "react-bootstrap/Button";
-import ModalStandard from "../ModalStandard";
+import LegalModal from "../LegalModal";
 import PhysicalModal from "../PhysicalModal";
 
 function TableData({
@@ -86,7 +86,7 @@ function TableData({
           {(() => {
             if (identify === "legal") {
               return (
-                <ModalStandard
+                <LegalModal
                   legal={legalId}
                   isOpen={openModal}
                   setModalOpen={() => setOpenModal(!openModal)}

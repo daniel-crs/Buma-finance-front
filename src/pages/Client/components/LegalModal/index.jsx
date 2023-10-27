@@ -3,7 +3,7 @@ import "./style.css";
 
 import { MdOutlineClose } from "react-icons/md";
 
-function ModalStandard({ legal, isOpen, setModalOpen }) {
+function LegalModal({ legal, isOpen, setModalOpen }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [telephone, setTelephone] = useState("");
@@ -30,6 +30,8 @@ function ModalStandard({ legal, isOpen, setModalOpen }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, telephone, CNPJ, company_name }),
     }).then((response) => response.json());
+
+    window.location.reload();
   };
 
   if (isOpen) {
@@ -158,4 +160,4 @@ function ModalStandard({ legal, isOpen, setModalOpen }) {
   return null;
 }
 
-export default ModalStandard;
+export default LegalModal;
