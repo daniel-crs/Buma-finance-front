@@ -13,7 +13,7 @@ function UpperBodyInformation({ pageTitle, simpleButton }) {
           if (simpleButton === true) {
             return <SimpleAddButton modalChange={pageTitle} />;
           } else {
-            return <AdvancedAddButton />;
+            return <AdvancedAddButton modalChange={pageTitle} />;
           }
         })()}
         <FilterButton />

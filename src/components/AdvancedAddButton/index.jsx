@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import { HiPlus } from "react-icons/hi";
 import { useState } from "react";
 
-function AdvancedAddButton() {
+function AdvancedAddButton({ modalChange }) {
   const [clientLegalModalShow, setLegalModalShow] = useState(false);
   const [clientPhysicalModalShow, setPhysicalModalShow] = useState(false);
 
@@ -19,21 +19,45 @@ function AdvancedAddButton() {
           </span>
           <span className="addButton-text">Adicionar</span>
         </Button>
-        <div className="dropdown-content">
-          <Button
-            className="dropdown-item"
-            onClick={() => setLegalModalShow(true)}
-          >
-            Cliente juridico
-          </Button>
+        {(() => {
+          if (modalChange === "Cliente") {
+            return (
+              <div className="dropdown-content">
+                <Button
+                  className="dropdown-item"
+                  onClick={() => setLegalModalShow(true)}
+                >
+                  Cliente juridico
+                </Button>
 
-          <Button
-            className="dropdown-item"
-            onClick={() => setPhysicalModalShow(true)}
-          >
-            Cliente física
-          </Button>
-        </div>
+                <Button
+                  className="dropdown-item"
+                  onClick={() => setPhysicalModalShow(true)}
+                >
+                  Cliente física
+                </Button>
+              </div>
+            );
+          } else if (modalChange === "Funcionario") {
+            return (
+              <div className="dropdown-content">
+                <Button
+                  className="dropdown-item"
+                  onClick={() => setLegalModalShow(true)}
+                >
+                  Funcionario
+                </Button>
+
+                <Button
+                  className="dropdown-item"
+                  onClick={() => setPhysicalModalShow(true)}
+                >
+                  Cargo
+                </Button>
+              </div>
+            );
+          }
+        })()}
       </div>
 
       <ClientLegalForm
