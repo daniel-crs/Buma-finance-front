@@ -8,12 +8,19 @@ import TableData from "./components/TableData";
 import { useState, useEffect } from "react";
 
 function Employee() {
-  const [role, setRole] = useState([]);
+  const [roles, setRoles] = useState([]);
+  const [employees, setEmployees] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:8000/roles")
       .then((res) => res.json())
-      .then((role) => setRole(role));
+      .then((roles) => setRoles(roles));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:8000/employees")
+      .then((res) => res.json())
+      .then((employees) => setEmployees(employees));
   }, []);
 
   return (
@@ -23,14 +30,14 @@ function Employee() {
       <div id="employee-bodyContainer">
         <UpperBodyInformation pageTitle={"Funcionario"} simpleButton={false} />
 
-        {role.map((Roles, i) => (
+        {roles.map((role) => (
           <div className="employee-listBackground">
             <div className="employee-titleArea">
               <div className="employee-title">
-                <h3>{Roles.function}</h3>
+                <h3>{role.function}</h3>
               </div>
               <div className="employee-title">
-                <h3>R$ {Roles.salary}</h3>
+                <h3>R$ {role.salary}</h3>
               </div>
             </div>
 
@@ -38,7 +45,17 @@ function Employee() {
               <table className="employee-listContainer">
                 <TableHeader />
 
-                <TableData />
+                {employees
+                  .filter((emp) => role.id === emp.role)
+                  .map((employee, i) => (
+                    <TableData
+                      key={i}
+                      employeeId={employee.id}
+                      nome={employee.name}
+                      email={employee.email}
+                      telefone={employee.number}
+                    />
+                  ))}
               </table>
             </div>
           </div>

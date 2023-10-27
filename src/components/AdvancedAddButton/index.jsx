@@ -1,6 +1,7 @@
 import "./style.css";
 import ClientLegalForm from "../../pages/Client/components/ClientLegalForm";
 import ClientPhysicalForm from "../../pages/Client/components/ClientPhysicalForm";
+import EmployeeForm from "../../pages/Employee/components/EmployeeForm";
 import Button from "react-bootstrap/Button";
 
 import { HiPlus } from "react-icons/hi";
@@ -9,6 +10,7 @@ import { useState } from "react";
 function AdvancedAddButton({ modalChange }) {
   const [clientLegalModalShow, setLegalModalShow] = useState(false);
   const [clientPhysicalModalShow, setPhysicalModalShow] = useState(false);
+  const [employeeModalShow, setEmployeeModalShow] = useState(false);
 
   return (
     <>
@@ -43,7 +45,7 @@ function AdvancedAddButton({ modalChange }) {
               <div className="dropdown-content">
                 <Button
                   className="dropdown-item"
-                  onClick={() => setLegalModalShow(true)}
+                  onClick={() => setEmployeeModalShow(true)}
                 >
                   Funcionario
                 </Button>
@@ -68,6 +70,11 @@ function AdvancedAddButton({ modalChange }) {
       <ClientPhysicalForm
         isOpen={clientPhysicalModalShow}
         setModalOpen={() => setPhysicalModalShow(!clientPhysicalModalShow)}
+      />
+
+      <EmployeeForm
+        isOpen={employeeModalShow}
+        setModalOpen={() => setEmployeeModalShow(!employeeModalShow)}
       />
     </>
   );

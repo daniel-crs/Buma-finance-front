@@ -1,10 +1,10 @@
 import "../../employee.css";
-import { Button } from "react-bootstrap";
 
+import { Button } from "react-bootstrap";
 import { FaTrash } from "react-icons/fa";
 import { MdModeEdit } from "react-icons/md";
 
-function TableData() {
+function TableData({ employeeId, nome, email, telefone }) {
   return (
     <tr className="employee-listLines">
       <td className="employee-checkboxArea">
@@ -13,9 +13,9 @@ function TableData() {
           <label htmlFor={1}></label>
         </div>
       </td>
-      <td className="employee-nameArea">nome</td>
-      <td className="employee-emailArea">email</td>
-      <td className="employee-telefoneArea">telefone</td>
+      <td className="employee-nameArea">{nome}</td>
+      <td className="employee-emailArea">{email}</td>
+      <td className="employee-telefoneArea">{telefone}</td>
       <td className="employee-opcaoArea">
         <div className="employee-iconsPosition">
           <Button className="employee-iconBtnBackground">
