@@ -1,22 +1,22 @@
 import "../../style/role.css";
 
-// import { useState } from "react";
+import { useState } from "react";
 import { MdOutlineClose } from "react-icons/md";
 
 function RoleForm({ isOpen, setModalOpen }) {
-  // const url = "http://localhost:8000/roles";
-  // const [name, setName] = useState("");
-  // const [salary, setSalary] = useState("");
+  const url = "http://localhost:8000/roles";
+  const [name, setName] = useState("");
+  const [salary, setSalary] = useState("");
 
-  // const createRole = () => {
-  //   fetch(url, {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({ name, salary }),
-  //   }).then((res) => res.json());
+  const createRole = () => {
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ function: name, salary: salary }),
+    }).then((res) => res.json());
 
-  //   window.location.reload();
-  // };
+    window.location.reload();
+  };
 
   if (isOpen) {
     return (
@@ -36,7 +36,7 @@ function RoleForm({ isOpen, setModalOpen }) {
             </div>
           </div>
 
-          <form id="role-Container">
+          <form id="role-Container" onSubmit={createRole}>
             <fieldset className="role-formCustom">
               <div className="role-multipleFields">
                 <div className="role-standardElementArea">
@@ -46,6 +46,8 @@ function RoleForm({ isOpen, setModalOpen }) {
                     type="text"
                     id="pagamento"
                     className="role-clientFieldArea"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                   />
                 </div>
                 <div className="role-standardElementArea">
@@ -57,6 +59,8 @@ function RoleForm({ isOpen, setModalOpen }) {
                       id="valor"
                       type="text"
                       className="role-clientValueArea"
+                      value={salary}
+                      onChange={(e) => setSalary(e.target.value)}
                     />
                   </div>
                 </div>
@@ -76,6 +80,7 @@ function RoleForm({ isOpen, setModalOpen }) {
             <div className="role-buttonPosition">
               <button
                 onClick={() => {
+                  createRole();
                   setModalOpen(false);
                 }}
                 className="role-saveButton"

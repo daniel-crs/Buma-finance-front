@@ -11,8 +11,6 @@ function ClientLegalForm({ isOpen, setModalOpen }) {
   const [CNPJ, setCnpj] = useState("");
   const [company_name, setCompany_name] = useState("");
 
-  console.log(JSON.stringify({ name, email, telephone, CNPJ, company_name }));
-
   const createLegalClient = () => {
     fetch(url, {
       method: "POST",
