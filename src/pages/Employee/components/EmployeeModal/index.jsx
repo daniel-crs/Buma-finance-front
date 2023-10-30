@@ -31,7 +31,7 @@ function EmployeeModal({
         <div className="employee-modalStyle">
           <div id="employee-headerContainer">
             <div className="employee-clientTypeTitle">
-              <h3>Adicionar Funcionario</h3>
+              <h3>Editar Funcionario</h3>
             </div>
 
             <div className="employee-clientExitIcon">
