@@ -13,7 +13,7 @@ function EmployeeForm({ isOpen, setModalOpen }) {
     fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, number, email, role: 1 }),
+      body: JSON.stringify({ name, number, email, role: 9 }),
     }).then((res) => res.json());
 
     window.location.reload();

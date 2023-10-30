@@ -9,10 +9,18 @@ import { MdModeEdit } from "react-icons/md";
 function RoleOptions({ roleId, name, salary }) {
   const [openRoleModal, setOpenRoleModal] = useState(false);
 
+  const deleteRole = () => {
+    fetch(`http://localhost:8000/roles/${roleId}`, {
+      method: "DELETE",
+    });
+
+    window.location.reload();
+  };
+
   return (
     <div className="role-roleOption">
       <div>
-        <button className="role-button">
+        <button className="role-button" onClick={() => deleteRole()}>
           <span className="role-buttonIcon">
             <FaTrash />
           </span>
