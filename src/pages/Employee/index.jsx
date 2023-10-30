@@ -4,6 +4,7 @@ import SideBar from "../../components/SideBar";
 import UpperBodyInformation from "../../components/UpperBodyInformation";
 import TableHeader from "./components/TableHeader";
 import TableData from "./components/TableData";
+import RoleOptions from "./components/RoleOptions";
 
 import { useState, useEffect } from "react";
 
@@ -30,7 +31,7 @@ function Employee() {
       <div id="employee-bodyContainer">
         <UpperBodyInformation pageTitle={"Funcionario"} simpleButton={false} />
 
-        {roles.map((role) => (
+        {roles.map((role, i) => (
           <div className="employee-listBackground">
             <div className="employee-titleArea">
               <div className="employee-title">
@@ -58,6 +59,13 @@ function Employee() {
                   ))}
               </table>
             </div>
+
+            <RoleOptions
+              key={i}
+              roleId={role.id}
+              name={role.function}
+              salary={role.salary}
+            />
           </div>
         ))}
       </div>

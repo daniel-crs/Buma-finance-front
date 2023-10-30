@@ -1,8 +1,22 @@
+import { useState } from "react";
 import "../../style/role.css";
 
 import { MdOutlineClose } from "react-icons/md";
 
-function RoleModal({ isOpen, setModalOpen }) {
+function RoleModal({ id, roleName, roleSalary, isOpen, setModalOpen }) {
+  const [name, setName] = useState(roleName);
+  const [salary, setSalary] = useState(roleSalary);
+
+  const updateRole = () => {
+    fetch(`http://localhost:8000/roles/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ function: name, salary: salary }),
+    }).then((response) => response.json());
+
+    window.location.reload();
+  };
+
   if (isOpen) {
     return (
       <div className="role-backgroundStyle">
@@ -31,6 +45,8 @@ function RoleModal({ isOpen, setModalOpen }) {
                     type="text"
                     id="pagamento"
                     className="role-clientFieldArea"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                   />
                 </div>
                 <div className="role-standardElementArea">
@@ -42,6 +58,8 @@ function RoleModal({ isOpen, setModalOpen }) {
                       id="valor"
                       type="text"
                       className="role-clientValueArea"
+                      value={salary}
+                      onChange={(e) => setSalary(e.target.value)}
                     />
                   </div>
                 </div>
@@ -61,6 +79,7 @@ function RoleModal({ isOpen, setModalOpen }) {
             <div className="role-buttonPosition">
               <button
                 onClick={() => {
+                  updateRole();
                   setModalOpen(false);
                 }}
                 className="role-saveButton"
