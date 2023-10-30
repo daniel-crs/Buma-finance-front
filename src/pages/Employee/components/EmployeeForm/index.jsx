@@ -1,23 +1,33 @@
 import "../../style/form.css";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MdOutlineClose } from "react-icons/md";
 
 function EmployeeForm({ isOpen, setModalOpen }) {
   const url = "http://localhost:8000/employees";
+  const [roles, setRoles] = useState([]);
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const [email, setEmail] = useState("");
+  const [position, setPosition] = useState(1);
+
+  console.log(roles.id);
 
   const createEmplooye = () => {
     fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, number, email, role: 9 }),
+      body: JSON.stringify({ name, number, email, role: position }),
     }).then((res) => res.json());
 
     window.location.reload();
   };
+
+  useEffect(() => {
+    fetch("http://localhost:8000/roles")
+      .then((res) => res.json())
+      .then((roles) => setRoles(roles));
+  }, []);
 
   if (isOpen) {
     return (
@@ -80,11 +90,18 @@ function EmployeeForm({ isOpen, setModalOpen }) {
 
               <div className="employee-multipleFields">
                 <div className="employee-standardElementArea">
-                  <label htmlFor="Cargo">Cargo</label>
+                  <label htmlFor={position}>Cargo</label>
                   <br />
-                  <select id="Cargo" className="employee-roleDropdwon">
-                    <option value="site">Design</option>
-                    <option value="aplicativos">Dev Junior</option>
+
+                  <select
+                    id={position}
+                    name={position}
+                    onChange={(e) => setPosition(e.target.value)}
+                    className="employee-roleDropdwon"
+                  >
+                    {roles.map((role) => (
+                      <option value={role.id}>{role.function}</option>
+                    ))}
                   </select>
                 </div>
 
