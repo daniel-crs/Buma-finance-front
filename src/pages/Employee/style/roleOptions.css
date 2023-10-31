@@ -1,0 +1,35 @@
+.role-roleOption {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin-right: 35px;
+    padding-top: 5px;
+}
+
+.role-button {
+    display: inline-flex;
+    gap: 10px;
+    height: 35px;
+    padding: 0 15px;
+    background: #F5F5F6;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 1.2em;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .role-button:hover {
+    background: #A366E1;
+    color: #ffffff;
+  }
+  
+  .role-buttonIcon, .role-buttonText{
+    display: inline-flex;
+    align-items: center;
+    color: #000;
+    height: 100%;
+  }

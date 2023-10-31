@@ -1,0 +1,160 @@
+.role-backgroundStyle {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+.role-modalStyle {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    background-color: #fff;
+    border-radius: 10px;
+    color: black;
+}
+
+#role-headerContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.role-clientTypeTitle {
+    color: #562B82;
+    margin-left: 25px;
+}
+
+.role-clientExitIcon {
+    font-size: 1.6em;
+    margin-right: 25px;
+    cursor: pointer;
+}
+
+#role-Container {
+    width: 88%;
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+.role-formCustom {
+    text-align: start;
+}
+
+.role-formCustom label {
+    font-size: 1.2em;
+    margin-bottom: 2.5px;
+    cursor: pointer;
+}
+
+.role-formCustom input {
+    border: none;
+    border: 1px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 35px;
+    padding-left: 15px;
+}
+
+input::placeholder {
+    padding-left: 5px;
+    font-size: 0.9em;
+}
+
+.role-fieldNameLine {
+    width: 100%;
+}
+
+.role-multipleFields {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.role-standardElementArea {
+    width: 49%;
+}
+
+.role-clientEmailArea {
+    width: 65%;
+}
+
+.role-clientTelefoneArea {
+    width: 33%;
+}
+
+.role-clientEnderecoArea {
+    width: 100%;
+}
+
+.role-clientValueArea {
+    width: 100% !important;
+    border-radius: 0 5px 5px 0 !important;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+.role-clientFieldArea {
+    width: 100% !important;
+    border-radius: 5px !important;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+.role-fieldDescricaoLine {
+    width: 100%;
+    height: 150px;
+    border-radius: 5px;
+}
+
+.role-fieldDescricaoLine::placeholder {
+    padding-top: 5px;
+    padding-left: 15px;
+}
+
+.role-reiasValue {
+    color: white;
+    background: #562B82;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px 0 0 5px;
+    font-size: 1em;
+}
+
+.role-roleDropdwon {
+    width: 100% !important;
+    border-radius: 5px !important;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    height: 35px;
+}
+
+.role-buttonPosition {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0 30px 0 !important;
+}
+
+.role-saveButton {
+    height: 35px;
+    width: 140px;
+    background: #562B82;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 1.2em;
+    font-weight: 300;
+    cursor: pointer;
+    color: #fff;
+}

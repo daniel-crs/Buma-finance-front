@@ -10,8 +10,6 @@ function ClientPhysicalForm({ isOpen, setModalOpen }) {
   const [telephone, setTelephone] = useState("");
   const [CPF, setCpf] = useState("");
 
-  console.log(JSON.stringify({ name, email, telephone, CPF }));
-
   const createPhysicalClient = () => {
     fetch(url, {
       method: "POST",

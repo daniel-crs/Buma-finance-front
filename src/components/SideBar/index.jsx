@@ -27,7 +27,7 @@ function SideBar() {
           <LuBuilding className="popoverIcon" />
           Cliente
         </a>
-        <a className="popoverElement" href="/">
+        <a className="popoverElement" href="/Employee">
           <IoIosPeople className="popoverIcon" />
           Funcionario
         </a>
@@ -77,6 +77,7 @@ function SideBar() {
       <div className="spaceBetweenElements">
         {(() => {
           const isClientUrl = location.pathname === "/Client";
+          const isEmployeeUrl = location.pathname === "/Employee";
 
           return (
             <OverlayTrigger
@@ -84,10 +85,18 @@ function SideBar() {
               placement="right"
               overlay={popoverClient}
             >
-              <div id={isClientUrl && "activeElements"}>
+              <div
+                id={
+                  (isClientUrl && "activeElements") ||
+                  (isEmployeeUrl && "activeElements")
+                }
+              >
                 <BsFillPeopleFill
-                  id={isClientUrl && "active"}
-                  className={!isClientUrl && "sidebarElements"}
+                  id={(isClientUrl && "active") || (isEmployeeUrl && "active")}
+                  className={
+                    (!isClientUrl && "sidebarElements") ||
+                    (!isEmployeeUrl && "sidebarElements")
+                  }
                 />
               </div>
             </OverlayTrigger>
