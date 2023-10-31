@@ -65,6 +65,7 @@ function Employee() {
               roleId={role.id}
               name={role.function}
               salary={role.salary}
+              emps={employees.filter((emp) => role.id === emp.role)}
             />
           </div>
         ))}

@@ -2,30 +2,55 @@ import "../../style/roleOptions.css";
 
 import RoleModal from "../RoleModal";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { FaTrash } from "react-icons/fa";
 import { MdModeEdit } from "react-icons/md";
+import Overlay from "react-bootstrap/Overlay";
+import Tooltip from "react-bootstrap/Tooltip";
 
-function RoleOptions({ roleId, name, salary }) {
+function RoleOptions({ roleId, name, salary, emps }) {
   const [openRoleModal, setOpenRoleModal] = useState(false);
+  const [show, setShow] = useState(false);
+  const target = useRef(null);
 
   const deleteRole = () => {
-    fetch(`http://localhost:8000/roles/${roleId}`, {
-      method: "DELETE",
-    });
+    if (!emps?.length) {
+      fetch(`http://localhost:8000/roles/${roleId}`, {
+        method: "DELETE",
+      });
 
-    window.location.reload();
+      window.location.reload();
+    } else {
+      setShow(true);
+
+      setTimeout(() => {
+        setShow(false);
+      }, 4000);
+    }
   };
 
   return (
     <div className="role-roleOption">
       <div>
-        <button className="role-button" onClick={() => deleteRole()}>
+        <button
+          className="role-button"
+          ref={target}
+          onClick={() => deleteRole()}
+        >
           <span className="role-buttonIcon">
             <FaTrash />
           </span>
           <span className="role-buttonText">Excluir</span>
         </button>
+
+        <Overlay target={target.current} show={show} placement="top">
+          {(props) => (
+            <Tooltip id="overlay-example" {...props}>
+              Um cargo só pode ser deletado, se os seus funcionários forem
+              deletados primeiro.
+            </Tooltip>
+          )}
+        </Overlay>
       </div>
 
       <div>
