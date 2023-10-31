@@ -1,14 +1,21 @@
 import "./style.css";
 
 import SimpleAddButton from "../SimpleAddButton";
+import AdvancedAddButton from "../AdvancedAddButton";
 import FilterButton from "../FilterButton";
 
-function UpperBodyInformation({ pageTitle }) {
+function UpperBodyInformation({ pageTitle, simpleButton }) {
   return (
     <div id="upperBodyInfo">
       <h1>{pageTitle}</h1>
       <div id="buttonSpace">
-        <SimpleAddButton modalChange={pageTitle} />
+        {(() => {
+          if (simpleButton === true) {
+            return <SimpleAddButton modalChange={pageTitle} />;
+          } else {
+            return <AdvancedAddButton />;
+          }
+        })()}
         <FilterButton />
       </div>
     </div>

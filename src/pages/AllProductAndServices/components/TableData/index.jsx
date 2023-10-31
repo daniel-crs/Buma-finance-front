@@ -18,13 +18,13 @@ function TableData({
   const [openModal, setOpenModal] = useState(false);
 
   const deleteProduct = () => {
-    fetch(`http://localhost:3000/product/${productId}`, {
+    fetch(`http://localhost:8000/product/${productId}`, {
       method: "DELETE",
     });
   };
 
   const deleteService = () => {
-    fetch(`http://localhost:3000/service/${serviceId}`, {
+    fetch(`http://localhost:8000/service/${serviceId}`, {
       method: "DELETE",
     });
   };

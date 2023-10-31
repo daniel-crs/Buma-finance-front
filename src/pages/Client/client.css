@@ -22,17 +22,8 @@
     border-collapse: separate;
     border-spacing: 0 5px;
 }
-
 .titlePosition {
     font-size: 1.2em;
-}
-
-.ListContainer {
-    width: 86vw;
-    border-radius: 1em;
-    border-collapse: separate;
-    border-spacing: 0 5px;
-    
 }
 
 .listLines {

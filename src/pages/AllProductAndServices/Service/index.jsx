@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 
 function Service() {
   const [data, setData] = useState([]);
-  const url = "http://localhost:3000/service";
+  const url = "http://localhost:8000/service";
 
   useEffect(() => {
     fetch(url)
@@ -23,7 +23,7 @@ function Service() {
       <Header />
       <SideBar />
       <div id="bodyContainer">
-        <UpperBodyInformation pageTitle={"Serviço"} />
+        <UpperBodyInformation pageTitle={"Serviço"} simpleButton={true} />
 
         <div className="listBackground">
           <table className="ListContainer">
