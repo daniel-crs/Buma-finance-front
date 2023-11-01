@@ -60,6 +60,24 @@ function AdvancedAddButton({ modalChange }) {
                 </Button>
               </div>
             );
+          } else {
+            return (
+              <div className="dropdown-content">
+                <Button
+                  className="dropdown-item"
+                  onClick={() => setEmployeeModalShow(true)}
+                >
+                  Receita
+                </Button>
+
+                <Button
+                  className="dropdown-item"
+                  onClick={() => setRoleModalShow(true)}
+                >
+                  Despesa
+                </Button>
+              </div>
+            );
           }
         })()}
       </div>

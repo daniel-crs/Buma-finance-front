@@ -6,9 +6,27 @@
 
 #upperBodyInfo h1 {
     color: #562B82;
+    font-size: 2.2em;
+}
+
+.dateButton {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    width: 140px;
+    height: 35px;
+    background: #562B82;
+    border-radius: 10px;
+}
+
+.dateButton h3 {
+    font-size: 1.2em;
+    color: #fff;
+    margin-top: 5px;
 }
 
 #buttonSpace {
+    margin-top: 10px;
     display: flex;
     gap: 25px;
 }

@@ -4,5 +4,110 @@
     margin-top: 50px;
     margin-left: 125px;
     margin-bottom: 50px;
-    border: 1px solid red;
+}
+
+.inex-listBackground {
+    margin-top: 25px;
+    background: #F5F5F6;
+    width: 88Vw;
+    border-radius: 10px;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.inex-tableContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.inex-listContainer {
+    width: 84vw;
+    border-radius: 1em;
+    border-collapse: separate;
+    border-spacing: 0 5px;
+}
+
+.inex-listLines {
+    background-color: #ffffff;
+    height: 35px;
+    outline: 1px solid #B2B2B2;
+    border-radius: 10px;
+}
+
+.inex-checkboxArea {
+    width: 4vw;
+    text-align: center;
+}
+
+.inex-customCheckbox input {
+    display: none;
+}
+
+.inex-customCheckbox input + label::before {
+    content: '';
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    background-color: white;
+    display: inline-block;
+    border: 1px solid gray;
+    vertical-align: middle;
+    margin-right: 4px;
+    margin-bottom: 3px;
+    cursor: pointer;
+}
+
+.inex-customCheckbox input:checked + label::before {
+    background: #562B82;
+}
+
+.inex-nameArea {
+    width: 23vw;
+}
+
+.inex-expirationArea {
+    width: 12vw;
+}
+
+.inex-parcelArea {
+    width: 10vw;
+}
+
+.inex-statusArea {
+    width: 10vw;
+}
+
+.inex-valueArea {
+    width: 20vw;
+}
+
+.inex-opcaoArea {
+    width: 10vw;
+    text-align: center;
+}
+
+.inex-iconsPosition {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 1px;
+    gap: 15px;
+}
+
+.inex-iconBtnBackground {
+    background: none !important;
+    border: none !important;
+}
+
+.inex-iconBtnBackground:hover {
+    background: #562B82 !important;
+}
+
+.inex-iconCustom {
+    font-size: 1.2em;
+    color: #000;
+}
+
+.inex-iconCustom:hover {
+    font-size: 1.2em;
 }
