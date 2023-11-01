@@ -69,9 +69,19 @@ function SideBar() {
       </div>
 
       <div className="spaceBetweenElements">
-        <a href="/">
-          <FaMoneyBills className="sidebarElements" />
-        </a>
+        {(() => {
+          const isProductUrl = location.pathname === "/ExpenseIncome";
+          return (
+            <div id={isProductUrl && "activeElements"}>
+              <a href="/ExpenseIncome">
+                <FaMoneyBills
+                  id={isProductUrl && "active"}
+                  className={!isProductUrl && "sidebarElements"}
+                />
+              </a>
+            </div>
+          );
+        })()}
       </div>
 
       <div className="spaceBetweenElements">
