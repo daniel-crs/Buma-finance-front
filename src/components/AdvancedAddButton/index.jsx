@@ -3,6 +3,7 @@ import ClientLegalForm from "../../pages/Client/components/ClientLegalForm";
 import ClientPhysicalForm from "../../pages/Client/components/ClientPhysicalForm";
 import EmployeeForm from "../../pages/Employee/components/EmployeeForm";
 import RoleForm from "../../pages/Employee/components/RoleForm";
+import IncomeForm from "../../pages/ExpenseIncome/components/IncomeForm";
 import Button from "react-bootstrap/Button";
 
 import { HiPlus } from "react-icons/hi";
@@ -13,6 +14,7 @@ function AdvancedAddButton({ modalChange }) {
   const [clientPhysicalModalShow, setPhysicalModalShow] = useState(false);
   const [employeeModalShow, setEmployeeModalShow] = useState(false);
   const [roleModalShow, setRoleModalShow] = useState(false);
+  const [incomeModalShow, setIncomeModalShow] = useState(false);
 
   return (
     <>
@@ -65,7 +67,7 @@ function AdvancedAddButton({ modalChange }) {
               <div className="dropdown-content">
                 <Button
                   className="dropdown-item"
-                  onClick={() => setEmployeeModalShow(true)}
+                  onClick={() => setIncomeModalShow(true)}
                 >
                   Receita
                 </Button>
@@ -100,6 +102,11 @@ function AdvancedAddButton({ modalChange }) {
       <RoleForm
         isOpen={roleModalShow}
         setModalOpen={() => setRoleModalShow(!roleModalShow)}
+      />
+
+      <IncomeForm
+        isOpen={incomeModalShow}
+        setModalOpen={() => setIncomeModalShow(!incomeModalShow)}
       />
     </>
   );
