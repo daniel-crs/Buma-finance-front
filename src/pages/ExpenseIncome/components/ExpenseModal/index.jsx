@@ -1,20 +1,20 @@
-import "../../style/incomeForm.css";
+import "../../style/expenseForm.css";
 
 import { FaMoneyCheck } from "react-icons/fa6";
 import { FaMoneyBills } from "react-icons/fa6";
 import { MdOutlineClose } from "react-icons/md";
 
-function IncomeModal({ isOpen, setModalOpen }) {
+function ExpenseModal({ isOpen, setModalOpen }) {
   if (isOpen) {
     return (
-      <div className="income-backgroundStyle">
-        <div className="income-modalStyle">
-          <div id="income-headerContainer">
-            <div className="income-clientTypeTitle">
-              <h3>Editar Receita</h3>
+      <div className="expense-backgroundStyle">
+        <div className="expense-modalStyle">
+          <div id="expense-headerContainer">
+            <div className="expense-clientTypeTitle">
+              <h3>Editar Despesa</h3>
             </div>
 
-            <div className="income-clientExitIcon">
+            <div className="expense-clientExitIcon">
               <MdOutlineClose
                 onClick={() => {
                   setModalOpen(false);
@@ -23,22 +23,22 @@ function IncomeModal({ isOpen, setModalOpen }) {
             </div>
           </div>
 
-          <form id="income-Container">
-            <fieldset className="income-formCustom">
-              <div className="income-fornsContainer">
-                <div className="income-formIcon">
+          <form id="expense-Container">
+            <fieldset className="expense-formCustom">
+              <div className="expense-fornsContainer">
+                <div className="expense-formIcon">
                   <FaMoneyCheck />
                 </div>
 
-                <div className="income-inputscontainer">
-                  <div className="income-inputSpace">
-                    <div className="income-standardElementArea">
+                <div className="expense-inputscontainer">
+                  <div className="expense-inputSpace">
+                    <div className="expense-standardElementArea">
                       <label htmlFor="name">Nome</label>
                       <br />
                       <input
                         type="text"
                         id="name"
-                        className="income-clientFieldArea"
+                        className="expense-clientFieldArea"
                       />
                     </div>
 
@@ -49,14 +49,14 @@ function IncomeModal({ isOpen, setModalOpen }) {
                       <select
                         id="receita"
                         name="receita"
-                        className="income-roleDropdwon"
+                        className="expense-roleDropdwon"
                       >
                         <option value="1">Produto</option>
                       </select>
                     </div>
                   </div>
 
-                  <div className="income-inputSpace">
+                  <div className="expense-inputSpace">
                     <div className="employee-standardElementArea">
                       <label htmlFor="cliente">Cliente</label>
                       <br />
@@ -64,20 +64,7 @@ function IncomeModal({ isOpen, setModalOpen }) {
                       <select
                         id="cliente"
                         name="cliente"
-                        className="income-roleDropdwon"
-                      >
-                        <option value="1">A definir</option>
-                      </select>
-                    </div>
-
-                    <div className="employee-standardElementArea">
-                      <label htmlFor="produto">Produto</label>
-                      <br />
-
-                      <select
-                        id="produto"
-                        name="produto"
-                        className="income-roleDropdwon"
+                        className="expense-roleDropdwon"
                       >
                         <option value="1">A definir</option>
                       </select>
@@ -87,117 +74,112 @@ function IncomeModal({ isOpen, setModalOpen }) {
               </div>
             </fieldset>
 
-            <fieldset className="income-formCustom">
-              <div className="income-fornsContainer">
-                <div className="income-formIcon">
+            <fieldset className="expense-formCustom">
+              <div className="expense-fornsContainer">
+                <div className="expense-formIcon">
                   <FaMoneyBills />
                 </div>
 
-                <div className="income-inputscontainer">
-                  <div className="income-inputSpace">
-                    <div className="income-treeElementArea">
-                      <label className="income-spaceOnTop" htmlFor="valor">
+                <div className="expense-inputscontainer">
+                  <div className="expense-inputSpace">
+                    <div className="expense-treeElementArea">
+                      <label className="expense-spaceOnTop" htmlFor="valor">
                         Valor
                       </label>
                       <br></br>
-                      <div className="income-valueContainer">
-                        <p className="income-reiasValue">R$</p>
+                      <div className="expense-valueContainer">
+                        <p className="expense-reiasValue">R$</p>
                         <input
                           id="valor"
                           type="text"
-                          className="income-valueArea"
+                          className="expense-valueArea"
                         />
                       </div>
                     </div>
 
-                    <div className="income-treeElementArea">
-                      <label className="income-spaceOnTop" htmlFor="desconto">
-                        Desconto
-                      </label>
-                      <br></br>
-                      <div className="income-valueContainer">
-                        <p className="income-reiasValue">R$</p>
-                        <input
-                          id="desconto"
-                          type="text"
-                          className="income-valueArea"
-                        />
-                      </div>
+                    <div className="expense-treeElementArea">
+                      <label htmlFor="vencimento">Primeiro Vencimento</label>
+                      <br />
+                      <input
+                        type="text"
+                        id="vencimento"
+                        className="expense-clientFieldArea"
+                        placeholder="Ex: 20"
+                      />
                     </div>
 
-                    <div className="income-treeElementArea">
+                    <div className="expense-treeElementArea">
                       <label htmlFor="quantidade">Quantidade</label>
                       <br />
                       <input
                         type="text"
                         id="quantidade"
-                        className="income-clientFieldArea"
-                        placeholder="Ex: 20"
+                        className="expense-clientFieldArea"
+                        placeholder="dd/mm/aaaa"
                       />
                     </div>
                   </div>
 
-                  <div className="income-inputSpace">
-                    <div className="income-treeElementArea">
+                  <div className="expense-inputSpace">
+                    <div className="expense-treeElementArea">
                       <label htmlFor="banco">Banco</label>
                       <br />
 
                       <select
                         id="banco"
                         name="banco"
-                        className="income-roleDropdwon"
+                        className="expense-roleDropdwon"
                       >
                         <option value="1">0001/00000-1</option>
                       </select>
                     </div>
 
-                    <div className="income-treeElementArea">
+                    <div className="expense-treeElementArea">
                       <label htmlFor="pagamento">Pagamento</label>
                       <br />
 
                       <select
                         id="pagamento"
                         name="pagamento"
-                        className="income-roleDropdwon"
+                        className="expense-roleDropdwon"
                       >
                         <option value="1">Debito</option>
                       </select>
                     </div>
 
-                    <div className="income-treeElementArea">
+                    <div className="expense-treeElementArea">
                       <label htmlFor="parcela">Parcela</label>
                       <br />
 
                       <select
                         id="parcela"
                         name="parcela"
-                        className="income-roleDropdwon"
+                        className="expense-roleDropdwon"
                       >
                         <option value="1">Unica</option>
                       </select>
                     </div>
                   </div>
 
-                  <div className="income-inputSpace">
-                    <div className="income-treeElementArea">
+                  <div className="expense-inputSpace">
+                    <div className="expense-treeElementArea">
                       <label
-                        className="income-spaceOnTop2"
-                        htmlFor="vencimento"
+                        className="expense-spaceOnTop2"
+                        htmlFor="competencia"
                       >
-                        Primeiro vencimento
+                        Competência
                       </label>
                       <br />
                       <input
                         type="text"
-                        id="vencimento"
-                        className="income-clientFieldArea"
-                        placeholder="dd/mm/aaaa"
+                        id="competencia"
+                        className="expense-clientFieldArea"
                       />
                     </div>
 
-                    <div className="income-treeElementArea">
+                    <div className="expense-treeElementArea">
                       <label
-                        className="income-spaceOnTop2"
+                        className="expense-spaceOnTop2"
                         htmlFor="recorrente"
                       >
                         Recorrente
@@ -207,14 +189,14 @@ function IncomeModal({ isOpen, setModalOpen }) {
                       <select
                         id="recorrente"
                         name="recorrente"
-                        className="income-roleDropdwon"
+                        className="expense-roleDropdwon"
                       >
                         <option value="1">Sim</option>
                       </select>
                     </div>
 
-                    <div className="income-treeElementArea">
-                      <label className="income-spaceOnTop2" htmlFor="parcela">
+                    <div className="expense-treeElementArea">
+                      <label className="expense-spaceOnTop2" htmlFor="parcela">
                         Status
                       </label>
                       <br />
@@ -222,7 +204,7 @@ function IncomeModal({ isOpen, setModalOpen }) {
                       <select
                         id="parcela"
                         name="parcela"
-                        className="income-roleDropdwon"
+                        className="expense-roleDropdwon"
                       >
                         <option value="1">Pago</option>
                       </select>
@@ -232,30 +214,30 @@ function IncomeModal({ isOpen, setModalOpen }) {
               </div>
             </fieldset>
 
-            {/* <fieldset className="income-formCustom">
-              <div className="income-fornsContainer">
-                <div className="income-formIcon">
+            {/* <fieldset className="expense-formCustom">
+              <div className="expense-fornsContainer">
+                <div className="expense-formIcon">
                   <FaMoneyCheck />
                 </div>
 
-                <div className="income-inputscontainer">
+                <div className="expense-inputscontainer">
                   <label htmlFor="mensagem">Descrição</label>
                   <br></br>
                   <textarea
                     id="mensagem"
-                    className="income-fieldDescricaoLine"
+                    className="expense-fieldDescricaoLine"
                     placeholder="Descreva o produto..."
                   ></textarea>
                 </div>
               </div>
             </fieldset> */}
 
-            <div className="income-buttonPosition">
+            <div className="expense-buttonPosition">
               <button
                 onClick={() => {
                   setModalOpen(false);
                 }}
-                className="income-saveButton"
+                className="expense-saveButton"
                 type="button"
               >
                 Salvar
@@ -270,4 +252,4 @@ function IncomeModal({ isOpen, setModalOpen }) {
   return null;
 }
 
-export default IncomeModal;
+export default ExpenseModal;
