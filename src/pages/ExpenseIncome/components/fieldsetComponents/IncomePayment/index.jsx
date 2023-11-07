@@ -2,7 +2,14 @@ import "../../../style/incomeForm.css";
 
 import { FaMoneyBills } from "react-icons/fa6";
 
-function IncomePayment() {
+function IncomePayment({
+  price,
+  setPrice,
+  quantity,
+  setQuantity,
+  discount,
+  setDiscount,
+}) {
   return (
     <div className="income-fornsContainer">
       <div className="income-formIcon">
@@ -18,7 +25,13 @@ function IncomePayment() {
             <br></br>
             <div className="income-valueContainer">
               <p className="income-reiasValue">R$</p>
-              <input id="valor" type="text" className="income-valueArea" />
+              <input
+                id="valor"
+                type="text"
+                className="income-valueArea"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+              />
             </div>
           </div>
 
@@ -29,7 +42,13 @@ function IncomePayment() {
             <br></br>
             <div className="income-valueContainer">
               <p className="income-reiasValue">R$</p>
-              <input id="desconto" type="text" className="income-valueArea" />
+              <input
+                id="desconto"
+                type="text"
+                className="income-valueArea"
+                value={discount}
+                onChange={(e) => setDiscount(e.target.value)}
+              />
             </div>
           </div>
 
@@ -41,6 +60,8 @@ function IncomePayment() {
               id="quantidade"
               className="income-clientFieldArea"
               placeholder="Ex: 20"
+              value={quantity}
+              onChange={(e) => setQuantity(e.target.value)}
             />
           </div>
         </div>

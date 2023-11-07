@@ -3,8 +3,36 @@ import IncomeInfo from "../fieldsetComponents/IncomeInfo";
 import IncomePayment from "../fieldsetComponents/IncomePayment";
 
 import { MdOutlineClose } from "react-icons/md";
+import { useState } from "react";
 
 function IncomeForm({ isOpen, setModalOpen }) {
+  const url = "http://localhost:8000/revenues";
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [discount, setDiscount] = useState("");
+
+  const createRevenue = () => {
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        description,
+        product: 3,
+        service: null,
+        price,
+        quantity,
+        discount,
+        payment_status: true,
+        legalcustomer: 3,
+        physicalcustomer: null,
+        installments: 0,
+      }),
+    }).then((res) => res.json());
+
+    window.location.reload();
+  };
+
   if (isOpen) {
     return (
       <div className="income-backgroundStyle">
@@ -23,18 +51,29 @@ function IncomeForm({ isOpen, setModalOpen }) {
             </div>
           </div>
 
-          <form id="income-Container">
+          <form id="income-Container" onSubmit={createRevenue}>
             <fieldset className="income-formCustom">
-              <IncomeInfo />
+              <IncomeInfo
+                description={description}
+                setDescription={setDescription}
+              />
             </fieldset>
 
             <fieldset className="income-formCustom">
-              <IncomePayment />
+              <IncomePayment
+                price={price}
+                setPrice={setPrice}
+                quantity={quantity}
+                setQuantity={setQuantity}
+                discount={discount}
+                setDiscount={setDiscount}
+              />
             </fieldset>
 
             <div className="income-buttonPosition">
               <button
                 onClick={() => {
+                  createRevenue();
                   setModalOpen(false);
                 }}
                 className="income-saveButton"
