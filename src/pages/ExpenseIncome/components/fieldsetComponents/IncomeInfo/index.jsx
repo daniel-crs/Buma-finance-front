@@ -1,8 +1,11 @@
+import { useState } from "react";
 import "../../../style/incomeForm.css";
 
 import { FaMoneyCheck } from "react-icons/fa6";
 
 function IncomeInfo({ description, setDescription }) {
+  const [incomeOption, setIncomeOption] = useState("product");
+
   return (
     <div className="income-fornsContainer">
       <div className="income-formIcon">
@@ -27,8 +30,14 @@ function IncomeInfo({ description, setDescription }) {
             <label htmlFor="receita">Tipo da receita</label>
             <br />
 
-            <select id="receita" name="receita" className="income-roleDropdwon">
-              <option value="1">Produto</option>
+            <select
+              id="receita"
+              name="receita"
+              className="income-roleDropdwon"
+              onChange={(e) => setIncomeOption(e.target.value)}
+            >
+              <option value="product">Produto</option>
+              <option value="service">Service</option>
             </select>
           </div>
         </div>
@@ -43,14 +52,33 @@ function IncomeInfo({ description, setDescription }) {
             </select>
           </div>
 
-          <div className="employee-standardElementArea">
-            <label htmlFor="produto">Produto</label>
-            <br />
+          {incomeOption === "product" ? (
+            <div className="employee-standardElementArea">
+              <label htmlFor="produto">Product</label>
+              <br />
 
-            <select id="produto" name="produto" className="income-roleDropdwon">
-              <option value="1">A definir</option>
-            </select>
-          </div>
+              <select
+                id="produto"
+                name="produto"
+                className="income-roleDropdwon"
+              >
+                <option value="1">A definir</option>
+              </select>
+            </div>
+          ) : (
+            <div className="employee-standardElementArea">
+              <label htmlFor="produto">Service</label>
+              <br />
+
+              <select
+                id="produto"
+                name="produto"
+                className="income-roleDropdwon"
+              >
+                <option value="1">A definir</option>
+              </select>
+            </div>
+          )}
         </div>
       </div>
     </div>
