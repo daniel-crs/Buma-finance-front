@@ -1,10 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../../../style/incomeForm.css";
 
 import { FaMoneyCheck } from "react-icons/fa6";
 
 function IncomeInfo({ description, setDescription }) {
   const [incomeOption, setIncomeOption] = useState("product");
+  const [legal, setLegal] = useState([]);
+  const [physical, setPhysical] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8000/legalcustomer")
+      .then((res) => res.json())
+      .then((legal) => setLegal(legal));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:8000/physicalcustomer")
+      .then((res) => res.json())
+      .then((physical) => setPhysical(physical));
+  }, []);
 
   return (
     <div className="income-fornsContainer">
@@ -48,7 +62,12 @@ function IncomeInfo({ description, setDescription }) {
             <br />
 
             <select id="cliente" name="cliente" className="income-roleDropdwon">
-              <option value="1">A definir</option>
+              {legal.map((LegalCustomers) => (
+                <option value="1">{LegalCustomers.name}</option>
+              ))}
+              {physical.map((PhysicalCustomers) => (
+                <option value="1">{PhysicalCustomers.name}</option>
+              ))}
             </select>
           </div>
 
