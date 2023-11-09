@@ -4,7 +4,7 @@ import { FaMoneyCheck } from "react-icons/fa6";
 import { FaMoneyBills } from "react-icons/fa6";
 import { MdOutlineClose } from "react-icons/md";
 
-function ExpenseModal({ isOpen, setModalOpen }) {
+function ExpenseModal({ id, isOpen, setModalOpen }) {
   if (isOpen) {
     return (
       <div className="expense-backgroundStyle">

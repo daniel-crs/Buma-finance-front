@@ -44,10 +44,11 @@ function ExpenseIncome() {
                 <TableData
                   key={i}
                   revenueId={revenue.id}
-                  name={revenue.description}
+                  description={revenue.description}
                   installments={revenue.installments}
-                  status={revenue.payment_status}
+                  payment_status={revenue.payment_status}
                   price={revenue.price}
+                  identify={"revenue"}
                 />
               ))}
               {expenses.map((expenses, i) => (
@@ -57,6 +58,7 @@ function ExpenseIncome() {
                   name={expenses.name}
                   installments={expenses.installments}
                   price={expenses.gross_value}
+                  identify={"expense"}
                 />
               ))}
             </table>

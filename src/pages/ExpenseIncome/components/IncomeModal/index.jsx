@@ -1,10 +1,40 @@
 import "../../style/incomeForm.css";
 
-import { FaMoneyCheck } from "react-icons/fa6";
+import IncomeInfo from "../fieldsetComponents/IncomeInfo";
+
 import { FaMoneyBills } from "react-icons/fa6";
 import { MdOutlineClose } from "react-icons/md";
+// import { useState } from "react";
 
-function IncomeModal({ isOpen, setModalOpen }) {
+function IncomeModal({ id, isOpen, setModalOpen, incomeDescription }) {
+  // const [description, setDescription] = useState(incomeDescription);
+  // const [price, setPrice] = useState("");
+  // const [quantity, setQuantity] = useState("");
+  // const [discount, setDiscount] = useState("");
+
+  // const updateRevenue = () => {
+  //   fetch(`http://localhost:8000/Revenue/${id}`, {
+  //     method: "PUT",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({
+  //       description,
+  //       product: 3,
+  //       service: null,
+  //       price: 3000,
+  //       quantity: 10,
+  //       discount: 0,
+  //       payment_status: true,
+  //       legalcustomer: 3,
+  //       physicalcustomer: null,
+  //       installments: 0,
+  //       due_date: "2000-02-02T02:00:00.000Z",
+  //       recurrent: true,
+  //     }),
+  //   }).then((response) => response.json());
+
+  //   window.location.reload();
+  // };
+
   if (isOpen) {
     return (
       <div className="income-backgroundStyle">
@@ -25,66 +55,7 @@ function IncomeModal({ isOpen, setModalOpen }) {
 
           <form id="income-Container">
             <fieldset className="income-formCustom">
-              <div className="income-fornsContainer">
-                <div className="income-formIcon">
-                  <FaMoneyCheck />
-                </div>
-
-                <div className="income-inputscontainer">
-                  <div className="income-inputSpace">
-                    <div className="income-standardElementArea">
-                      <label htmlFor="name">Nome</label>
-                      <br />
-                      <input
-                        type="text"
-                        id="name"
-                        className="income-clientFieldArea"
-                      />
-                    </div>
-
-                    <div className="employee-standardElementArea">
-                      <label htmlFor="receita">Tipo da receita</label>
-                      <br />
-
-                      <select
-                        id="receita"
-                        name="receita"
-                        className="income-roleDropdwon"
-                      >
-                        <option value="1">Produto</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div className="income-inputSpace">
-                    <div className="employee-standardElementArea">
-                      <label htmlFor="cliente">Cliente</label>
-                      <br />
-
-                      <select
-                        id="cliente"
-                        name="cliente"
-                        className="income-roleDropdwon"
-                      >
-                        <option value="1">A definir</option>
-                      </select>
-                    </div>
-
-                    <div className="employee-standardElementArea">
-                      <label htmlFor="produto">Produto</label>
-                      <br />
-
-                      <select
-                        id="produto"
-                        name="produto"
-                        className="income-roleDropdwon"
-                      >
-                        <option value="1">A definir</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <IncomeInfo />
             </fieldset>
 
             <fieldset className="income-formCustom">
@@ -231,24 +202,6 @@ function IncomeModal({ isOpen, setModalOpen }) {
                 </div>
               </div>
             </fieldset>
-
-            {/* <fieldset className="income-formCustom">
-              <div className="income-fornsContainer">
-                <div className="income-formIcon">
-                  <FaMoneyCheck />
-                </div>
-
-                <div className="income-inputscontainer">
-                  <label htmlFor="mensagem">Descrição</label>
-                  <br></br>
-                  <textarea
-                    id="mensagem"
-                    className="income-fieldDescricaoLine"
-                    placeholder="Descreva o produto..."
-                  ></textarea>
-                </div>
-              </div>
-            </fieldset> */}
 
             <div className="income-buttonPosition">
               <button
