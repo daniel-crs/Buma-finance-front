@@ -19,6 +19,22 @@ function TableData({
 }) {
   const [openModal, setOpenModal] = useState(false);
 
+  const deleteRevenue = () => {
+    fetch(`http://localhost:8000/revenues/${revenueId}`, {
+      method: "DELETE",
+    });
+
+    window.location.reload();
+  };
+
+  const deleteExpense = () => {
+    fetch(`http://localhost:8000/expanse/${expenseId}`, {
+      method: "DELETE",
+    });
+
+    window.location.reload();
+  };
+
   return (
     <tr className="inex-listLines">
       <td className="inex-checkboxArea">
@@ -34,11 +50,25 @@ function TableData({
       <td className="inex-valueArea">{price}</td>
       <td className="inex-opcaoArea">
         <div className="inex-iconsPosition">
-          <Button className="inex-iconBtnBackground">
-            <span className="inex-iconCustom">
-              <FaTrash />
-            </span>
-          </Button>
+          {identify === "revenue" ? (
+            <Button
+              className="inex-iconBtnBackground"
+              onClick={() => deleteRevenue()}
+            >
+              <span className="inex-iconCustom">
+                <FaTrash />
+              </span>
+            </Button>
+          ) : (
+            <Button
+              className="inex-iconBtnBackground"
+              onClick={() => deleteExpense()}
+            >
+              <span className="inex-iconCustom">
+                <FaTrash />
+              </span>
+            </Button>
+          )}
 
           <Button
             className="inex-iconBtnBackground"
