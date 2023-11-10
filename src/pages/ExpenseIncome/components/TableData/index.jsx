@@ -43,6 +43,7 @@ function TableData({
           <label htmlFor={1}></label>
         </div>
       </td>
+
       <td className="inex-nameArea">{description}</td>
       <td className="inex-expirationArea">Vencimento</td>
       <td className="inex-parcelArea">{installments}</td>

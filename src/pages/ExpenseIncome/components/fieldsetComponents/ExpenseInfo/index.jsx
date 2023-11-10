@@ -1,8 +1,11 @@
+import { useState } from "react";
 import "../../../style/expenseForm.css";
 
 import { FaMoneyCheck } from "react-icons/fa6";
 
-function ExpenseInfo() {
+function ExpenseInfo({ name, setName }) {
+  const [incomeOption, setIncomeOption] = useState("funcionario");
+
   return (
     <div>
       <div className="expense-fornsContainer">
@@ -19,39 +22,45 @@ function ExpenseInfo() {
                 type="text"
                 id="name"
                 className="expense-clientFieldArea"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
             </div>
 
             <div className="employee-standardElementArea">
-              <label htmlFor="receita">Tipo da receita</label>
+              <label htmlFor="despesa">Tipo da despesa</label>
               <br />
 
               <select
-                id="receita"
-                name="receita"
+                id="despesa"
+                name="despesa"
                 className="expense-roleDropdwon"
+                onChange={(e) => setIncomeOption(e.target.value)}
               >
-                <option value="product">Produto</option>
-                <option value="service">Serviço</option>
+                <option value="funcionario">Funcionarios</option>
                 <option value="outro">Outro</option>
               </select>
             </div>
           </div>
 
-          <div className="expense-inputSpace">
-            <div className="employee-standardElementArea">
-              <label htmlFor="cliente">Cliente</label>
-              <br />
+          {incomeOption === "funcionario" ? (
+            <div className="expense-inputSpace">
+              <div className="employee-standardElementArea">
+                <label htmlFor="cliente">Cargo</label>
+                <br />
 
-              <select
-                id="cliente"
-                name="cliente"
-                className="expense-roleDropdwon"
-              >
-                <option value="1">A definir</option>
-              </select>
+                <select
+                  id="cliente"
+                  name="cliente"
+                  className="expense-roleDropdwon"
+                >
+                  <option value="1">A definir</option>
+                </select>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div>{undefined}</div>
+          )}
         </div>
       </div>
     </div>

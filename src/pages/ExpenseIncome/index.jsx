@@ -55,7 +55,7 @@ function ExpenseIncome() {
                 <TableData
                   key={i}
                   expenseId={expense.id}
-                  name={expense.name}
+                  description={expense.name}
                   installments={expense.installments}
                   price={expense.gross_value}
                   identify={"expense"}

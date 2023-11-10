@@ -30,18 +30,18 @@ function ExpensePayment() {
                 type="text"
                 id="vencimento"
                 className="expense-clientFieldArea"
-                placeholder="Ex: 20"
+                placeholder="dd/mm/aaaa"
               />
             </div>
 
             <div className="expense-treeElementArea">
-              <label htmlFor="quantidade">Quantidade</label>
+              <label htmlFor="quantidade">Juro</label>
               <br />
               <input
                 type="text"
                 id="quantidade"
                 className="expense-clientFieldArea"
-                placeholder="dd/mm/aaaa"
+                placeholder="Ex: 5%"
               />
             </div>
           </div>
@@ -108,6 +108,7 @@ function ExpensePayment() {
                 className="expense-roleDropdwon"
               >
                 <option value="1">Sim</option>
+                <option value="2">nao</option>
               </select>
             </div>
 
