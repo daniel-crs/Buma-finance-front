@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../../../style/incomeForm.css";
+import "../../../../style/incomeForm.css";
 
 import { FaMoneyCheck } from "react-icons/fa6";
 

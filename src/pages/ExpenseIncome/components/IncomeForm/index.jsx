@@ -1,6 +1,6 @@
 import "../../style/incomeForm.css";
-import IncomeInfo from "../fieldsetComponents/IncomeInfo";
-import IncomePayment from "../fieldsetComponents/IncomePayment";
+import IncomeInfo from "../fieldsetComponents/form/IncomeInfo";
+import IncomePayment from "../fieldsetComponents/form/IncomePayment";
 
 import { MdOutlineClose } from "react-icons/md";
 import { useState } from "react";

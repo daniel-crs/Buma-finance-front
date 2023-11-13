@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../../style/expenseForm.css";
-import ExpenseInfo from "../fieldsetComponents/ExpenseInfo";
-import ExpensePayment from "../fieldsetComponents/ExpensePayment";
+import ExpenseInfo from "../fieldsetComponents/form/ExpenseInfo";
+import ExpensePayment from "../fieldsetComponents/form/ExpensePayment";
 
 import { MdOutlineClose } from "react-icons/md";
 

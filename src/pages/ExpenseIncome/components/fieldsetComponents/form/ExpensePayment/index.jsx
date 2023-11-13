@@ -1,4 +1,4 @@
-import "../../../style/expenseForm.css";
+import "../../../../style/expenseForm.css";
 
 import { FaMoneyBills } from "react-icons/fa6";
 

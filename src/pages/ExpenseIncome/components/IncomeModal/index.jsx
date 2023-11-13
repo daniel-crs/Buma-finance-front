@@ -1,6 +1,6 @@
 import "../../style/incomeForm.css";
 
-import IncomeInfo from "../fieldsetComponents/IncomeInfo";
+import IncomeInfo from "../fieldsetComponents/form/IncomeInfo";
 
 import { FaMoneyBills } from "react-icons/fa6";
 import { MdOutlineClose } from "react-icons/md";
