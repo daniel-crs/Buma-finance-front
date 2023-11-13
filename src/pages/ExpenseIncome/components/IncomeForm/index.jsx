@@ -11,8 +11,10 @@ function IncomeForm({ isOpen, setModalOpen }) {
   const [product, setProductId] = useState(3);
   const [service, setServiceId] = useState(null);
   const [price, setPrice] = useState();
-  const [quantity, setQuantity] = useState("");
-  const [discount, setDiscount] = useState("");
+  const [quantity, setQuantity] = useState();
+  const [discount, setDiscount] = useState();
+  const [payment_status, setPayment_status] = useState(true);
+  const [installments, setInstallments] = useState(0);
 
   const createRevenue = () => {
     fetch(url, {
@@ -25,10 +27,12 @@ function IncomeForm({ isOpen, setModalOpen }) {
         price,
         quantity,
         discount,
-        payment_status: true,
+        payment_status,
         legalcustomer: 3,
         physicalcustomer: null,
-        installments: 0,
+        installments,
+        due_data: null,
+        recurrent: true,
       }),
     }).then((res) => res.json());
 
@@ -73,6 +77,8 @@ function IncomeForm({ isOpen, setModalOpen }) {
                 setDiscount={setDiscount}
                 productId={product}
                 serviceId={service}
+                setStatus={setPayment_status}
+                setInstallments={setInstallments}
               />
             </fieldset>
 

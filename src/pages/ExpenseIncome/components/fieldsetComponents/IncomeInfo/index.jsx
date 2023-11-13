@@ -79,13 +79,12 @@ function IncomeInfo({
           <div className="employee-standardElementArea">
             <label htmlFor="cliente">Cliente</label>
             <br />
-
             <select id="cliente" name="cliente" className="income-roleDropdwon">
               {legal.map((LegalCustomers) => (
-                <option value="1">{LegalCustomers.name}</option>
+                <option value="1">Físico - {LegalCustomers.name}</option>
               ))}
               {physical.map((PhysicalCustomers) => (
-                <option value="1">{PhysicalCustomers.name}</option>
+                <option value="1">Jurídico - {PhysicalCustomers.name}</option>
               ))}
             </select>
           </div>

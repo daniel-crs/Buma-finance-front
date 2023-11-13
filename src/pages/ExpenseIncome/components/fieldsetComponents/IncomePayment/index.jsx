@@ -12,6 +12,8 @@ function IncomePayment({
   setDiscount,
   productId,
   serviceId,
+  setStatus,
+  setInstallments,
 }) {
   // useEffect(() => {
   //   if (productId !== null) {
@@ -113,8 +115,18 @@ function IncomePayment({
             <label htmlFor="parcela">Parcela</label>
             <br />
 
-            <select id="parcela" name="parcela" className="income-roleDropdwon">
-              <option value="1">Unica</option>
+            <select
+              id="parcela"
+              name="parcela"
+              className="income-roleDropdwon"
+              onChange={(e) => setInstallments(e.target.value)}
+            >
+              <option value={0}>Unica</option>
+              <option value={2}>2</option>
+              <option value={3}>3</option>
+              <option value={4}>4</option>
+              <option value={5}>5</option>
+              <option value={6}>6</option>
             </select>
           </div>
         </div>
@@ -154,8 +166,14 @@ function IncomePayment({
             </label>
             <br />
 
-            <select id="parcela" name="parcela" className="income-roleDropdwon">
-              <option value="1">Pago</option>
+            <select
+              id="parcela"
+              name="parcela"
+              className="income-roleDropdwon"
+              onChange={(e) => setStatus(e.target.value)}
+            >
+              <option value={true}>Pago</option>
+              <option value={false}>Aberto</option>
             </select>
           </div>
         </div>
