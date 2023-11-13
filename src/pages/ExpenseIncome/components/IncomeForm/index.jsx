@@ -14,6 +14,8 @@ function IncomeForm({ isOpen, setModalOpen }) {
   const [quantity, setQuantity] = useState();
   const [discount, setDiscount] = useState();
   const [payment_status, setPayment_status] = useState(true);
+  const [legalcustomer, setLegalcustomerId] = useState(4);
+  const [physicalcustomer, setPhysicalcustomerId] = useState(null);
   const [installments, setInstallments] = useState(0);
 
   const createRevenue = () => {
@@ -28,8 +30,8 @@ function IncomeForm({ isOpen, setModalOpen }) {
         quantity,
         discount,
         payment_status,
-        legalcustomer: 3,
-        physicalcustomer: null,
+        legalcustomer,
+        physicalcustomer,
         installments,
         due_data: null,
         recurrent: true,
@@ -64,6 +66,8 @@ function IncomeForm({ isOpen, setModalOpen }) {
                 setDescription={setDescription}
                 setProductId={setProductId}
                 setServiceId={setServiceId}
+                setLegalcustomerId={setLegalcustomerId}
+                setPhysicalcustomerId={setPhysicalcustomerId}
               />
             </fieldset>
 
