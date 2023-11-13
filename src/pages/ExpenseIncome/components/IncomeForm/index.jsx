@@ -8,7 +8,9 @@ import { useState } from "react";
 function IncomeForm({ isOpen, setModalOpen }) {
   const url = "http://localhost:8000/revenues";
   const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
+  const [product, setProductId] = useState(3);
+  const [service, setServiceId] = useState(null);
+  const [price, setPrice] = useState();
   const [quantity, setQuantity] = useState("");
   const [discount, setDiscount] = useState("");
 
@@ -18,8 +20,8 @@ function IncomeForm({ isOpen, setModalOpen }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         description,
-        product: 3,
-        service: null,
+        product,
+        service,
         price,
         quantity,
         discount,
@@ -56,6 +58,8 @@ function IncomeForm({ isOpen, setModalOpen }) {
               <IncomeInfo
                 description={description}
                 setDescription={setDescription}
+                setProductId={setProductId}
+                setServiceId={setServiceId}
               />
             </fieldset>
 
@@ -67,6 +71,8 @@ function IncomeForm({ isOpen, setModalOpen }) {
                 setQuantity={setQuantity}
                 discount={discount}
                 setDiscount={setDiscount}
+                productId={product}
+                serviceId={service}
               />
             </fieldset>
 

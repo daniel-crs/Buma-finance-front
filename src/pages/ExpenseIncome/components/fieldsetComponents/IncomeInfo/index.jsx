@@ -3,10 +3,17 @@ import "../../../style/incomeForm.css";
 
 import { FaMoneyCheck } from "react-icons/fa6";
 
-function IncomeInfo({ description, setDescription }) {
+function IncomeInfo({
+  description,
+  setDescription,
+  setProductId,
+  setServiceId,
+}) {
   const [incomeOption, setIncomeOption] = useState("product");
   const [legal, setLegal] = useState([]);
   const [physical, setPhysical] = useState([]);
+  const [product, setProduct] = useState([]);
+  const [service, setService] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:8000/legalcustomer")
@@ -18,6 +25,18 @@ function IncomeInfo({ description, setDescription }) {
     fetch("http://localhost:8000/physicalcustomer")
       .then((res) => res.json())
       .then((physical) => setPhysical(physical));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:8000/product")
+      .then((res) => res.json())
+      .then((product) => setProduct(product));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:8000/service")
+      .then((res) => res.json())
+      .then((service) => setService(service));
   }, []);
 
   return (
@@ -72,7 +91,10 @@ function IncomeInfo({ description, setDescription }) {
           </div>
 
           {incomeOption === "product" ? (
-            <div className="employee-standardElementArea">
+            <div
+              onChange={() => setServiceId(null)}
+              className="employee-standardElementArea"
+            >
               <label htmlFor="produto">Product</label>
               <br />
 
@@ -80,12 +102,18 @@ function IncomeInfo({ description, setDescription }) {
                 id="produto"
                 name="produto"
                 className="income-roleDropdwon"
+                onChange={(e) => setProductId(e.target.value)}
               >
-                <option value="1">A definir</option>
+                {product.map((products) => (
+                  <option value={products.id}>{products.name}</option>
+                ))}
               </select>
             </div>
           ) : (
-            <div className="employee-standardElementArea">
+            <div
+              onChange={() => setProductId(null)}
+              className="employee-standardElementArea"
+            >
               <label htmlFor="produto">Service</label>
               <br />
 
@@ -93,8 +121,11 @@ function IncomeInfo({ description, setDescription }) {
                 id="produto"
                 name="produto"
                 className="income-roleDropdwon"
+                onChange={(e) => setServiceId(e.target.value)}
               >
-                <option value="1">A definir</option>
+                {service.map((services) => (
+                  <option value={services.id}>{services.name}</option>
+                ))}
               </select>
             </div>
           )}
