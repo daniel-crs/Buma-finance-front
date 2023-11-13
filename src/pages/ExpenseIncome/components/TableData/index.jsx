@@ -44,11 +44,57 @@ function TableData({
         </div>
       </td>
 
-      <td className="inex-nameArea">{description}</td>
-      <td className="inex-expirationArea">Vencimento</td>
-      <td className="inex-parcelArea">{installments}</td>
-      <td className="inex-statusArea">{payment_status}</td>
-      <td className="inex-valueArea">{price}</td>
+      {identify === "revenue" ? (
+        <td style={{ color: "green" }} className="inex-nameArea">
+          {description}
+        </td>
+      ) : (
+        <td style={{ color: "red" }} className="inex-nameArea">
+          {description}
+        </td>
+      )}
+      <td className="inex-expirationArea">bananas</td>
+      {installments === 0 ? (
+        <td className="inex-parcelArea">
+          <div className="inex-installmentsPosition">
+            <div className="inex-installmentsContainer">
+              <p>Única</p>
+            </div>
+          </div>
+        </td>
+      ) : (
+        <td className="inex-parcelArea">
+          <div className="inex-installmentsPosition">
+            <div className="inex-installmentsContainer">
+              <p>{installments}</p>
+            </div>
+          </div>
+        </td>
+      )}
+      {payment_status === true ? (
+        <td className="inex-statusArea">
+          <div className="inex-statusPosition">
+            <div
+              style={{ backgroundColor: "#568724" }}
+              className="inex-statusContainer"
+            >
+              <p>Pago</p>
+            </div>
+          </div>
+        </td>
+      ) : (
+        <td className="inex-statusArea">
+          <div className="inex-statusPosition">
+            <div
+              style={{ backgroundColor: "#D99718" }}
+              className="inex-statusContainer"
+            >
+              <p>Aberto</p>
+            </div>
+          </div>
+        </td>
+      )}
+      <td className="inex-valueArea">R$ {price}</td>
       <td className="inex-opcaoArea">
         <div className="inex-iconsPosition">
           {identify === "revenue" ? (

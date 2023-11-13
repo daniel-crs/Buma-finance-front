@@ -66,19 +66,57 @@
 }
 
 .inex-expirationArea {
-    width: 12vw;
+    width: 11vw;
+    text-align: center;
 }
 
 .inex-parcelArea {
-    width: 10vw;
+    width: 9vw;
+    text-align: center;
+}
+
+.inex-installmentsPosition {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inex-installmentsContainer {
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #DADADA;
+}
+
+.inex-installmentsContainer p {
+    padding-top: 3px;
 }
 
 .inex-statusArea {
-    width: 10vw;
+    width: 9vw;
+    text-align: center;
+    margin-right: 25px;
+}
+
+.inex-statusPosition {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inex-statusContainer {
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+.inex-statusContainer p {
+    padding-top: 3px;
 }
 
 .inex-valueArea {
-    width: 20vw;
+    width: 23vw;
+    padding-left: 125px;
 }
 
 .inex-opcaoArea {
