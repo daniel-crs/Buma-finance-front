@@ -3,7 +3,16 @@ import "../../../../style/expenseForm.css";
 import { FaMoneyBills } from "react-icons/fa6";
 import { useEffect } from "react";
 
-function ExpensePayment({ gross_value, setGross_value, roleId }) {
+function ExpensePayment({
+  gross_value,
+  setGross_value,
+  roleId,
+  setInstallments,
+  setStatus,
+  fees,
+  setFees,
+  setRecurrent,
+}) {
   useEffect(() => {
     if (roleId !== null) {
       fetch(`http://localhost:8000/roles/${roleId}`)
@@ -61,6 +70,8 @@ function ExpensePayment({ gross_value, setGross_value, roleId }) {
                 id="quantidade"
                 className="expense-clientFieldArea"
                 placeholder="Ex: 5%"
+                value={fees}
+                onChange={(e) => setFees(e.target.value)}
               />
             </div>
           </div>
@@ -96,8 +107,14 @@ function ExpensePayment({ gross_value, setGross_value, roleId }) {
                 id="parcela"
                 name="parcela"
                 className="expense-roleDropdwon"
+                onChange={(e) => setInstallments(e.target.value)}
               >
-                <option value="1">Unica</option>
+                <option value={0}>Unica</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+                <option value={4}>4</option>
+                <option value={5}>5</option>
+                <option value={6}>6</option>
               </select>
             </div>
           </div>
@@ -125,24 +142,27 @@ function ExpensePayment({ gross_value, setGross_value, roleId }) {
                 id="recorrente"
                 name="recorrente"
                 className="expense-roleDropdwon"
+                onChange={(e) => setRecurrent(e.target.value)}
               >
-                <option value="1">Sim</option>
-                <option value="2">nao</option>
+                <option value={true}>Sim</option>
+                <option value={false}>Não</option>
               </select>
             </div>
 
             <div className="expense-treeElementArea">
-              <label className="expense-spaceOnTop2" htmlFor="parcela">
+              <label className="expense-spaceOnTop2" htmlFor="status">
                 Status
               </label>
               <br />
 
               <select
-                id="parcela"
-                name="parcela"
+                id="status"
+                name="status"
                 className="expense-roleDropdwon"
+                onChange={(e) => setStatus(e.target.value)}
               >
-                <option value="1">Pago</option>
+                <option value={true}>Pago</option>
+                <option value={false}>Aberto</option>
               </select>
             </div>
           </div>

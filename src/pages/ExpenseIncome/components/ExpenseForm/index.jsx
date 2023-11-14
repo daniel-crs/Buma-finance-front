@@ -7,9 +7,13 @@ import { MdOutlineClose } from "react-icons/md";
 
 function ExpenseForm({ isOpen, setModalOpen }) {
   const url = "http://localhost:8000/expanse";
-  const [name, setName] = useState([]);
   const [roleId, setRoleID] = useState(1);
+  const [name, setName] = useState();
   const [gross_value, setGross_value] = useState();
+  const [installments, setInstallments] = useState(0);
+  const [payment_type, setStatus] = useState(true);
+  const [fees, setFees] = useState();
+  const [recurrent, setRecurrent] = useState(true);
 
   const createExpense = () => {
     fetch(url, {
@@ -20,11 +24,11 @@ function ExpenseForm({ isOpen, setModalOpen }) {
         competence: null,
         gross_value,
         discount: null,
-        installments: 3,
-        payment_type: null,
-        fees: null,
+        installments,
+        payment_type,
+        fees,
         bank_account: null,
-        recurrent: true,
+        recurrent,
       }),
     }).then((res) => res.json());
 
@@ -63,6 +67,11 @@ function ExpenseForm({ isOpen, setModalOpen }) {
                 gross_value={gross_value}
                 setGross_value={setGross_value}
                 roleId={roleId}
+                setInstallments={setInstallments}
+                setStatus={setStatus}
+                fees={fees}
+                setFees={setFees}
+                setRecurrent={setRecurrent}
               />
             </fieldset>
 
