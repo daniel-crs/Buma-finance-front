@@ -117,6 +117,10 @@ input::placeholder {
     width: 32.5%;
 }
 
+.expense-fourElementArea {
+    width: 24%;
+}
+
 .expense-valueContainer {
     display: flex;
 }

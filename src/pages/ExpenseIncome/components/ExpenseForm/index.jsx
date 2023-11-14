@@ -11,6 +11,7 @@ function ExpenseForm({ isOpen, setModalOpen }) {
   const [name, setName] = useState();
   const [competence, setCompetence] = useState();
   const [gross_value, setGross_value] = useState();
+  const [discount, setDiscount] = useState();
   const [installments, setInstallments] = useState(0);
   const [payment_type, setPayment_type] = useState(true);
   const [payment_status, setPayment_status] = useState(true);
@@ -25,7 +26,7 @@ function ExpenseForm({ isOpen, setModalOpen }) {
         name,
         competence,
         gross_value,
-        discount: null,
+        discount,
         installments,
         payment_type,
         payment_status,
@@ -67,10 +68,12 @@ function ExpenseForm({ isOpen, setModalOpen }) {
 
             <fieldset className="expense-formCustom">
               <ExpensePayment
-                gross_value={gross_value}
-                setGross_value={setGross_value}
                 competence={competence}
                 setCompetence={setCompetence}
+                gross_value={gross_value}
+                setGross_value={setGross_value}
+                discount={discount}
+                setDiscount={setDiscount}
                 roleId={roleId}
                 setInstallments={setInstallments}
                 setPayment_type={setPayment_type}

@@ -4,10 +4,12 @@ import { FaMoneyBills } from "react-icons/fa6";
 import { useEffect } from "react";
 
 function ExpensePayment({
-  gross_value,
-  setGross_value,
   competence,
   setCompetence,
+  gross_value,
+  setGross_value,
+  discount,
+  setDiscount,
   roleId,
   setInstallments,
   setPayment_type,
@@ -80,7 +82,7 @@ function ExpensePayment({
           </div>
 
           <div className="expense-inputSpace">
-            <div className="expense-treeElementArea">
+            <div className="expense-fourElementArea">
               <label htmlFor="banco">Banco</label>
               <br />
 
@@ -89,8 +91,8 @@ function ExpensePayment({
               </select>
             </div>
 
-            <div className="expense-treeElementArea">
-              <label htmlFor="pagamento">Tipo do pagamento</label>
+            <div className="expense-fourElementArea">
+              <label htmlFor="pagamento">Pagamento</label>
               <br />
 
               <select
@@ -105,7 +107,20 @@ function ExpensePayment({
               </select>
             </div>
 
-            <div className="expense-treeElementArea">
+            <div className="expense-fourElementArea">
+              <label htmlFor="quantidade">Desconto</label>
+              <br />
+              <input
+                type="text"
+                id="quantidade"
+                className="expense-clientFieldArea"
+                placeholder="Ex: 5%"
+                value={discount}
+                onChange={(e) => setDiscount(e.target.value)}
+              />
+            </div>
+
+            <div className="expense-fourElementArea">
               <label htmlFor="parcela">Parcela</label>
               <br />
 
