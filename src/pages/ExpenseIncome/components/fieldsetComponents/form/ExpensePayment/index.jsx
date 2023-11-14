@@ -6,8 +6,11 @@ import { useEffect } from "react";
 function ExpensePayment({
   gross_value,
   setGross_value,
+  competence,
+  setCompetence,
   roleId,
   setInstallments,
+  setPayment_type,
   setStatus,
   fees,
   setFees,
@@ -21,7 +24,7 @@ function ExpensePayment({
           setGross_value(data.salary);
         });
     } else {
-      return null;
+      setGross_value(0);
     }
   }, [roleId]);
 
@@ -87,15 +90,18 @@ function ExpensePayment({
             </div>
 
             <div className="expense-treeElementArea">
-              <label htmlFor="pagamento">Pagamento</label>
+              <label htmlFor="pagamento">Tipo do pagamento</label>
               <br />
 
               <select
                 id="pagamento"
                 name="pagamento"
                 className="expense-roleDropdwon"
+                onChange={(e) => setPayment_type(e.target.value)}
               >
-                <option value="1">Debito</option>
+                <option value="Debito">Debito</option>
+                <option value="Credito">Credito</option>
+                <option value="Pix">Pix</option>
               </select>
             </div>
 
@@ -129,6 +135,8 @@ function ExpensePayment({
                 type="text"
                 id="competencia"
                 className="expense-clientFieldArea"
+                value={competence}
+                onChange={(e) => setCompetence(e.target.value)}
               />
             </div>
 

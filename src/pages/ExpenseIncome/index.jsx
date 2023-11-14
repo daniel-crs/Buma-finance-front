@@ -57,6 +57,7 @@ function ExpenseIncome() {
                   expenseId={expense.id}
                   description={expense.name}
                   installments={expense.installments}
+                  payment_status={expense.payment_status}
                   price={expense.gross_value}
                   identify={"expense"}
                 />

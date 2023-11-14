@@ -17,6 +17,8 @@ function IncomeForm({ isOpen, setModalOpen }) {
   const [legalcustomer, setLegalcustomerId] = useState(4);
   const [physicalcustomer, setPhysicalcustomerId] = useState(null);
   const [installments, setInstallments] = useState(0);
+  const [due_data, setData] = useState("");
+  const [recurrent, setRecurrent] = useState(true);
 
   const createRevenue = () => {
     fetch(url, {
@@ -33,8 +35,8 @@ function IncomeForm({ isOpen, setModalOpen }) {
         legalcustomer,
         physicalcustomer,
         installments,
-        due_data: null,
-        recurrent: true,
+        due_data,
+        recurrent,
       }),
     }).then((res) => res.json());
 
@@ -83,6 +85,9 @@ function IncomeForm({ isOpen, setModalOpen }) {
                 serviceId={service}
                 setStatus={setPayment_status}
                 setInstallments={setInstallments}
+                data={due_data}
+                setData={setData}
+                setRecurrent={setRecurrent}
               />
             </fieldset>
 

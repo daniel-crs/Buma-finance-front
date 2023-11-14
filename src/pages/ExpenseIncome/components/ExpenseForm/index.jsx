@@ -9,9 +9,11 @@ function ExpenseForm({ isOpen, setModalOpen }) {
   const url = "http://localhost:8000/expanse";
   const [roleId, setRoleID] = useState(1);
   const [name, setName] = useState();
+  const [competence, setCompetence] = useState();
   const [gross_value, setGross_value] = useState();
   const [installments, setInstallments] = useState(0);
-  const [payment_type, setStatus] = useState(true);
+  const [payment_type, setPayment_type] = useState(true);
+  const [payment_status, setPayment_status] = useState(true);
   const [fees, setFees] = useState();
   const [recurrent, setRecurrent] = useState(true);
 
@@ -21,11 +23,12 @@ function ExpenseForm({ isOpen, setModalOpen }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name,
-        competence: null,
+        competence,
         gross_value,
         discount: null,
         installments,
         payment_type,
+        payment_status,
         fees,
         bank_account: null,
         recurrent,
@@ -66,9 +69,12 @@ function ExpenseForm({ isOpen, setModalOpen }) {
               <ExpensePayment
                 gross_value={gross_value}
                 setGross_value={setGross_value}
+                competence={competence}
+                setCompetence={setCompetence}
                 roleId={roleId}
                 setInstallments={setInstallments}
-                setStatus={setStatus}
+                setPayment_type={setPayment_type}
+                setStatus={setPayment_status}
                 fees={fees}
                 setFees={setFees}
                 setRecurrent={setRecurrent}

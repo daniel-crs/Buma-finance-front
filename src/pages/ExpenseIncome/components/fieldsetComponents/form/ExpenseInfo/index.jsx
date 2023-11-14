@@ -70,7 +70,7 @@ function ExpenseInfo({ name, setName, setRoleID }) {
               </div>
             </div>
           ) : (
-            <div>{undefined}</div>
+            <div onChange={() => setRoleID(null)}>{undefined}</div>
           )}
         </div>
       </div>

@@ -14,6 +14,9 @@ function IncomePayment({
   serviceId,
   setStatus,
   setInstallments,
+  data,
+  setData,
+  setRecurrent,
 }) {
   useEffect(() => {
     if (productId !== null) {
@@ -142,6 +145,8 @@ function IncomePayment({
               id="vencimento"
               className="income-clientFieldArea"
               placeholder="dd/mm/aaaa"
+              value={data}
+              onChange={(e) => setData(e.target.value)}
             />
           </div>
 
@@ -155,8 +160,10 @@ function IncomePayment({
               id="recorrente"
               name="recorrente"
               className="income-roleDropdwon"
+              onChange={(e) => setRecurrent(e.target.value)}
             >
-              <option value="1">Sim</option>
+              <option value={true}>Sim</option>
+              <option value={false}>Nao</option>
             </select>
           </div>
 
