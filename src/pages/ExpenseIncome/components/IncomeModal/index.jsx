@@ -6,11 +6,11 @@ import IncomePaymentArea from "../fieldsetComponents/modal/IncomePaymentArea";
 import { MdOutlineClose } from "react-icons/md";
 import { useState } from "react";
 
-function IncomeModal({ id, isOpen, setModalOpen, incomeDescription }) {
-  const [description, setDescription] = useState(incomeDescription);
+function IncomeModal({ id, isOpen, setModalOpen, incDescription }) {
+  const [description, setDescription] = useState(incDescription);
 
   const updateRevenue = () => {
-    fetch(`http://localhost:8000/Revenue/${id}`, {
+    fetch(`http://localhost:8000/revenues/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

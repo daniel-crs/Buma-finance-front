@@ -1,9 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../../../../style/expenseForm.css";
 
 import { FaMoneyCheck } from "react-icons/fa6";
 
-function ExpenseInfo({ name, setName }) {
+function ExpenseInfo({ name, setName, setRoleID }) {
+  const [role, setRole] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8000/roles")
+      .then((res) => res.json())
+      .then((role) => setRole(role));
+  }, []);
+
   const [incomeOption, setIncomeOption] = useState("funcionario");
 
   return (
@@ -53,8 +61,11 @@ function ExpenseInfo({ name, setName }) {
                   id="cliente"
                   name="cliente"
                   className="expense-roleDropdwon"
+                  onChange={(e) => setRoleID(e.target.value)}
                 >
-                  <option value="1">A definir</option>
+                  {role.map((roles) => (
+                    <option value={roles.id}>{roles.function}</option>
+                  ))}
                 </select>
               </div>
             </div>

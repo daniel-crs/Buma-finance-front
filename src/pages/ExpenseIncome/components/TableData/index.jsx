@@ -131,7 +131,7 @@ function TableData({
               id={revenueId}
               isOpen={openModal}
               setModalOpen={() => setOpenModal(!openModal)}
-              incomeDescription={description}
+              incDescription={description}
             />
           ) : (
             <ExpenseModal

@@ -1,8 +1,21 @@
 import "../../../../style/expenseForm.css";
 
 import { FaMoneyBills } from "react-icons/fa6";
+import { useEffect } from "react";
 
-function ExpensePayment() {
+function ExpensePayment({ gross_value, setGross_value, roleId }) {
+  useEffect(() => {
+    if (roleId !== null) {
+      fetch(`http://localhost:8000/roles/${roleId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setGross_value(data.salary);
+        });
+    } else {
+      return null;
+    }
+  }, [roleId]);
+
   return (
     <div>
       <div className="expense-fornsContainer">
@@ -19,7 +32,13 @@ function ExpensePayment() {
               <br></br>
               <div className="expense-valueContainer">
                 <p className="expense-reiasValue">R$</p>
-                <input id="valor" type="text" className="expense-valueArea" />
+                <input
+                  id="valor"
+                  type="text"
+                  className="expense-valueArea"
+                  value={gross_value}
+                  onChange={(e) => setGross_value(e.target.value)}
+                />
               </div>
             </div>
 
