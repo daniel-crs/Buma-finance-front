@@ -1,4 +1,4 @@
-// import { useEffect } from "react";
+import { useEffect } from "react";
 import "../../../../style/incomeForm.css";
 
 import { FaMoneyBills } from "react-icons/fa6";
@@ -15,21 +15,21 @@ function IncomePayment({
   setStatus,
   setInstallments,
 }) {
-  // useEffect(() => {
-  //   if (productId !== null) {
-  //     fetch(`http://localhost:8000/product/${productId}`)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         setPrice(data.sell_price);
-  //       });
-  //   } else if (serviceId !== null) {
-  //     fetch(`http://localhost:8000/service/${serviceId}`)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         setPrice(data.sell_price);
-  //       });
-  //   }
-  // });
+  useEffect(() => {
+    if (productId !== null) {
+      fetch(`http://localhost:8000/product/${productId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setPrice(data.sell_price);
+        });
+    } else if (serviceId !== null) {
+      fetch(`http://localhost:8000/service/${serviceId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setPrice(data.sell_price);
+        });
+    }
+  }, [productId, serviceId]);
 
   return (
     <div className="income-fornsContainer">

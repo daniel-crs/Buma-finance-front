@@ -2,7 +2,7 @@ import "../../../../style/incomeForm.css";
 
 import { FaMoneyCheck } from "react-icons/fa6";
 
-function IncomeInfoArea() {
+function IncomeInfoArea({ description, setDescription }) {
   return (
     <div className="income-fornsContainer">
       <div className="income-formIcon">
@@ -14,7 +14,13 @@ function IncomeInfoArea() {
           <div className="income-standardElementArea">
             <label htmlFor="name">Nome</label>
             <br />
-            <input type="text" id="name" className="income-clientFieldArea" />
+            <input
+              type="text"
+              id="name"
+              className="income-clientFieldArea"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
           </div>
 
           <div className="income-standardElementArea">

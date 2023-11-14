@@ -4,36 +4,33 @@ import IncomeInfoArea from "../fieldsetComponents/modal/IncomeInfoArea";
 import IncomePaymentArea from "../fieldsetComponents/modal/IncomePaymentArea";
 
 import { MdOutlineClose } from "react-icons/md";
-// import { useState } from "react";
+import { useState } from "react";
 
 function IncomeModal({ id, isOpen, setModalOpen, incomeDescription }) {
-  // const [description, setDescription] = useState(incomeDescription);
-  // const [price, setPrice] = useState("");
-  // const [quantity, setQuantity] = useState("");
-  // const [discount, setDiscount] = useState("");
+  const [description, setDescription] = useState(incomeDescription);
 
-  // const updateRevenue = () => {
-  //   fetch(`http://localhost:8000/Revenue/${id}`, {
-  //     method: "PUT",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({
-  //       description,
-  //       product: 3,
-  //       service: null,
-  //       price: 3000,
-  //       quantity: 10,
-  //       discount: 0,
-  //       payment_status: true,
-  //       legalcustomer: 3,
-  //       physicalcustomer: null,
-  //       installments: 0,
-  //       due_date: "2000-02-02T02:00:00.000Z",
-  //       recurrent: true,
-  //     }),
-  //   }).then((response) => response.json());
+  const updateRevenue = () => {
+    fetch(`http://localhost:8000/Revenue/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        description,
+        product: 3,
+        service: null,
+        price: 3000,
+        quantity: 10,
+        discount: 0,
+        payment_status: true,
+        legalcustomer: 3,
+        physicalcustomer: null,
+        installments: 0,
+        due_date: null,
+        recurrent: true,
+      }),
+    }).then((response) => response.json());
 
-  //   window.location.reload();
-  // };
+    window.location.reload();
+  };
 
   if (isOpen) {
     return (
@@ -55,7 +52,10 @@ function IncomeModal({ id, isOpen, setModalOpen, incomeDescription }) {
 
           <form id="income-Container">
             <fieldset className="income-formCustom">
-              <IncomeInfoArea />
+              <IncomeInfoArea
+                description={description}
+                setDescription={setDescription}
+              />
             </fieldset>
 
             <fieldset className="income-formCustom">
@@ -65,6 +65,7 @@ function IncomeModal({ id, isOpen, setModalOpen, incomeDescription }) {
             <div className="income-buttonPosition">
               <button
                 onClick={() => {
+                  updateRevenue();
                   setModalOpen(false);
                 }}
                 className="income-saveButton"
