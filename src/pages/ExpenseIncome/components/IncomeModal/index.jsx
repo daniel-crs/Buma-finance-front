@@ -4,10 +4,36 @@ import IncomeInfoArea from "../fieldsetComponents/modal/IncomeInfoArea";
 import IncomePaymentArea from "../fieldsetComponents/modal/IncomePaymentArea";
 
 import { MdOutlineClose } from "react-icons/md";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function IncomeModal({ id, isOpen, setModalOpen, incDescription }) {
+function IncomeModal({
+  id,
+  isOpen,
+  setModalOpen,
+  incDescription,
+  incProductId,
+  incServiceId,
+}) {
   const [description, setDescription] = useState(incDescription);
+  const [product, setProduct] = useState(incProductId);
+  const [service, setService] = useState(incServiceId);
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    if (incProductId !== null) {
+      fetch(`http://localhost:8000/product/${incProductId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setName(data.name);
+        });
+    } else {
+      fetch(`http://localhost:8000/service/${incServiceId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setName(data.name);
+        });
+    }
+  }, [incProductId, incServiceId]);
 
   const updateRevenue = () => {
     fetch(`http://localhost:8000/revenues/${id}`, {
@@ -15,8 +41,8 @@ function IncomeModal({ id, isOpen, setModalOpen, incDescription }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         description,
-        product: 3,
-        service: null,
+        product,
+        service,
         price: 3000,
         quantity: 10,
         discount: 0,
@@ -55,6 +81,11 @@ function IncomeModal({ id, isOpen, setModalOpen, incDescription }) {
               <IncomeInfoArea
                 description={description}
                 setDescription={setDescription}
+                incProductId={product}
+                incSetProduct={setProduct}
+                incServiceId={service}
+                incSetService={setService}
+                name={name}
               />
             </fieldset>
 

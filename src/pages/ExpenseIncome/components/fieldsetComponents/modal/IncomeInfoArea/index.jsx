@@ -1,8 +1,44 @@
 import "../../../../style/incomeForm.css";
 
+import { useState, useEffect } from "react";
 import { FaMoneyCheck } from "react-icons/fa6";
 
-function IncomeInfoArea({ description, setDescription }) {
+function IncomeInfoArea({
+  description,
+  setDescription,
+  incProductId,
+  incSetProduct,
+  incServiceId,
+  incSetService,
+  productName,
+  name,
+}) {
+  const [incomeOption, setIncomeOption] = useState("");
+  const [product, setProduct] = useState([]);
+  const [service, setService] = useState([]);
+
+  console.log(`Nome - ${name} `);
+
+  useEffect(() => {
+    if (incProductId !== null) {
+      setIncomeOption("product");
+    } else {
+      setIncomeOption("service");
+    }
+  }, [incProductId]);
+
+  useEffect(() => {
+    fetch("http://localhost:8000/product")
+      .then((res) => res.json())
+      .then((product) => setProduct(product));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:8000/service")
+      .then((res) => res.json())
+      .then((service) => setService(service));
+  }, []);
+
   return (
     <div className="income-fornsContainer">
       <div className="income-formIcon">
@@ -23,15 +59,39 @@ function IncomeInfoArea({ description, setDescription }) {
             />
           </div>
 
-          <div className="income-standardElementArea">
-            <label htmlFor="receita">Tipo da receita</label>
-            <br />
+          {incProductId !== null ? (
+            <div className="income-standardElementArea">
+              <label htmlFor="receita">Tipo da receita</label>
+              <br />
 
-            <select id="receita" name="receita" className="income-roleDropdwon">
-              <option value="product">Produto</option>
-              <option value="service">Service</option>
-            </select>
-          </div>
+              <select
+                id="receita"
+                name="receita"
+                className="income-roleDropdwon"
+                defaultValue={"product"}
+                onChange={(e) => setIncomeOption(e.target.value)}
+              >
+                <option value="product">Produto</option>
+                <option value="service">Service</option>
+              </select>
+            </div>
+          ) : (
+            <div className="income-standardElementArea">
+              <label htmlFor="receita">Tipo da receita</label>
+              <br />
+
+              <select
+                id="receita"
+                name="receita"
+                className="income-roleDropdwon"
+                defaultValue={"service"}
+                onChange={(e) => setIncomeOption(e.target.value)}
+              >
+                <option value="product">Produto</option>
+                <option value="service">Service</option>
+              </select>
+            </div>
+          )}
         </div>
 
         <div className="income-inputSpace">
@@ -54,16 +114,39 @@ function IncomeInfoArea({ description, setDescription }) {
             ></select>
           </div>
 
-          <div className="income-treeElementArea">
-            <label htmlFor="produto">Product</label>
-            <br />
+          {incomeOption === "product" ? (
+            <div className="income-treeElementArea">
+              <label htmlFor="produto">Product</label>
+              <br />
 
-            <select
-              id="produto"
-              name="produto"
-              className="income-roleDropdwon"
-            ></select>
-          </div>
+              <select
+                id="produto"
+                name="produto"
+                className="income-roleDropdwon"
+                value={name}
+              >
+                {product.map((products) => (
+                  <option value={products.id}>{products.name}</option>
+                ))}
+              </select>
+            </div>
+          ) : (
+            <div className="income-treeElementArea">
+              <label htmlFor="service">Service</label>
+              <br />
+
+              <select
+                id="service"
+                name="service"
+                className="income-roleDropdwon"
+                value={name}
+              >
+                {service.map((services) => (
+                  <option value={services.id}>{services.name}</option>
+                ))}
+              </select>
+            </div>
+          )}
         </div>
       </div>
     </div>

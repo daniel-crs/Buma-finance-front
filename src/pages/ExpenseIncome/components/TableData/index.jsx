@@ -16,6 +16,8 @@ function TableData({
   payment_status,
   price,
   identify,
+  productId,
+  serviceId,
 }) {
   const [openModal, setOpenModal] = useState(false);
 
@@ -132,6 +134,8 @@ function TableData({
               isOpen={openModal}
               setModalOpen={() => setOpenModal(!openModal)}
               incDescription={description}
+              incProductId={productId}
+              incServiceId={serviceId}
             />
           ) : (
             <ExpenseModal

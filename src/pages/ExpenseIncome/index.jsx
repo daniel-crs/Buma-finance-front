@@ -49,6 +49,8 @@ function ExpenseIncome() {
                   payment_status={revenue.payment_status}
                   price={revenue.price}
                   identify={"revenue"}
+                  productId={revenue.product}
+                  serviceId={revenue.service}
                 />
               ))}
               {expenses.map((expense, i) => (
