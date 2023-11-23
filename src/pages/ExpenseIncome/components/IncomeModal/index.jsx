@@ -4,7 +4,7 @@ import IncomeInfoArea from "../fieldsetComponents/modal/IncomeInfoArea";
 import IncomePaymentArea from "../fieldsetComponents/modal/IncomePaymentArea";
 
 import { MdOutlineClose } from "react-icons/md";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function IncomeModal({
   id,
@@ -17,23 +17,6 @@ function IncomeModal({
   const [description, setDescription] = useState(incDescription);
   const [product, setProduct] = useState(incProductId);
   const [service, setService] = useState(incServiceId);
-  const [name, setName] = useState("");
-
-  useEffect(() => {
-    if (incProductId !== null) {
-      fetch(`http://localhost:8000/product/${incProductId}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setName(data.name);
-        });
-    } else {
-      fetch(`http://localhost:8000/service/${incServiceId}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setName(data.name);
-        });
-    }
-  }, [incProductId, incServiceId]);
 
   const updateRevenue = () => {
     fetch(`http://localhost:8000/revenues/${id}`, {
@@ -55,7 +38,24 @@ function IncomeModal({
       }),
     }).then((response) => response.json());
 
-    window.location.reload();
+    console.log("product", product);
+
+    console.log(
+      JSON.stringify({
+        description,
+        product,
+        service,
+        price: 3000,
+        quantity: 10,
+        discount: 0,
+        payment_status: true,
+        legalcustomer: 3,
+        physicalcustomer: null,
+        installments: 0,
+        due_date: null,
+        recurrent: true,
+      })
+    );
   };
 
   if (isOpen) {
@@ -85,7 +85,6 @@ function IncomeModal({
                 incSetProduct={setProduct}
                 incServiceId={service}
                 incSetService={setService}
-                name={name}
               />
             </fieldset>
 

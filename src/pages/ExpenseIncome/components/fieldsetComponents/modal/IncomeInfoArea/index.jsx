@@ -11,13 +11,14 @@ function IncomeInfoArea({
   incServiceId,
   incSetService,
   productName,
-  name,
 }) {
   const [incomeOption, setIncomeOption] = useState("");
   const [product, setProduct] = useState([]);
   const [service, setService] = useState([]);
 
-  console.log(`Nome - ${name} `);
+  useEffect(() => {
+    console.log("incSetProductId alterando", incProductId);
+  }, [incProductId]);
 
   useEffect(() => {
     if (incProductId !== null) {
@@ -123,7 +124,11 @@ function IncomeInfoArea({
                 id="produto"
                 name="produto"
                 className="income-roleDropdwon"
-                value={name}
+                value={incProductId}
+                onChange={(e) => {
+                  console.log("setProduct", e);
+                  incSetProduct(e.target.value);
+                }}
               >
                 {product.map((products) => (
                   <option value={products.id}>{products.name}</option>
@@ -139,7 +144,6 @@ function IncomeInfoArea({
                 id="service"
                 name="service"
                 className="income-roleDropdwon"
-                value={name}
               >
                 {service.map((services) => (
                   <option value={services.id}>{services.name}</option>
