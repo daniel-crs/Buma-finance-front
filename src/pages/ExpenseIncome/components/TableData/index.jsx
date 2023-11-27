@@ -18,6 +18,8 @@ function TableData({
   identify,
   productId,
   serviceId,
+  legalcustomerId,
+  physicalcustomerId,
 }) {
   const [openModal, setOpenModal] = useState(false);
 
@@ -136,6 +138,8 @@ function TableData({
               incDescription={description}
               incProductId={productId}
               incServiceId={serviceId}
+              legalcustomerId={legalcustomerId}
+              physicalcustomerId={physicalcustomerId}
             />
           ) : (
             <ExpenseModal

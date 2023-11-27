@@ -10,15 +10,17 @@ function IncomeInfoArea({
   incSetProduct,
   incServiceId,
   incSetService,
-  productName,
+  legalcustomerId,
+  setLegalcustomerId,
+  physicalcustomerId,
+  setPhysicalcustomerId,
 }) {
   const [incomeOption, setIncomeOption] = useState("");
+  const [clientOption, setClientOption] = useState("");
   const [product, setProduct] = useState([]);
   const [service, setService] = useState([]);
-
-  useEffect(() => {
-    console.log("incSetProductId alterando", incProductId);
-  }, [incProductId]);
+  const [legal, setLegal] = useState([]);
+  const [physical, setPhysical] = useState([]);
 
   useEffect(() => {
     if (incProductId !== null) {
@@ -27,6 +29,14 @@ function IncomeInfoArea({
       setIncomeOption("service");
     }
   }, [incProductId]);
+
+  useEffect(() => {
+    if (physicalcustomerId !== null) {
+      setClientOption("fisico");
+    } else {
+      setIncomeOption("jurico");
+    }
+  }, [physicalcustomerId]);
 
   useEffect(() => {
     fetch("http://localhost:8000/product")
@@ -38,6 +48,18 @@ function IncomeInfoArea({
     fetch("http://localhost:8000/service")
       .then((res) => res.json())
       .then((service) => setService(service));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:8000/legalcustomer")
+      .then((res) => res.json())
+      .then((legal) => setLegal(legal));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:8000/physicalcustomer")
+      .then((res) => res.json())
+      .then((physical) => setPhysical(physical));
   }, []);
 
   return (
@@ -96,27 +118,91 @@ function IncomeInfoArea({
         </div>
 
         <div className="income-inputSpace">
-          <div className="income-treeElementArea">
-            <label htmlFor="cliente">Tipo do cliente</label>
-            <br />
-            <select id="cliente" name="cliente" className="income-roleDropdwon">
-              <option value="fisico">Físico</option>
-              <option value="jurico">Jurídico</option>
-            </select>
-          </div>
+          {physicalcustomerId !== null ? (
+            <div className="income-treeElementArea">
+              <label htmlFor="cliente">Tipo do cliente</label>
+              <br />
+              <select
+                id="cliente"
+                name="cliente"
+                className="income-roleDropdwon"
+                defaultValue={"fisico"}
+                onChange={(e) => setClientOption(e.target.value)}
+              >
+                <option value="fisico">Físico</option>
+                <option value="jurico">Jurídico</option>
+              </select>
+            </div>
+          ) : (
+            <div className="income-treeElementArea">
+              <label htmlFor="cliente">Tipo do cliente</label>
+              <br />
+              <select
+                id="cliente"
+                name="cliente"
+                className="income-roleDropdwon"
+                defaultValue={"jurico"}
+                onChange={(e) => setClientOption(e.target.value)}
+              >
+                <option value="fisico">Físico</option>
+                <option value="jurico">Jurídico</option>
+              </select>
+            </div>
+          )}
 
-          <div className="income-treeElementArea">
-            <label htmlFor="cliente">Cliente</label>
-            <br />
-            <select
-              id="cliente"
-              name="cliente"
-              className="income-roleDropdwon"
-            ></select>
-          </div>
+          {clientOption === "fisico" ? (
+            <div
+              className="income-treeElementArea"
+              onChange={() => setLegalcustomerId(null)}
+            >
+              <label htmlFor="cliente">Cliente</label>
+              <br />
+              <select
+                id="cliente"
+                name="cliente"
+                className="income-roleDropdwon"
+                value={physicalcustomerId}
+                onChange={(e) => {
+                  setPhysicalcustomerId(e.target.value);
+                }}
+              >
+                {physical.map((physicalCustomers) => (
+                  <option value={physicalCustomers.id}>
+                    {physicalCustomers.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          ) : (
+            <div
+              className="income-treeElementArea"
+              onChange={() => setPhysicalcustomerId(null)}
+            >
+              <label htmlFor="cliente">Cliente</label>
+              <br />
+              <select
+                id="cliente"
+                name="cliente"
+                className="income-roleDropdwon"
+                value={legalcustomerId}
+                onChange={(e) => {
+                  setLegalcustomerId(e.target.value);
+                }}
+              >
+                {legal.map((legalCustomers) => (
+                  <option value={legalCustomers.id}>
+                    {legalCustomers.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
 
           {incomeOption === "product" ? (
-            <div className="income-treeElementArea">
+            <div
+              className="income-treeElementArea"
+              onChange={() => incSetService(null)}
+            >
               <label htmlFor="produto">Product</label>
               <br />
 
@@ -126,7 +212,6 @@ function IncomeInfoArea({
                 className="income-roleDropdwon"
                 value={incProductId}
                 onChange={(e) => {
-                  console.log("setProduct", e);
                   incSetProduct(e.target.value);
                 }}
               >
@@ -136,7 +221,10 @@ function IncomeInfoArea({
               </select>
             </div>
           ) : (
-            <div className="income-treeElementArea">
+            <div
+              className="income-treeElementArea"
+              onChange={() => incSetProduct(null)}
+            >
               <label htmlFor="service">Service</label>
               <br />
 
@@ -144,6 +232,10 @@ function IncomeInfoArea({
                 id="service"
                 name="service"
                 className="income-roleDropdwon"
+                value={incServiceId}
+                onChange={(e) => {
+                  incSetService(e.target.value);
+                }}
               >
                 {service.map((services) => (
                   <option value={services.id}>{services.name}</option>

@@ -13,10 +13,14 @@ function IncomeModal({
   incDescription,
   incProductId,
   incServiceId,
+  legalcustomerId,
+  physicalcustomerId,
 }) {
   const [description, setDescription] = useState(incDescription);
   const [product, setProduct] = useState(incProductId);
   const [service, setService] = useState(incServiceId);
+  const [legalcustomer, setLegalcustomer] = useState(legalcustomerId);
+  const [physicalcustomer, setPhysicalcustomer] = useState(physicalcustomerId);
 
   const updateRevenue = () => {
     fetch(`http://localhost:8000/revenues/${id}`, {
@@ -30,32 +34,15 @@ function IncomeModal({
         quantity: 10,
         discount: 0,
         payment_status: true,
-        legalcustomer: 3,
-        physicalcustomer: null,
+        legalcustomer,
+        physicalcustomer,
         installments: 0,
         due_date: null,
         recurrent: true,
       }),
     }).then((response) => response.json());
 
-    console.log("product", product);
-
-    console.log(
-      JSON.stringify({
-        description,
-        product,
-        service,
-        price: 3000,
-        quantity: 10,
-        discount: 0,
-        payment_status: true,
-        legalcustomer: 3,
-        physicalcustomer: null,
-        installments: 0,
-        due_date: null,
-        recurrent: true,
-      })
-    );
+    window.location.reload(5000);
   };
 
   if (isOpen) {
@@ -85,6 +72,10 @@ function IncomeModal({
                 incSetProduct={setProduct}
                 incServiceId={service}
                 incSetService={setService}
+                legalcustomerId={legalcustomer}
+                setLegalcustomerId={setLegalcustomer}
+                physicalcustomerId={physicalcustomer}
+                setPhysicalcustomerId={setPhysicalcustomer}
               />
             </fieldset>
 
