@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
 import "../../../../style/expenseForm.css";
 
 import { FaMoneyCheck } from "react-icons/fa6";
+import { useState, useEffect } from "react";
 
 function ExpenseInfo({ name, setName, setRoleID }) {
   const [incomeOption, setIncomeOption] = useState("funcionario");

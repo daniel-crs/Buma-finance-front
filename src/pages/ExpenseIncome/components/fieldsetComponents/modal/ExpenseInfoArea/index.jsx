@@ -1,7 +1,7 @@
-import { useState } from "react";
 import "../../../../style/expenseForm.css";
 
 import { FaMoneyCheck } from "react-icons/fa6";
+import { useState } from "react";
 
 function ExpenseInfoArea() {
   const [incomeOption, setIncomeOption] = useState("funcionario");
@@ -57,7 +57,7 @@ function ExpenseInfoArea() {
               </div>
             </div>
           ) : (
-            <div onChange={() => setRoleID(null)}>{undefined}</div>
+            <div>{undefined}</div>
           )}
         </div>
       </div>
