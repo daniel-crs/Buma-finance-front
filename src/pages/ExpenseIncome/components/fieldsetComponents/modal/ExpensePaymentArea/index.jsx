@@ -2,7 +2,24 @@ import "../../../../style/expenseForm.css";
 
 import { FaMoneyBills } from "react-icons/fa6";
 
-function ExpensePaymentArea() {
+function ExpensePaymentArea({
+  competenceId,
+  setCompetenceId,
+  priceId,
+  setPriceId,
+  discountId,
+  setDiscountId,
+  installmentsId,
+  setInstallmentsId,
+  payment_typeId,
+  setPayment_typeId,
+  payment_statusId,
+  setPayment_statusId,
+  feesId,
+  setFeesId,
+  recurrentId,
+  setRecurrentId,
+}) {
   return (
     <div className="expense-fornsContainer">
       <div className="expense-formIcon">
@@ -18,7 +35,13 @@ function ExpensePaymentArea() {
             <br></br>
             <div className="expense-valueContainer">
               <p className="expense-reiasValue">R$</p>
-              <input id="valor" type="text" className="expense-valueArea" />
+              <input
+                id="valor"
+                type="text"
+                className="expense-valueArea"
+                value={priceId}
+                onChange={(e) => setPriceId(e.target.value)}
+              />
             </div>
           </div>
 
@@ -40,13 +63,14 @@ function ExpensePaymentArea() {
               type="text"
               id="quantidade"
               className="expense-clientFieldArea"
-              placeholder="Ex: 5%"
+              value={feesId}
+              onChange={(e) => setFeesId(e.target.value)}
             />
           </div>
         </div>
 
         <div className="expense-inputSpace">
-          <div className="expense-treeElementArea">
+          <div className="expense-fourElementArea">
             <label htmlFor="banco">Banco</label>
             <br />
 
@@ -55,7 +79,7 @@ function ExpensePaymentArea() {
             </select>
           </div>
 
-          <div className="expense-treeElementArea">
+          <div className="expense-fourElementArea">
             <label htmlFor="pagamento">Pagamento</label>
             <br />
 
@@ -63,12 +87,28 @@ function ExpensePaymentArea() {
               id="pagamento"
               name="pagamento"
               className="expense-roleDropdwon"
+              value={payment_typeId}
+              onChange={(e) => setPayment_typeId(e.target.value)}
             >
-              <option value="1">Debito</option>
+              <option value="Debito">Debito</option>
+              <option value="Credito">Credito</option>
+              <option value="Pix">Pix</option>
             </select>
           </div>
 
-          <div className="expense-treeElementArea">
+          <div className="expense-fourElementArea">
+            <label htmlFor="quantidade">Desconto</label>
+            <br />
+            <input
+              type="text"
+              id="quantidade"
+              className="expense-clientFieldArea"
+              value={discountId}
+              onChange={(e) => setDiscountId(e.target.value)}
+            />
+          </div>
+
+          <div className="expense-fourElementArea">
             <label htmlFor="parcela">Parcela</label>
             <br />
 
@@ -76,8 +116,15 @@ function ExpensePaymentArea() {
               id="parcela"
               name="parcela"
               className="expense-roleDropdwon"
+              value={installmentsId}
+              onChange={(e) => setInstallmentsId(e.target.value)}
             >
-              <option value="1">Unica</option>
+              <option value={0}>Unica</option>
+              <option value={2}>2</option>
+              <option value={3}>3</option>
+              <option value={4}>4</option>
+              <option value={5}>5</option>
+              <option value={6}>6</option>
             </select>
           </div>
         </div>
@@ -92,6 +139,8 @@ function ExpensePaymentArea() {
               type="text"
               id="competencia"
               className="expense-clientFieldArea"
+              value={competenceId}
+              onChange={(e) => setCompetenceId(e.target.value)}
             />
           </div>
 
@@ -105,8 +154,11 @@ function ExpensePaymentArea() {
               id="recorrente"
               name="recorrente"
               className="expense-roleDropdwon"
+              value={recurrentId}
+              onChange={(e) => setRecurrentId(e.target.value)}
             >
-              <option value="1">Sim</option>
+              <option value={true}>Sim</option>
+              <option value={false}>Não</option>
             </select>
           </div>
 
@@ -120,8 +172,11 @@ function ExpensePaymentArea() {
               id="parcela"
               name="parcela"
               className="expense-roleDropdwon"
+              value={payment_statusId}
+              onChange={(e) => setPayment_statusId(e.target.value)}
             >
-              <option value="1">Pago</option>
+              <option value={true}>Pago</option>
+              <option value={false}>Aberto</option>
             </select>
           </div>
         </div>

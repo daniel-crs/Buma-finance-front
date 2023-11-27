@@ -64,9 +64,14 @@ function ExpenseIncome() {
                   key={i}
                   expenseId={expense.id}
                   description={expense.name}
-                  installments={expense.installments}
-                  payment_status={expense.payment_status}
+                  competence={expense.competence}
                   price={expense.gross_value}
+                  discount={expense.discount}
+                  installments={expense.installments}
+                  payment_type={expense.payment_type}
+                  payment_status={expense.payment_status}
+                  fees={expense.fees}
+                  recurrent={expense.recurrent}
                   identify={"expense"}
                 />
               ))}

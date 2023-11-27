@@ -23,6 +23,9 @@ function TableData({
   installments,
   recurrent,
   due_date,
+  competence,
+  payment_type,
+  fees,
   identify,
 }) {
   const [openModal, setOpenModal] = useState(false);
@@ -157,6 +160,15 @@ function TableData({
               id={expenseId}
               isOpen={openModal}
               setModalOpen={() => setOpenModal(!openModal)}
+              descriptionId={description}
+              competenceId={competence}
+              priceId={price}
+              discountId={discount}
+              installmentsId={installments}
+              payment_typeId={payment_type}
+              payment_statusId={payment_status}
+              recurrentId={recurrent}
+              feesId={fees}
             />
           )}
         </div>

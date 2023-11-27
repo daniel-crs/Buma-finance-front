@@ -3,7 +3,7 @@ import "../../../../style/expenseForm.css";
 import { FaMoneyCheck } from "react-icons/fa6";
 import { useState } from "react";
 
-function ExpenseInfoArea() {
+function ExpenseInfoArea({ descriptionId, setDescriptionId }) {
   const [incomeOption, setIncomeOption] = useState("funcionario");
 
   return (
@@ -22,6 +22,8 @@ function ExpenseInfoArea() {
                 type="text"
                 id="name"
                 className="expense-clientFieldArea"
+                value={descriptionId}
+                onChange={(e) => setDescriptionId(e.target.value)}
               />
             </div>
 
