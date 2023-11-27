@@ -45,14 +45,18 @@ function ExpenseIncome() {
                   key={i}
                   revenueId={revenue.id}
                   description={revenue.description}
-                  installments={revenue.installments}
-                  payment_status={revenue.payment_status}
-                  price={revenue.price}
-                  identify={"revenue"}
                   productId={revenue.product}
                   serviceId={revenue.service}
+                  price={revenue.price}
+                  quantity={revenue.quantity}
+                  discount={revenue.discount}
+                  payment_status={revenue.payment_status}
                   legalcustomerId={revenue.legalcustomer}
                   physicalcustomerId={revenue.physicalcustomer}
+                  installments={revenue.installments}
+                  due_date={revenue.due_date}
+                  recurrent={revenue.recurrent}
+                  identify={"revenue"}
                 />
               ))}
               {expenses.map((expense, i) => (

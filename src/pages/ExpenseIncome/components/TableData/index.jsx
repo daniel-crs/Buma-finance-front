@@ -12,14 +12,18 @@ function TableData({
   revenueId,
   expenseId,
   description,
-  installments,
-  payment_status,
-  price,
-  identify,
   productId,
   serviceId,
+  price,
+  quantity,
+  discount,
+  payment_status,
   legalcustomerId,
   physicalcustomerId,
+  installments,
+  recurrent,
+  due_date,
+  identify,
 }) {
   const [openModal, setOpenModal] = useState(false);
 
@@ -138,8 +142,15 @@ function TableData({
               incDescription={description}
               incProductId={productId}
               incServiceId={serviceId}
+              priceId={price}
+              quantityId={quantity}
+              discountId={discount}
+              payment_statusId={payment_status}
               legalcustomerId={legalcustomerId}
               physicalcustomerId={physicalcustomerId}
+              installmentsId={installments}
+              due_dateId={due_date}
+              recurrentId={recurrent}
             />
           ) : (
             <ExpenseModal

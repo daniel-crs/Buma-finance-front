@@ -13,14 +13,28 @@ function IncomeModal({
   incDescription,
   incProductId,
   incServiceId,
+  priceId,
+  quantityId,
+  discountId,
+  payment_statusId,
   legalcustomerId,
   physicalcustomerId,
+  installmentsId,
+  due_dateId,
+  recurrentId,
 }) {
   const [description, setDescription] = useState(incDescription);
   const [product, setProduct] = useState(incProductId);
   const [service, setService] = useState(incServiceId);
+  const [price, setPrice] = useState(priceId);
+  const [quantity, setQuantity] = useState(quantityId);
+  const [discount, setDiscount] = useState(discountId);
+  const [payment_status, setPayment_status] = useState(payment_statusId);
   const [legalcustomer, setLegalcustomer] = useState(legalcustomerId);
   const [physicalcustomer, setPhysicalcustomer] = useState(physicalcustomerId);
+  const [installments, setInstallments] = useState(installmentsId);
+  const [due_date, setDue_date] = useState(due_dateId);
+  const [recurrent, setRecurrent] = useState(recurrentId);
 
   const updateRevenue = () => {
     fetch(`http://localhost:8000/revenues/${id}`, {
@@ -30,19 +44,19 @@ function IncomeModal({
         description,
         product,
         service,
-        price: 3000,
-        quantity: 10,
-        discount: 0,
-        payment_status: true,
+        price,
+        quantity,
+        discount,
+        payment_status,
         legalcustomer,
         physicalcustomer,
-        installments: 0,
-        due_date: null,
-        recurrent: true,
+        installments,
+        due_date,
+        recurrent,
       }),
     }).then((response) => response.json());
 
-    window.location.reload(5000);
+    window.location.reload();
   };
 
   if (isOpen) {
@@ -80,7 +94,22 @@ function IncomeModal({
             </fieldset>
 
             <fieldset className="income-formCustom">
-              <IncomePaymentArea />
+              <IncomePaymentArea
+                priceId={price}
+                setPriceId={setPrice}
+                quantityId={quantity}
+                setQuantityId={setQuantity}
+                discountId={discount}
+                setDiscountId={setDiscount}
+                payment_statusId={payment_status}
+                setPayment_statusId={setPayment_status}
+                installmentsId={installments}
+                setInstallmentsId={setInstallments}
+                due_dateId={due_date}
+                setDue_dateId={setDue_date}
+                recurrentId={recurrent}
+                setRecurrentId={setRecurrent}
+              />
             </fieldset>
 
             <div className="income-buttonPosition">

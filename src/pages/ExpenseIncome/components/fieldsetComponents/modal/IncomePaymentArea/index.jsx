@@ -2,7 +2,22 @@ import "../../../../style/incomeForm.css";
 
 import { FaMoneyBills } from "react-icons/fa6";
 
-function IncomePaymentArea() {
+function IncomePaymentArea({
+  priceId,
+  setPriceId,
+  quantityId,
+  setQuantityId,
+  discountId,
+  setDiscountId,
+  payment_statusId,
+  setPayment_statusId,
+  installmentsId,
+  setInstallmentsId,
+  due_dateId,
+  setDue_dateId,
+  recurrentId,
+  setRecurrentId,
+}) {
   return (
     <div className="income-fornsContainer">
       <div className="income-formIcon">
@@ -19,7 +34,13 @@ function IncomePaymentArea() {
 
             <div className="income-valueContainer">
               <p className="income-reiasValue">R$</p>
-              <input id="valor" type="text" className="income-valueArea" />
+              <input
+                id="valor"
+                type="text"
+                className="income-valueArea"
+                value={priceId}
+                onChange={(e) => setPriceId(e.target.value)}
+              />
             </div>
           </div>
 
@@ -30,7 +51,13 @@ function IncomePaymentArea() {
             <br></br>
             <div className="income-valueContainer">
               <p className="income-reiasValue">R$</p>
-              <input id="desconto" type="text" className="income-valueArea" />
+              <input
+                id="desconto"
+                type="text"
+                className="income-valueArea"
+                value={discountId}
+                onChange={(e) => setDiscountId(e.target.value)}
+              />
             </div>
           </div>
 
@@ -41,7 +68,8 @@ function IncomePaymentArea() {
               type="text"
               id="quantidade"
               className="income-clientFieldArea"
-              placeholder="Ex: 20"
+              value={quantityId}
+              onChange={(e) => setQuantityId(e.target.value)}
             />
           </div>
         </div>
@@ -73,7 +101,13 @@ function IncomePaymentArea() {
             <label htmlFor="parcela">Parcela</label>
             <br />
 
-            <select id="parcela" name="parcela" className="income-roleDropdwon">
+            <select
+              id="parcela"
+              name="parcela"
+              className="income-roleDropdwon"
+              value={installmentsId}
+              onChange={(e) => setInstallmentsId(e.target.value)}
+            >
               <option value={0}>Unica</option>
               <option value={2}>2</option>
               <option value={3}>3</option>
@@ -94,7 +128,8 @@ function IncomePaymentArea() {
               type="text"
               id="vencimento"
               className="income-clientFieldArea"
-              placeholder="dd/mm/aaaa"
+              value={due_dateId}
+              onChange={(e) => setDue_dateId(e.target.value)}
             />
           </div>
 
@@ -108,8 +143,11 @@ function IncomePaymentArea() {
               id="recorrente"
               name="recorrente"
               className="income-roleDropdwon"
+              value={recurrentId}
+              onChange={(e) => setRecurrentId(e.target.value)}
             >
-              <option value="1">Sim</option>
+              <option value={true}>Sim</option>
+              <option value={false}>Não</option>
             </select>
           </div>
 
@@ -119,7 +157,15 @@ function IncomePaymentArea() {
             </label>
             <br />
 
-            <select id="parcela" name="parcela" className="income-roleDropdwon">
+            <select
+              id="parcela"
+              name="parcela"
+              className="income-roleDropdwon"
+              value={payment_statusId}
+              onChange={(e) => {
+                setPayment_statusId(e.target.value);
+              }}
+            >
               <option value={true}>Pago</option>
               <option value={false}>Aberto</option>
             </select>
