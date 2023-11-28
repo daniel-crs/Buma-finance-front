@@ -14,27 +14,23 @@ function IncomeInfoArea({
   setLegalcustomerId,
   physicalcustomerId,
   setPhysicalcustomerId,
+  incomeOption,
+  setIncomeOption,
 }) {
-  const [incomeOption, setIncomeOption] = useState("");
   const [clientOption, setClientOption] = useState("");
   const [product, setProduct] = useState([]);
   const [service, setService] = useState([]);
   const [legal, setLegal] = useState([]);
   const [physical, setPhysical] = useState([]);
-
-  useEffect(() => {
-    if (incProductId !== null) {
-      setIncomeOption("product");
-    } else {
-      setIncomeOption("service");
-    }
-  }, [incProductId]);
+  const [changeClienteSize, setChangeClienteSize] = useState(
+    "income-treeElementArea"
+  );
 
   useEffect(() => {
     if (physicalcustomerId !== null) {
       setClientOption("fisico");
     } else {
-      setIncomeOption("jurico");
+      setClientOption("jurico");
     }
   }, [physicalcustomerId]);
 
@@ -62,6 +58,14 @@ function IncomeInfoArea({
       .then((physical) => setPhysical(physical));
   }, []);
 
+  useEffect(() => {
+    if (incomeOption === "outro") {
+      setChangeClienteSize("income-standardElementArea");
+    } else {
+      setChangeClienteSize("income-treeElementArea");
+    }
+  }, [incomeOption]);
+
   return (
     <div className="income-fornsContainer">
       <div className="income-formIcon">
@@ -82,44 +86,27 @@ function IncomeInfoArea({
             />
           </div>
 
-          {incProductId !== null ? (
-            <div className="income-standardElementArea">
-              <label htmlFor="receita">Tipo da receita</label>
-              <br />
+          <div className="income-standardElementArea">
+            <label htmlFor="receita">Tipo da receita</label>
+            <br />
 
-              <select
-                id="receita"
-                name="receita"
-                className="income-roleDropdwon"
-                defaultValue={"product"}
-                onChange={(e) => setIncomeOption(e.target.value)}
-              >
-                <option value="product">Produto</option>
-                <option value="service">Service</option>
-              </select>
-            </div>
-          ) : (
-            <div className="income-standardElementArea">
-              <label htmlFor="receita">Tipo da receita</label>
-              <br />
-
-              <select
-                id="receita"
-                name="receita"
-                className="income-roleDropdwon"
-                defaultValue={"service"}
-                onChange={(e) => setIncomeOption(e.target.value)}
-              >
-                <option value="product">Produto</option>
-                <option value="service">Service</option>
-              </select>
-            </div>
-          )}
+            <select
+              id="receita"
+              name="receita"
+              className="income-roleDropdwon"
+              value={incomeOption}
+              onChange={(e) => setIncomeOption(e.target.value)}
+            >
+              <option value="product">Produto</option>
+              <option value="service">Service</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
         </div>
 
         <div className="income-inputSpace">
           {physicalcustomerId !== null ? (
-            <div className="income-treeElementArea">
+            <div className={changeClienteSize}>
               <label htmlFor="cliente">Tipo do cliente</label>
               <br />
               <select
@@ -134,7 +121,7 @@ function IncomeInfoArea({
               </select>
             </div>
           ) : (
-            <div className="income-treeElementArea">
+            <div className={changeClienteSize}>
               <label htmlFor="cliente">Tipo do cliente</label>
               <br />
               <select
@@ -152,7 +139,7 @@ function IncomeInfoArea({
 
           {clientOption === "fisico" ? (
             <div
-              className="income-treeElementArea"
+              className={changeClienteSize}
               onChange={() => setLegalcustomerId(null)}
             >
               <label htmlFor="cliente">Cliente</label>
@@ -175,7 +162,7 @@ function IncomeInfoArea({
             </div>
           ) : (
             <div
-              className="income-treeElementArea"
+              className={changeClienteSize}
               onChange={() => setPhysicalcustomerId(null)}
             >
               <label htmlFor="cliente">Cliente</label>
@@ -220,7 +207,7 @@ function IncomeInfoArea({
                 ))}
               </select>
             </div>
-          ) : (
+          ) : incomeOption === "service" ? (
             <div
               className="income-treeElementArea"
               onChange={() => incSetProduct(null)}
@@ -241,6 +228,10 @@ function IncomeInfoArea({
                   <option value={services.id}>{services.name}</option>
                 ))}
               </select>
+            </div>
+          ) : (
+            <div onChange={() => incSetService(null)}>
+              <div onChange={() => incSetProduct(null)}>{undefined}</div>
             </div>
           )}
         </div>

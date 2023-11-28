@@ -13,6 +13,9 @@ function IncomeInfo({
 }) {
   const [incomeOption, setIncomeOption] = useState("product");
   const [clientOption, setClientOption] = useState("fisico");
+  const [changeClienteSize, setChangeClienteSize] = useState(
+    "income-treeElementArea"
+  );
   const [legal, setLegal] = useState([]);
   const [physical, setPhysical] = useState([]);
   const [product, setProduct] = useState([]);
@@ -41,6 +44,14 @@ function IncomeInfo({
       .then((res) => res.json())
       .then((service) => setService(service));
   }, []);
+
+  useEffect(() => {
+    if (incomeOption === "outro") {
+      setChangeClienteSize("income-standardElementArea");
+    } else {
+      setChangeClienteSize("income-treeElementArea");
+    }
+  }, [incomeOption]);
 
   return (
     <div className="income-fornsContainer">
@@ -74,12 +85,13 @@ function IncomeInfo({
             >
               <option value="product">Produto</option>
               <option value="service">Service</option>
+              <option value="outro">Outro</option>
             </select>
           </div>
         </div>
 
         <div className="income-inputSpace">
-          <div className="income-treeElementArea">
+          <div className={changeClienteSize}>
             <label htmlFor="cliente">Tipo do cliente</label>
             <br />
             <select
@@ -95,7 +107,7 @@ function IncomeInfo({
 
           {clientOption === "fisico" ? (
             <div
-              className="income-treeElementArea"
+              className={changeClienteSize}
               onChange={() => setLegalcustomerId(null)}
             >
               <label htmlFor="cliente">Cliente</label>
@@ -115,7 +127,7 @@ function IncomeInfo({
             </div>
           ) : (
             <div
-              className="income-treeElementArea"
+              className={changeClienteSize}
               onChange={() => setPhysicalcustomerId(null)}
             >
               <label htmlFor="cliente">Cliente</label>
@@ -154,7 +166,7 @@ function IncomeInfo({
                 ))}
               </select>
             </div>
-          ) : (
+          ) : incomeOption === "service" ? (
             <div
               className="income-treeElementArea"
               onChange={() => setProductId(null)}
@@ -172,6 +184,10 @@ function IncomeInfo({
                   <option value={services.id}>{services.name}</option>
                 ))}
               </select>
+            </div>
+          ) : (
+            <div onChange={() => setServiceId(null)}>
+              <div onChange={() => setProductId(null)}>{undefined}</div>
             </div>
           )}
         </div>

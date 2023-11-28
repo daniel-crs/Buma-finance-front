@@ -4,7 +4,7 @@ import IncomeInfoArea from "../fieldsetComponents/modal/IncomeInfoArea";
 import IncomePaymentArea from "../fieldsetComponents/modal/IncomePaymentArea";
 
 import { MdOutlineClose } from "react-icons/md";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function IncomeModal({
   id,
@@ -35,6 +35,7 @@ function IncomeModal({
   const [installments, setInstallments] = useState(installmentsId);
   const [due_date, setDue_date] = useState(due_dateId);
   const [recurrent, setRecurrent] = useState(recurrentId);
+  const [incomeOption, setIncomeOption] = useState("");
 
   const updateRevenue = () => {
     fetch(`http://localhost:8000/revenues/${id}`, {
@@ -58,6 +59,16 @@ function IncomeModal({
 
     window.location.reload();
   };
+
+  useEffect(() => {
+    if (product === null && service === null) {
+      setIncomeOption("outro");
+    } else if (product === null) {
+      setIncomeOption("service");
+    } else {
+      setIncomeOption("product");
+    }
+  }, [product, service]);
 
   if (isOpen) {
     return (
@@ -90,6 +101,8 @@ function IncomeModal({
                 setLegalcustomerId={setLegalcustomer}
                 physicalcustomerId={physicalcustomer}
                 setPhysicalcustomerId={setPhysicalcustomer}
+                incomeOption={incomeOption}
+                setIncomeOption={setIncomeOption}
               />
             </fieldset>
 

@@ -128,6 +128,7 @@ function IncomePaymentArea({
               type="text"
               id="vencimento"
               className="income-clientFieldArea"
+              placeholder="aaaa/mm/dd"
               value={due_dateId}
               onChange={(e) => setDue_dateId(e.target.value)}
             />

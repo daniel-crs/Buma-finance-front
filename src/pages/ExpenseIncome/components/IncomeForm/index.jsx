@@ -8,7 +8,7 @@ import { useState } from "react";
 function IncomeForm({ isOpen, setModalOpen }) {
   const url = "http://localhost:8000/revenues";
   const [description, setDescription] = useState("");
-  const [product, setProductId] = useState(3);
+  const [product, setProductId] = useState(null);
   const [service, setServiceId] = useState(null);
   const [price, setPrice] = useState();
   const [quantity, setQuantity] = useState();
