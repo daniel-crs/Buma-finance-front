@@ -16,8 +16,9 @@ function IncomeInfoArea({
   setPhysicalcustomerId,
   incomeOption,
   setIncomeOption,
+  clientOption,
+  setClientOption,
 }) {
-  const [clientOption, setClientOption] = useState("");
   const [product, setProduct] = useState([]);
   const [service, setService] = useState([]);
   const [legal, setLegal] = useState([]);
@@ -25,14 +26,6 @@ function IncomeInfoArea({
   const [changeClienteSize, setChangeClienteSize] = useState(
     "income-treeElementArea"
   );
-
-  useEffect(() => {
-    if (physicalcustomerId !== null) {
-      setClientOption("fisico");
-    } else {
-      setClientOption("jurico");
-    }
-  }, [physicalcustomerId]);
 
   useEffect(() => {
     fetch("http://localhost:8000/product")
@@ -105,37 +98,20 @@ function IncomeInfoArea({
         </div>
 
         <div className="income-inputSpace">
-          {physicalcustomerId !== null ? (
-            <div className={changeClienteSize}>
-              <label htmlFor="cliente">Tipo do cliente</label>
-              <br />
-              <select
-                id="cliente"
-                name="cliente"
-                className="income-roleDropdwon"
-                defaultValue={"fisico"}
-                onChange={(e) => setClientOption(e.target.value)}
-              >
-                <option value="fisico">Físico</option>
-                <option value="jurico">Jurídico</option>
-              </select>
-            </div>
-          ) : (
-            <div className={changeClienteSize}>
-              <label htmlFor="cliente">Tipo do cliente</label>
-              <br />
-              <select
-                id="cliente"
-                name="cliente"
-                className="income-roleDropdwon"
-                defaultValue={"jurico"}
-                onChange={(e) => setClientOption(e.target.value)}
-              >
-                <option value="fisico">Físico</option>
-                <option value="jurico">Jurídico</option>
-              </select>
-            </div>
-          )}
+          <div className={changeClienteSize}>
+            <label htmlFor="cliente">Tipo do cliente</label>
+            <br />
+            <select
+              id="cliente"
+              name="cliente"
+              className="income-roleDropdwon"
+              defaultValue={clientOption}
+              onChange={(e) => setClientOption(e.target.value)}
+            >
+              <option value="fisico">Físico</option>
+              <option value="jurico">Jurídico</option>
+            </select>
+          </div>
 
           {clientOption === "fisico" ? (
             <div

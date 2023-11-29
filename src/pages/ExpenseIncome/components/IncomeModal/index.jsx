@@ -36,6 +36,7 @@ function IncomeModal({
   const [due_date, setDue_date] = useState(due_dateId);
   const [recurrent, setRecurrent] = useState(recurrentId);
   const [incomeOption, setIncomeOption] = useState("");
+  const [clientOption, setClientOption] = useState("");
 
   const updateRevenue = () => {
     fetch(`http://localhost:8000/revenues/${id}`, {
@@ -70,6 +71,14 @@ function IncomeModal({
     }
   }, [product, service]);
 
+  useEffect(() => {
+    if (physicalcustomerId === null) {
+      setClientOption("jurico");
+    } else {
+      setClientOption("fisico");
+    }
+  }, [physicalcustomerId]);
+
   if (isOpen) {
     return (
       <div className="income-backgroundStyle">
@@ -103,6 +112,8 @@ function IncomeModal({
                 setPhysicalcustomerId={setPhysicalcustomer}
                 incomeOption={incomeOption}
                 setIncomeOption={setIncomeOption}
+                clientOption={clientOption}
+                setClientOption={setClientOption}
               />
             </fieldset>
 

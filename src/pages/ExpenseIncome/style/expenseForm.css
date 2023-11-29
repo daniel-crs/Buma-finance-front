@@ -94,6 +94,10 @@ input::placeholder {
     align-items: center;
 }
 
+.expense-onlyElementArea {
+    width: 100%;
+}
+
 .expense-standardElementArea {
     width: 49%;
 }

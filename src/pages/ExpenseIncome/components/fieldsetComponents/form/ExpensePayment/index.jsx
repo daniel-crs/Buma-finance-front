@@ -1,7 +1,6 @@
 import "../../../../style/expenseForm.css";
 
 import { FaMoneyBills } from "react-icons/fa6";
-import { useEffect } from "react";
 
 function ExpensePayment({
   competence,
@@ -10,7 +9,6 @@ function ExpensePayment({
   setGross_value,
   discount,
   setDiscount,
-  roleId,
   setInstallments,
   setPayment_type,
   setStatus,
@@ -18,18 +16,6 @@ function ExpensePayment({
   setFees,
   setRecurrent,
 }) {
-  useEffect(() => {
-    if (roleId !== null) {
-      fetch(`http://localhost:8000/roles/${roleId}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setGross_value(data.salary);
-        });
-    } else {
-      setGross_value(0);
-    }
-  }, [roleId]);
-
   return (
     <div>
       <div className="expense-fornsContainer">
