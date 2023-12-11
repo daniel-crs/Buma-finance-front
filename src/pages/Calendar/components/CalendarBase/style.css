@@ -1,0 +1,95 @@
+.calendar-container {
+    padding-bottom: 50px;
+}
+
+.caledar-header {
+    display: flex;
+    justify-content: center; 
+    padding: 25px 0;
+} 
+
+.date-button {
+    display: inline-flex;
+    gap: 5px;
+    height: 40px;
+    padding: 0px 10px 0 10px;
+    background: #562B82;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+#date-button:hover {
+    background: #A366E1;
+}
+
+.symbols-rounded, .date-button-text {
+    display: inline-flex;
+    align-items: center;
+    color: #ffffff;
+    height: 100%;
+}
+
+.date-button-text {
+    margin-top: 1px;
+}
+
+.symbols-rounded {
+    cursor: pointer;
+    padding: 0 10px 0 10px;
+}
+
+.symbols-rounded:hover {
+    color: #A366E1;
+}
+
+.calendar {
+    padding-right: 20px;
+}
+
+.calendar ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.calendar .weeks {
+    text-align: start;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+
+.calendar .days li{
+    text-align: end;
+    font-size: 0.9em;
+    height: 125px;
+    border: 0.2px solid #828080;
+}
+
+.calendar .days li p{
+    margin: 5px 10px 0 0;
+}
+
+.calendar ul li{
+    width: calc(100% / 7);
+}
+
+.inactive {
+    color: #aaa;
+}
+
+.active {
+    display: flex;
+    justify-content: end;
+}
+
+.active p {
+    color: white;
+    background-color: #562B82;
+    margin-top: 5px;
+    text-align: center;
+    height: 20px;
+    width: 30px;
+    border-radius: 50px;
+}

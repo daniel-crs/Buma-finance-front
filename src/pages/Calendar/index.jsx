@@ -4,6 +4,8 @@ import Header from "../../components/Header";
 import SideBar from "../../components/SideBar";
 import UpperBodyInformation from "../../components/UpperBodyInformation";
 
+import CalendarBase from "./components/CalendarBase";
+
 function Calendar() {
   return (
     <div>
@@ -15,6 +17,8 @@ function Calendar() {
           pageTitle={"Receitas e despesas"}
           simpleButton={false}
         />
+
+        <CalendarBase />
       </div>
     </div>
   );
