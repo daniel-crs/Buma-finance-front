@@ -145,9 +145,19 @@ function SideBar() {
       </div>
 
       <div className="spaceBetweenElements">
-        <a href="/">
-          <BsCalendar2DateFill className="sidebarElements" />
-        </a>
+        {(() => {
+          const isCalendarUrl = location.pathname === "/Calendar";
+          return (
+            <div id={isCalendarUrl && "activeElements"}>
+              <a href="/Calendar">
+                <BsCalendar2DateFill
+                  id={isCalendarUrl && "active"}
+                  className={!isCalendarUrl && "sidebarElements"}
+                />
+              </a>
+            </div>
+          );
+        })()}
       </div>
 
       <div className="spaceBetweenElements">

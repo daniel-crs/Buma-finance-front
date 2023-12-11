@@ -8,6 +8,7 @@ import Service from "./pages/AllProductAndServices/Service";
 import Client from "./pages/Client";
 import Employee from "./pages/Employee";
 import ExpenseIncome from "./pages/ExpenseIncome";
+import Calendar from "./pages/Calendar";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/Client" element={<Client />} />
         <Route path="/Employee" element={<Employee />} />
         <Route path="/ExpenseIncome" element={<ExpenseIncome />} />
+        <Route path="/Calendar" element={<Calendar />} />
       </Routes>
     </Router>
   );
