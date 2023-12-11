@@ -11,8 +11,6 @@ function EmployeeForm({ isOpen, setModalOpen }) {
   const [email, setEmail] = useState("");
   const [position, setPosition] = useState(1);
 
-  console.log(roles.id);
-
   const createEmplooye = () => {
     fetch(url, {
       method: "POST",

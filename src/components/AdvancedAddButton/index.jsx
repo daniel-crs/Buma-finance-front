@@ -3,6 +3,8 @@ import ClientLegalForm from "../../pages/Client/components/ClientLegalForm";
 import ClientPhysicalForm from "../../pages/Client/components/ClientPhysicalForm";
 import EmployeeForm from "../../pages/Employee/components/EmployeeForm";
 import RoleForm from "../../pages/Employee/components/RoleForm";
+import IncomeForm from "../../pages/ExpenseIncome/components/IncomeForm";
+import ExpenseForm from "../../pages/ExpenseIncome/components/ExpenseForm";
 import Button from "react-bootstrap/Button";
 
 import { HiPlus } from "react-icons/hi";
@@ -13,6 +15,8 @@ function AdvancedAddButton({ modalChange }) {
   const [clientPhysicalModalShow, setPhysicalModalShow] = useState(false);
   const [employeeModalShow, setEmployeeModalShow] = useState(false);
   const [roleModalShow, setRoleModalShow] = useState(false);
+  const [incomeModalShow, setIncomeModalShow] = useState(false);
+  const [expenseModalShow, setExpenseModalShow] = useState(false);
 
   return (
     <>
@@ -60,6 +64,24 @@ function AdvancedAddButton({ modalChange }) {
                 </Button>
               </div>
             );
+          } else {
+            return (
+              <div className="dropdown-content">
+                <Button
+                  className="dropdown-item"
+                  onClick={() => setIncomeModalShow(true)}
+                >
+                  Receita
+                </Button>
+
+                <Button
+                  className="dropdown-item"
+                  onClick={() => setExpenseModalShow(true)}
+                >
+                  Despesa
+                </Button>
+              </div>
+            );
           }
         })()}
       </div>
@@ -82,6 +104,16 @@ function AdvancedAddButton({ modalChange }) {
       <RoleForm
         isOpen={roleModalShow}
         setModalOpen={() => setRoleModalShow(!roleModalShow)}
+      />
+
+      <IncomeForm
+        isOpen={incomeModalShow}
+        setModalOpen={() => setIncomeModalShow(!incomeModalShow)}
+      />
+
+      <ExpenseForm
+        isOpen={expenseModalShow}
+        setModalOpen={() => setExpenseModalShow(!expenseModalShow)}
       />
     </>
   );
