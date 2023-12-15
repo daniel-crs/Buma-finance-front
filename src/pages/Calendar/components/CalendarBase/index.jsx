@@ -1,17 +1,69 @@
-
 import "./style.css"
 
+import { useState } from "react";
 import { FaChevronLeft } from "react-icons/fa6";
 import { FaChevronRight } from "react-icons/fa6";
 
 function CalendarBase() {
+    const currentDate = new Date();
+
+    const [month, setMonth] = useState(currentDate.getMonth());
+    const [year, setYear] = useState(currentDate.getFullYear());
+
+    function getMonthAndYear() {
+        const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", 
+        "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+
+        return `${months[month]} ${year}`
+    };
+
+    function prevMonth() {
+        if(month === 0) {
+            setMonth(11);
+            setYear(year - 1);
+        } else {
+            setMonth(month - 1);
+        }
+    }
+    
+    function nextMonth() {
+        if(month === 11) {
+            setMonth(0);
+            setYear(year + 1);
+        } else {
+            setMonth(month + 1);
+        }
+    }
+
+    function printDays() {
+        let firstDay = new Date(year, month, 1).getDay();
+        let lastDay = new Date(year, month + 1, 0).getDate();
+        let lastDayOfLastMonth = new Date(year, month, 0).getDate();
+        let lastDayOfNextMonth = new Date(year, month, lastDay).getDay();
+        let liTag = "";
+
+        for(let i = firstDay; i > 0; i--) {
+            liTag += `<li><p className="teste">${lastDayOfLastMonth - i + 1}</p></li>`;
+        }
+
+        for(let i = 1; i <= lastDay; i++) {
+            liTag += `<li><p>${i}</p></li>`;
+        }
+
+        for(let i = lastDayOfNextMonth; i < 6; i++) {
+            liTag += `<li><p>${i - lastDayOfNextMonth + 1}</p></li>`;
+        }
+
+        return liTag;
+    }
+
     return (
         <div className="calendar-container">
             <div className="caledar-header">
                 <div className="date-button">
-                <span className="symbols-rounded"><FaChevronLeft /></span>
-                <span className="date-button-text">September 2022</span>
-                <span className="symbols-rounded"><FaChevronRight /></span>
+                <span className="symbols-rounded" onClick={() => prevMonth()}><FaChevronLeft/></span>
+                <span className="date-button-text">{getMonthAndYear()}</span>
+                <span className="symbols-rounded" onClick={() => nextMonth()}><FaChevronRight /></span>
                 </div>
             </div>
             <div className="calendar">
@@ -24,49 +76,8 @@ function CalendarBase() {
                     <li>Sex</li>
                     <li>Sab</li>
                 </ul>
-                <ul className="days">
-                    <li className="inactive"><p>26</p></li>
-                    <li className="inactive"><p>27</p></li>
-                    <li className="inactive"><p>28</p></li>
-                    <li className="inactive"><p>29</p></li>
-                    <li className="inactive"><p>30</p></li>
-                    <li><p>1</p></li>
-                    <li><p>2</p></li>
-                    <li><p>3</p></li>
-                    <li><p>4</p></li>
-                    <li><p>5</p></li>
-                    <li><p>6</p></li>
-                    <li><p>7</p></li>
-                    <li><p>8</p></li>
-                    <li><p>9</p></li>
-                    <li><p>10</p></li>
-                    <li><p>11</p></li>
-                    <li className="active"><p>12</p></li>
-                    <li><p>13</p></li>
-                    <li><p>14</p></li>
-                    <li><p>15</p></li>
-                    <li><p>16</p></li>
-                    <li><p>17</p></li>
-                    <li><p>18</p></li>
-                    <li><p>19</p></li>
-                    <li><p>20</p></li>
-                    <li><p>21</p></li>
-                    <li><p>22</p></li>
-                    <li><p>23</p></li>
-                    <li><p>24</p></li>
-                    <li><p>25</p></li>
-                    <li><p>26</p></li>
-                    <li><p>27</p></li>
-                    <li><p>28</p></li>
-                    <li><p>29</p></li>
-                    <li><p>30</p></li>
-                    <li><p>31</p></li>
-                    <li className="inactive"><p>1</p></li>
-                    <li className="inactive"><p>2</p></li>
-                    <li className="inactive"><p>3</p></li>
-                    <li className="inactive"><p>4</p></li>
-                    <li className="inactive"><p>5</p></li>
-                    <li className="inactive"><p>6</p></li>
+                <ul className="days" dangerouslySetInnerHTML={{ __html: printDays() }}>
+
                 </ul>
             </div>
         </div>
