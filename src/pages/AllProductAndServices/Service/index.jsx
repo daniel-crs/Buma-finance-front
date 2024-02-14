@@ -23,7 +23,7 @@ function Service() {
       <Header />
       <SideBar />
       <div id="bodyContainer">
-        <UpperBodyInformation pageTitle={"Serviço"} simpleButton={true} />
+        <UpperBodyInformation pageTitle={"Serviço"} showMonth={false} simpleButton={true} />
 
         <div className="listBackground">
           <table className="ListContainer">

@@ -29,7 +29,7 @@ function Employee() {
       <Header />
       <SideBar />
       <div id="employee-bodyContainer">
-        <UpperBodyInformation pageTitle={"Funcionario"} simpleButton={false} />
+        <UpperBodyInformation pageTitle={"Funcionario"} showMonth={false} simpleButton={false} />
 
         {roles.map((role, i) => (
           <div className="employee-listBackground">

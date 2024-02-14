@@ -1,77 +1,35 @@
 .calendar-container {
-    padding-bottom: 50px;
-}
-
-.caledar-header {
-    display: flex;
-    justify-content: center; 
-    padding: 25px 0;
-} 
-
-.date-button {
-    display: inline-flex;
-    gap: 5px;
-    height: 40px;
-    padding: 0px 10px 0 10px;
-    background: #562B82;
-    border-radius: 10px;
-    overflow: hidden;
-    font-size: 1.2em;
-    font-weight: 500;
-}
-
-#date-button:hover {
-    background: #A366E1;
-}
-
-.symbols-rounded, .date-button-text {
-    display: inline-flex;
-    align-items: center;
-    color: #ffffff;
-    height: 100%;
-}
-
-.date-button-text {
-    margin-top: 1px;
-}
-
-.symbols-rounded {
-    cursor: pointer;
-    padding: 0 10px 0 10px;
-}
-
-.symbols-rounded:hover {
-    color: #A366E1;
+    padding: 50px 0;
 }
 
 .calendar {
-    padding-right: 20px;
+    width: 100%;
 }
 
-.calendar ul {
+.weeks {
+    display: flex;
+    text-align: start;
+    flex-wrap: wrap;
+    font-weight: 500;
+    padding-left: 10px;
+}
+
+.weeks p {
+    width: calc(100% / 7);
+}
+
+.days {
     display: flex;
     flex-wrap: wrap;
-    list-style: none;
 }
 
-.calendar .weeks {
-    text-align: start;
-    font-weight: 500;
-    margin-bottom: 0px;
-}
-
-.calendar .days li{
+.days p{
     text-align: end;
     font-size: 0.9em;
-    height: 125px;
-    border: 0.2px solid #828080;
-}
-
-.calendar .days li p{
-    margin: 5px 10px 0 0;
-}
-
-.calendar ul li{
+    border: 0.1px solid #828080;
+    height: 200px;
+    margin-bottom: 0px;
+    padding: 10px 10px 0 0;
     width: calc(100% / 7);
 }
 
@@ -81,7 +39,7 @@
 
 .active {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .active p {

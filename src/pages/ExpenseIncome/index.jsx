@@ -32,6 +32,7 @@ function ExpenseIncome() {
       <div id="inex-bodyContainer">
         <UpperBodyInformation
           pageTitle={"Receitas e despesas"}
+          showMonth={true}
           simpleButton={false}
         />
 

@@ -28,7 +28,7 @@ function Client() {
       <Header />
       <SideBar />
       <div id="bodyContainer">
-        <UpperBodyInformation pageTitle={"Cliente"} simpleButton={false} />
+        <UpperBodyInformation pageTitle={"Cliente"} showMonth={false} simpleButton={false} />
 
         <div className="listBackground">
           <table className="ListContainer">

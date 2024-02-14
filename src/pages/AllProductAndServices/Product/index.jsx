@@ -24,7 +24,7 @@ function Product() {
       <Header />
       <SideBar />
       <div id="bodyContainer">
-        <UpperBodyInformation pageTitle={"Produto"} simpleButton={true} />
+        <UpperBodyInformation pageTitle={"Produto"} showMonth={false} simpleButton={true} />
 
         <div className="listBackground">
           <table className="ListContainer">

@@ -1,84 +1,74 @@
 import "./style.css"
 
-import { useState } from "react";
-import { FaChevronLeft } from "react-icons/fa6";
-import { FaChevronRight } from "react-icons/fa6";
-
 function CalendarBase() {
-    const currentDate = new Date();
+    // function printDays() {
+    //     let firstDay = new Date(year, month, 1).getDay();
+    //     let lastDay = new Date(year, month + 1, 0).getDate();
+    //     let lastDayOfLastMonth = new Date(year, month, 0).getDate();
+    //     let lastDayOfNextMonth = new Date(year, month, lastDay).getDay();
+    //     let liTag = "";
 
-    const [month, setMonth] = useState(currentDate.getMonth());
-    const [year, setYear] = useState(currentDate.getFullYear());
+    //     for(let i = firstDay; i > 0; i--) {
+    //         liTag += `<p className="teste">${lastDayOfLastMonth - i + 1}</p>`;
+    //     }
 
-    function getMonthAndYear() {
-        const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", 
-        "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+    //     for(let i = 1; i <= lastDay; i++) {
+    //         liTag += `<p>${i}</p>`;
+    //     }
 
-        return `${months[month]} ${year}`
-    };
+    //     for(let i = lastDayOfNextMonth; i < 6; i++) {
+    //         liTag += `<p>${i - lastDayOfNextMonth + 1}</p>`;
+    //     }
 
-    function prevMonth() {
-        if(month === 0) {
-            setMonth(11);
-            setYear(year - 1);
-        } else {
-            setMonth(month - 1);
-        }
-    }
-    
-    function nextMonth() {
-        if(month === 11) {
-            setMonth(0);
-            setYear(year + 1);
-        } else {
-            setMonth(month + 1);
-        }
-    }
-
-    function printDays() {
-        let firstDay = new Date(year, month, 1).getDay();
-        let lastDay = new Date(year, month + 1, 0).getDate();
-        let lastDayOfLastMonth = new Date(year, month, 0).getDate();
-        let lastDayOfNextMonth = new Date(year, month, lastDay).getDay();
-        let liTag = "";
-
-        for(let i = firstDay; i > 0; i--) {
-            liTag += `<li><p className="teste">${lastDayOfLastMonth - i + 1}</p></li>`;
-        }
-
-        for(let i = 1; i <= lastDay; i++) {
-            liTag += `<li><p>${i}</p></li>`;
-        }
-
-        for(let i = lastDayOfNextMonth; i < 6; i++) {
-            liTag += `<li><p>${i - lastDayOfNextMonth + 1}</p></li>`;
-        }
-
-        return liTag;
-    }
+    //     return liTag;
+    // }
 
     return (
         <div className="calendar-container">
-            <div className="caledar-header">
-                <div className="date-button">
-                <span className="symbols-rounded" onClick={() => prevMonth()}><FaChevronLeft/></span>
-                <span className="date-button-text">{getMonthAndYear()}</span>
-                <span className="symbols-rounded" onClick={() => nextMonth()}><FaChevronRight /></span>
-                </div>
-            </div>
             <div className="calendar">
-                <ul className="weeks">
-                    <li>Dom</li>
-                    <li>Seg</li>
-                    <li>Ter</li>
-                    <li>Quar</li>
-                    <li>Quin</li>
-                    <li>Sex</li>
-                    <li>Sab</li>
-                </ul>
-                <ul className="days" dangerouslySetInnerHTML={{ __html: printDays() }}>
+                <div className="weeks">
+                    <p>Domingo</p>
+                    <p>Segunda</p>
+                    <p>Terça</p>
+                    <p>Quarta</p>
+                    <p>Quinta</p>
+                    <p>Sexta</p>
+                    <p>Sábado</p>
+                </div>
 
-                </ul>
+                <div className="days">
+                    <p>1</p>
+                    <p>2</p>
+                    <p>3</p>
+                    <p>4</p>
+                    <p>5</p>
+                    <p>6</p>
+                    <p>7</p>
+                    <p>8</p>
+                    <p>9</p>
+                    <p>10</p>
+                    <p>11</p>
+                    <p>12</p>
+                    <p>13</p>
+                    <p>14</p>
+                    <p>15</p>
+                    <p>16</p>
+                    <p>17</p>
+                    <p>18</p>
+                    <p>19</p>
+                    <p>20</p>
+                    <p>21</p>
+                    <p>22</p>
+                    <p>23</p>
+                    <p>24</p>
+                    <p>25</p>
+                    <p>26</p>
+                    <p>27</p>
+                    <p>28</p>
+                    <p>29</p>
+                    <p>30</p>
+                    <p>31</p>
+                </div>
             </div>
         </div>
     )

@@ -15,6 +15,7 @@ function Calendar() {
       <div id="calen-bodyContainer">
         <UpperBodyInformation
           pageTitle={"Receitas e despesas"}
+          showMonth={true}
           simpleButton={false}
         />
 
