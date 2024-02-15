@@ -11,9 +11,9 @@ function MonthButton() {
   return (
       <div className="caledar-header">
         <div className="date-button"> 
-          <span className="symbols-rounded" onClick={() => prevMonth()}><FaChevronLeft/></span>
+          <span className="symbols-rounded" onClick={prevMonth}><FaChevronLeft/></span>
           <span className="date-button-text">{getMonthAndYear()}</span>
-          <span className="symbols-rounded" onClick={() => nextMonth()}><FaChevronRight /></span>
+          <span className="symbols-rounded" onClick={nextMonth}><FaChevronRight /></span>
         </div>
       </div>
     )

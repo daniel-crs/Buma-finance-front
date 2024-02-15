@@ -1,7 +1,5 @@
 import "./style.css";
 
-import { TimeProvider } from "../../context/TimeContext";
-
 import SimpleAddButton from "../SimpleAddButton";
 import MonthButton from "../MonthButton";
 import AdvancedAddButton from "../AdvancedAddButton";
@@ -15,9 +13,7 @@ function UpperBodyInformation({ pageTitle, showMonth, simpleButton }) {
       {(() => {
         if (showMonth === true) {
           return (
-            <TimeProvider>
-              <MonthButton />
-            </TimeProvider>
+            <MonthButton />
           )
         } else {
           return null;

@@ -4,6 +4,7 @@ import Header from "../../components/Header";
 import SideBar from "../../components/SideBar";
 import UpperBodyInformation from "../../components/UpperBodyInformation";
 
+import { TimeProvider } from "../../context/TimeContext";
 import CalendarBase from "./components/CalendarBase";
 
 function Calendar() {
@@ -12,15 +13,18 @@ function Calendar() {
       <Header />
       <SideBar />
 
-      <div id="calen-bodyContainer">
-        <UpperBodyInformation
-          pageTitle={"Receitas e despesas"}
-          showMonth={true}
-          simpleButton={false}
-        />
+      <TimeProvider>
+        <div id="calen-bodyContainer">
+          <UpperBodyInformation
+            pageTitle={"Receitas e despesas"}
+            showMonth={true}
+            simpleButton={false}
+          />
 
-        <CalendarBase />
-      </div>
+          
+            <CalendarBase />
+        </div>
+      </TimeProvider>
     </div>
   );
 }
