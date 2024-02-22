@@ -6,7 +6,14 @@ import { FaChevronLeft } from "react-icons/fa6";
 import { FaChevronRight } from "react-icons/fa6";
 
 function MonthButton() {
-  const {getMonthAndYear, prevMonth, nextMonth} = useContext(TimeContext);
+  const {prevMonth, nextMonth, year, month} = useContext(TimeContext);
+
+  const getMonthAndYear = () => {
+    const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", 
+    "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+
+    return `${months[month]} ${year}`
+  };
 
   return (
       <div className="caledar-header">

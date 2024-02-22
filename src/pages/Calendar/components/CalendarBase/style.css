@@ -23,14 +23,17 @@
     flex-wrap: wrap;
 }
 
-.days p{
-    text-align: end;
-    font-size: 0.9em;
+.days .day{
     border: 0.1px solid #828080;
     height: 200px;
     margin-bottom: 0px;
     padding: 10px 10px 0 0;
     width: calc(100% / 7);
+}
+
+.day p {
+    text-align: end;
+    font-size: 0.9em;
 }
 
 .inactive {
