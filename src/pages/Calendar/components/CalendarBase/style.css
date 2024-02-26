@@ -67,6 +67,25 @@
     margin-left: 5px;
 }
 
-.inactive {
-    color: #aaa;
+.day-inactive {
+    background: #e8e8e8;
+    border: 0.1px solid #828080;
+    height: 200px;
+    margin-bottom: 0px;
+    padding: 10px 10px 0 0;
+    width: calc(100% / 7);
+}
+
+.activeDay {
+    border: 0.1px solid #828080;
+    height: 200px;
+    margin-bottom: 0px;
+    padding: 10px 10px 0 0;
+    width: calc(100% / 7);
+    background: #EDF4FA;
+}
+
+.activeDay p {
+    text-align: end;
+    font-size: 0.9em;
 }

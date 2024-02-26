@@ -6,6 +6,7 @@ export const TimeProvider = ({ children }) => {
     const currentDate = new Date();
     const [month, setMonth] = useState(currentDate.getMonth());
     const [year, setYear] = useState(currentDate.getFullYear());
+    const day = currentDate.getDate();
 
     const prevMonth = () => {
         if(month === 0) {
@@ -27,5 +28,5 @@ export const TimeProvider = ({ children }) => {
 
     
 
-    return <TimeContext.Provider value={{prevMonth, nextMonth, year, month}}>{children}</TimeContext.Provider>
+    return <TimeContext.Provider value={{prevMonth, nextMonth, year, month, day}}>{children}</TimeContext.Provider>
 }

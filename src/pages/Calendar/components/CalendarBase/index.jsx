@@ -4,15 +4,26 @@ import { useContext, useEffect, useState } from "react";
 import { TimeContext } from "../../../../context/TimeContext";
 
 function CalendarBase() {
-    const {year, month} = useContext(TimeContext);
+    const {year, month, day} = useContext(TimeContext);
     const [revenues, setRevenues] = useState([]);
     const [expanses, setExpanses] = useState([]);
 
     let lastDay = new Date(year, month + 1, 0).getDate();
-    let numbers = [];
+    let firstDay = new Date(year, month, 1).getDay();
+    let LastMonth = new Date(year, month, 0).getDate();
+    let NextMonth = new Date(year, month, lastDay).getDay();
+    let presentDays = [], pastDays = [], futureDays = [];
+    
+    for(let i = 0; i < firstDay; i++) {
+        pastDays[i] = LastMonth - i;
+    }
 
     for(let i = 0; i < lastDay; i++) {
-        numbers[i] = i + 1;
+        presentDays[i] = i + 1;
+    }
+
+    for(let i = NextMonth; i < 6; i++) {
+       futureDays[i] = i - LastMonth + 1;
     }
 
     useEffect(() => {
@@ -32,10 +43,17 @@ function CalendarBase() {
         date2 = date2[0].split("-"); 
 
         if(date2[0] == year && date2[1] == month && date2[2] == day) {
-            console.log("cu");
             return true;
         } else {
             return false;
+        }
+    }
+
+    function currantDay(number) {
+        if(number === day) {
+            return "activeDay"
+        } else {
+            return "day"
         }
     }
 
@@ -53,8 +71,13 @@ function CalendarBase() {
                 </div>
 
                 <div className="days">
-                    {numbers.map( (number) => 
-                        <div className="day">
+                    {pastDays.map(() => 
+                        <div className="day-inactive">
+                           
+                        </div>
+                    )}
+                    {presentDays.map( (number) => 
+                        <div className={currantDay(number)}>
                             <p>{ number }</p>
                             {revenues.filter((revenues) => areDateEqual(year, month + 1, number, revenues.due_date)).map((reve) => 
                                 <div className="day-element-income">
@@ -66,6 +89,11 @@ function CalendarBase() {
                                     <p className="day-element-text">{expan.name}</p>
                                 </div>
                             )}
+                        </div>
+                    )}
+                    {futureDays.map(() => 
+                        <div className="day-inactive">
+                           
                         </div>
                     )}
                 </div>
