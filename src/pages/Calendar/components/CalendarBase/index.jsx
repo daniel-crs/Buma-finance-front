@@ -6,6 +6,7 @@ import { TimeContext } from "../../../../context/TimeContext";
 function CalendarBase() {
     const {year, month} = useContext(TimeContext);
     const [revenues, setRevenues] = useState([]);
+    const [expanses, setExpanses] = useState([]);
 
     let lastDay = new Date(year, month + 1, 0).getDate();
     let numbers = [];
@@ -18,6 +19,12 @@ function CalendarBase() {
         fetch("http://localhost:8000/revenues")
           .then((res) => res.json())
           .then((revenues) => setRevenues(revenues));
+    }, []);
+
+    useEffect(() => {
+        fetch("http://localhost:8000/expanse")
+          .then((res) => res.json())
+          .then((expanses) => setExpanses(expanses));
     }, []);
 
     const areDateEqual = (year, month, day, date2) => {        
@@ -49,11 +56,16 @@ function CalendarBase() {
                     {numbers.map( (number) => 
                         <div className="day">
                             <p>{ number }</p>
-                            <div>
-                               {revenues.filter((revenues) => areDateEqual(year, month + 1, number, revenues.due_date)).map((reve) => 
-                                <p>{reve.description}</p>
-                               )}
-                            </div>
+                            {revenues.filter((revenues) => areDateEqual(year, month + 1, number, revenues.due_date)).map((reve) => 
+                                <div className="day-element-income">
+                                    <p className="day-element-text">{reve.description}</p>
+                                </div>
+                            )}
+                            {expanses.filter((expanses) => areDateEqual(year, month + 1, number, expanses.due_date)).map((expan) => 
+                                <div className="day-element-expanse">
+                                    <p className="day-element-text">{expan.name}</p>
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>

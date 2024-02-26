@@ -19,7 +19,7 @@ function ExpenseIncome() {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:8000/expanse")
+    fetch("http://localhost:8000/expanses")
       .then((res) => res.json())
       .then((expenses) => setExpenses(expenses));
   }, []);
@@ -32,7 +32,7 @@ function ExpenseIncome() {
       <div id="inex-bodyContainer">
         <UpperBodyInformation
           pageTitle={"Receitas e despesas"}
-          showMonth={true}
+          showMonth={false}
           simpleButton={false}
         />
 

@@ -36,21 +36,37 @@
     font-size: 0.9em;
 }
 
+.day-element-income {
+    width: 95%;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    background: #F5F5F6;
+    height: 30px;
+    border-radius: 10px;
+    border-left: 15px solid #568724;
+    box-shadow: 1.5px 2.5px 5px rgb(208, 208, 208);
+    display: flex;
+    justify-content: start;
+}
+
+.day-element-expanse {
+    width: 95%;
+    font-size: 1em;
+    margin: 0 auto;
+    background: #F5F5F6;
+    height: 30px;
+    border-radius: 10px;
+    border-left: 15px solid red;
+    box-shadow: 1.5px 2.5px 5px rgb(208, 208, 208);
+    display: flex;
+    justify-content: start;
+}
+
+.day-element-text {
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
 .inactive {
     color: #aaa;
-}
-
-.active {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.active p {
-    color: white;
-    background-color: #562B82;
-    margin-top: 5px;
-    text-align: center;
-    height: 20px;
-    width: 30px;
-    border-radius: 50px;
 }
