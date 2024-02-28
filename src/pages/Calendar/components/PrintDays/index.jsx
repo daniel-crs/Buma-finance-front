@@ -5,9 +5,11 @@ import ExpanseListing from "../ExpanseListing";
 
 import { useContext } from "react";
 import { TimeContext } from "../../../../context/TimeContext";
+import { FilterValueContext } from "../../../../context/FilterValueContext";
 
 function PrintDays(){
     const {year, month, day} = useContext(TimeContext);
+    const {filterStatus, FilterValueListing} = useContext(FilterValueContext);
 
     let lastDay = new Date(year, month + 1, 0).getDate();
     let firstDay = new Date(year, month, 1).getDay();
@@ -42,14 +44,38 @@ function PrintDays(){
                     
                 </div>
             )}
+
             {presentDays.map( (number) => 
                 <div className={currantDay(number)}>
-                    <p>{ number }</p>
-                    <RevenueListing teste={number}/>
-                    
-                    <ExpanseListing teste={number}/>
+                    {(() => {
+                        if (filterStatus === "revenue") {
+                            return (
+                                <div>
+                                    <p>{ number }</p>
+                                    <RevenueListing teste={number}/>
+                                </div>      
+                            );
+                        } else if (filterStatus === "expanse") {
+                            return (
+                                <div>
+                                    <p>{ number }</p>
+                                    <ExpanseListing teste={number}/>
+                                </div>
+                            );
+                        } else {
+                            return (
+                                <div>
+                                    <p>{ number }</p>
+                                    <RevenueListing teste={number}/>
+                                    
+                                    <ExpanseListing teste={number}/>
+                                </div>
+                            );
+                        }
+                    })()}
                 </div>
             )}
+                
             {futureDays.map(() => 
                 <div className="day-inactive">
                     

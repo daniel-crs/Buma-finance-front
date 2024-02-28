@@ -1,3 +1,8 @@
+.dropdown {
+    display: inline-block;
+    position: relative;
+}
+
 #filterButton {
     display: inline-flex;
     height: 35px;
@@ -31,3 +36,31 @@
 .filterButton-text {
     padding: 0 20px 0 5px;
 }
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    width: 150%;
+    overflow: auto;
+    box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
+    border-radius: 10px;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown-item {
+    display: block;
+    color: #FFFFFF !important;
+    padding: 10px !important;
+    width: 100% !important;
+    text-align: start;
+    border: none;
+    background: #562B82 !important;
+  }
+  
+  .dropdown-item:hover {
+    color: #FFFFFF !important;
+    background-color: #A366E1 !important;
+  }

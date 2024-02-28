@@ -28,6 +28,7 @@ function UpperBodyInformation({ pageTitle, showMonth, simpleButton }) {
             return <AdvancedAddButton modalChange={pageTitle} />;
           }
         })()}
+
         <FilterButton />
       </div>
     </div>
