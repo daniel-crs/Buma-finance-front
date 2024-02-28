@@ -16,6 +16,7 @@ function ExpenseModal({
   installmentsId,
   payment_typeId,
   payment_statusId,
+  due_dateId,
   recurrentId,
   feesId,
 }) {
@@ -26,6 +27,7 @@ function ExpenseModal({
   const [installments, setInstallments] = useState(installmentsId);
   const [payment_type, setPayment_type] = useState(payment_typeId);
   const [payment_status, setPayment_status] = useState(payment_statusId);
+  const [due_date, setDue_date] = useState(due_dateId);
   const [fees, setFees] = useState(feesId);
   const [recurrent, setRecurrent] = useState(recurrentId);
 
@@ -41,6 +43,7 @@ function ExpenseModal({
         installments,
         payment_type,
         payment_status,
+        due_date,
         fees,
         bank_account: null,
         recurrent,
@@ -90,6 +93,8 @@ function ExpenseModal({
                 setPayment_typeId={setPayment_type}
                 payment_statusId={payment_status}
                 setPayment_statusId={setPayment_status}
+                due_dateId={due_date}
+                setDue_dateId={setDue_date}
                 feesId={fees}
                 setFeesId={setFees}
                 recurrentId={recurrent}

@@ -168,6 +168,7 @@ function TableData({
               payment_typeId={payment_type}
               payment_statusId={payment_status}
               recurrentId={recurrent}
+              due_dateId={due_date}
               feesId={fees}
             />
           )}

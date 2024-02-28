@@ -1,0 +1,11 @@
+.weeks {
+    display: flex;
+    text-align: start;
+    flex-wrap: wrap;
+    font-weight: 500;
+    padding-left: 10px;
+}
+
+.weeks p {
+    width: calc(100% / 7);
+}

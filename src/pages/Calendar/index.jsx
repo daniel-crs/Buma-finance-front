@@ -5,7 +5,8 @@ import SideBar from "../../components/SideBar";
 import UpperBodyInformation from "../../components/UpperBodyInformation";
 
 import { TimeProvider } from "../../context/TimeContext";
-import CalendarBase from "./components/CalendarBase";
+import PrintWeek from "./components/PrintWeek";
+import PrintDays from "./components/PrintDays";
 
 function Calendar() {
   return (
@@ -21,8 +22,13 @@ function Calendar() {
             simpleButton={false}
           />
 
-          
-            <CalendarBase />
+          <div className="calendar-container">
+            <div className="calendar">
+                <PrintWeek/>
+
+                <PrintDays/>
+            </div>
+          </div>
         </div>
       </TimeProvider>
     </div>
