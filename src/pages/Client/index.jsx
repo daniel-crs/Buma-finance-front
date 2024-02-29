@@ -5,7 +5,9 @@ import SideBar from "../../components/SideBar";
 import UpperBodyInformation from "../../components/UpperBodyInformation";
 import TableHeader from "./components/TableHeader";
 import TableData from "./components/TableData";
+
 import { useEffect, useState } from "react";
+import { FilterValueProvider } from "../../context/FilterValueContext";
 
 function Client() {
   const [legal, setLegal] = useState([]);
@@ -28,7 +30,9 @@ function Client() {
       <Header />
       <SideBar />
       <div id="bodyContainer">
+      <FilterValueProvider>
         <UpperBodyInformation pageTitle={"Cliente"} showMonth={false} simpleButton={false} />
+      </FilterValueProvider>
 
         <div className="listBackground">
           <table className="ListContainer">

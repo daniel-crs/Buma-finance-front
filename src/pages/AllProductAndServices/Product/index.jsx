@@ -8,6 +8,7 @@ import TableHeader from "../components/TableHeader";
 import TableData from "../components/TableData";
 
 import { useEffect, useState } from "react";
+import { FilterValueProvider } from "../../../context/FilterValueContext";
 
 function Product() {
   const [data, setData] = useState([]);
@@ -24,7 +25,9 @@ function Product() {
       <Header />
       <SideBar />
       <div id="bodyContainer">
+      <FilterValueProvider>
         <UpperBodyInformation pageTitle={"Produto"} showMonth={false} simpleButton={true} />
+      </FilterValueProvider>
 
         <div className="listBackground">
           <table className="ListContainer">

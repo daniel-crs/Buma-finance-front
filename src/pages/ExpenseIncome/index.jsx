@@ -7,6 +7,7 @@ import TableHeader from "./components/TableHeader";
 import TableData from "./components/TableData";
 
 import { useState, useEffect } from "react";
+import { FilterValueProvider } from "../../context/FilterValueContext";
 
 function ExpenseIncome() {
   const [revenues, setRevenues] = useState([]);
@@ -30,11 +31,13 @@ function ExpenseIncome() {
       <SideBar />
 
       <div id="inex-bodyContainer">
+      <FilterValueProvider>
         <UpperBodyInformation
           pageTitle={"Receitas e despesas"}
           showMonth={false}
           simpleButton={false}
         />
+      </FilterValueProvider>
 
         <div className="inex-listBackground">
           <div className="inex-tableContainer">
