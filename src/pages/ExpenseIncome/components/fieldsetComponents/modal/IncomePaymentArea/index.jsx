@@ -167,8 +167,9 @@ function IncomePaymentArea({
                 setPayment_statusId(e.target.value);
               }}
             >
-              <option value={true}>Pago</option>
-              <option value={false}>Aberto</option>
+              <option value={"paid"}>Pago</option>
+              <option value={"open"}>Aberto</option>
+              <option value={"overdue"}>Atrasado</option>
             </select>
           </div>
         </div>

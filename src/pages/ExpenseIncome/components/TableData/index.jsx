@@ -82,7 +82,7 @@ function TableData({
           </div>
         </td>
       )}
-      {payment_status === true ? (
+      {payment_status === "paid" ? (
         <td className="inex-statusArea">
           <div className="inex-statusPosition">
             <div
@@ -93,7 +93,7 @@ function TableData({
             </div>
           </div>
         </td>
-      ) : (
+      ) : payment_status === "open" ? (
         <td className="inex-statusArea">
           <div className="inex-statusPosition">
             <div
@@ -101,6 +101,18 @@ function TableData({
               className="inex-statusContainer"
             >
               <p>Aberto</p>
+            </div>
+          </div>
+        </td>
+      ) : (
+
+        <td className="inex-statusArea">
+          <div className="inex-statusPosition">
+            <div
+              style={{ backgroundColor: "#E61818" }}
+              className="inex-statusContainer"
+            >
+              <p>Atrasada</p>
             </div>
           </div>
         </td>

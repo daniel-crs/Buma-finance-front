@@ -1,11 +1,11 @@
 import "./style.css";
 
 import { BiFilter } from "react-icons/bi";
-import { FilterValueContext } from "../../context/FilterValueContext";
+// import { FilterValueContext } from "../../context/FilterValueContext";
 import { useContext } from "react";
 
 function FilterButton() {
-  const {setFilterStatus} = useContext(FilterValueContext);
+  // const {setFilterStatus} = useContext(FilterValueContext);
 
   return (
     <div className="dropdown">
@@ -16,7 +16,7 @@ function FilterButton() {
         <span className="filterButton-text">Filtro</span>
       </button>
 
-      <div className="dropdown-content">
+      {/* <div className="dropdown-content">
         <button
           className="dropdown-item"
           onClick={() => setFilterStatus("all")}
@@ -37,7 +37,7 @@ function FilterButton() {
         >
           Despesas
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }
