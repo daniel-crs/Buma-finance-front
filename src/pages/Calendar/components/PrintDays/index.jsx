@@ -9,7 +9,7 @@ import { FilterValueContext } from "../../../../context/FilterValueContext";
 
 function PrintDays(){
     const {year, month, day} = useContext(TimeContext);
-    const {filterStatus, FilterValueListing} = useContext(FilterValueContext);
+    const {filterStatus} = useContext(FilterValueContext);
 
     let lastDay = new Date(year, month + 1, 0).getDate();
     let firstDay = new Date(year, month, 1).getDay();
@@ -52,7 +52,7 @@ function PrintDays(){
                             return (
                                 <div>
                                     <p>{ number }</p>
-                                    <RevenueListing teste={number}/>
+                                    <RevenueListing/>
                                 </div>      
                             );
                         } else if (filterStatus === "expanse") {
@@ -66,7 +66,7 @@ function PrintDays(){
                             return (
                                 <div>
                                     <p>{ number }</p>
-                                    <RevenueListing teste={number}/>
+                                    <RevenueListing/>
                                     
                                     <ExpanseListing teste={number}/>
                                 </div>
