@@ -6,11 +6,12 @@ function RevenueListing({revenues}) {
     const [openModal, setOpenModal] = useState(false);
 
     return <>
-        {revenues?.map((reve) => 
+        {revenues?.map((reve, i) => 
             <div className="day-element-income" onClick={() => setOpenModal(true)}>
                 <p className="day-element-text">{reve.description}</p>
             
                 <IncomeModal
+                    key={i}
                     id={reve.id}
                     isOpen={openModal}
                     setModalOpen={() => setOpenModal(!openModal)}

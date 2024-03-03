@@ -39,7 +39,7 @@ function PrintDays(){
             body: JSON.stringify({"date": `${year}-${(month + 1).toString().padStart(2, '0')}`}),
           })
           .then((res) => res.json())
-          .then((rev) => setResult(rev));
+          .then((result) => setResult(result));
     }, [year, month]);
 
     const areDateEqual = (year, month, day, date2) => {        
@@ -78,23 +78,23 @@ function PrintDays(){
                             return (
                                 <div>
                                     <p>{ number }</p>
-                                    <RevenueListing revenues={result.revenues.filter((revenue) => areDateEqual(year, month + 1, number, revenue.due_date))}/>
+                                    <RevenueListing revenues={result?.revenues?.filter((revenue) => areDateEqual(year, month + 1, number, revenue.due_date))}/>
                                 </div>      
                             );
                         } else if (filterStatus === "expanse") {
                             return (
                                 <div>
                                     <p>{ number }</p>
-                                    <ExpanseListing expanses={result.expanses.filter((expanse) => areDateEqual(year, month + 1, number, expanse.due_date))}/>
+                                    <ExpanseListing expanses={result?.expanses?.filter((expanse) => areDateEqual(year, month + 1, number, expanse.due_date))}/>
                                 </div>
                             );
                         } else {
                             return (
                                 <div>
                                     <p>{ number }</p>
-                                    <RevenueListing revenues={result.revenues.filter((revenue) => areDateEqual(year, month + 1, number, revenue.due_date))}/>
+                                    <RevenueListing revenues={result?.revenues?.filter((revenue) => areDateEqual(year, month + 1, number, revenue.due_date))}/>
                                     
-                                    <ExpanseListing expanses={result.expanses.filter((expanse) => areDateEqual(year, month + 1, number, expanse.due_date))}/>
+                                    <ExpanseListing expanses={result?.expanses?.filter((expanse) => areDateEqual(year, month + 1, number, expanse.due_date))}/>
                                 </div>
                             );
                         }
