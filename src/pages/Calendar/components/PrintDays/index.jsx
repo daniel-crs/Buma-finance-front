@@ -3,13 +3,14 @@ import "./style.css"
 import RevenueListing from "../RevenueListing";
 import ExpanseListing from "../ExpanseListing";
 
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { TimeContext } from "../../../../context/TimeContext";
 import { FilterValueContext } from "../../../../context/FilterValueContext";
 
 function PrintDays(){
     const {year, month, day} = useContext(TimeContext);
     const {filterStatus} = useContext(FilterValueContext);
+    const [result, setResult] = useState([]);
 
     let lastDay = new Date(year, month + 1, 0).getDate();
     let firstDay = new Date(year, month, 1).getDay();
@@ -27,6 +28,31 @@ function PrintDays(){
 
     for(let i = NextMonth; i < 6; i++) {
        futureDays[i] = i - LastMonth + 1;
+    }
+
+    useEffect(() => {
+        fetch("http://localhost:8000/listing", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({"date": `${year}-${(month + 1).toString().padStart(2, '0')}`}),
+          })
+          .then((res) => res.json())
+          .then((rev) => setResult(rev));
+    }, [year, month]);
+
+    const areDateEqual = (year, month, day, date2) => {        
+        date2 = date2.split("T"); 
+        date2 = date2[0].split("-"); 
+
+        console.log(date2, year, month, day);
+
+        if(date2[0] == year && date2[1] == month && date2[2] == day) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     function currantDay(number) {
@@ -52,23 +78,23 @@ function PrintDays(){
                             return (
                                 <div>
                                     <p>{ number }</p>
-                                    <RevenueListing/>
+                                    <RevenueListing revenues={result.revenues.filter((revenue) => areDateEqual(year, month + 1, number, revenue.due_date))}/>
                                 </div>      
                             );
                         } else if (filterStatus === "expanse") {
                             return (
                                 <div>
                                     <p>{ number }</p>
-                                    <ExpanseListing teste={number}/>
+                                    <ExpanseListing expanses={result.expanses.filter((expanse) => areDateEqual(year, month + 1, number, expanse.due_date))}/>
                                 </div>
                             );
                         } else {
                             return (
                                 <div>
                                     <p>{ number }</p>
-                                    <RevenueListing/>
+                                    <RevenueListing revenues={result.revenues.filter((revenue) => areDateEqual(year, month + 1, number, revenue.due_date))}/>
                                     
-                                    <ExpanseListing teste={number}/>
+                                    <ExpanseListing expanses={result.expanses.filter((expanse) => areDateEqual(year, month + 1, number, expanse.due_date))}/>
                                 </div>
                             );
                         }
