@@ -2,6 +2,7 @@ import "../../style.css";
 
 import IncomeModal from "../IncomeModal";
 import ExpenseModal from "../ExpenseModal";
+import InstallmentsDropwn from "../InstallmentsDropdown";
 
 import { Button } from "react-bootstrap";
 import { FaTrash } from "react-icons/fa";
@@ -83,14 +84,7 @@ function TableData({
               </div>
             </div>
 
-            <div className="dropdown-content">
-              <p className="dropdown-title">Todas as parcelas</p>
-              <div className="dropdown-installment-container">
-                  <div style={{ borderLeft: "10px solid #E61818" }} className="dropdown-installment">
-                    <p className="dropdown-installment-item">teste</p>
-                  </div>
-              </div>
-            </div>
+            <InstallmentsDropwn revenueId={revenueId} expenseId={expenseId} identify={identify} />
           </div>
         </td>
       )}
