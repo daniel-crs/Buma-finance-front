@@ -6,7 +6,7 @@ import ExpenseModal from "../ExpenseModal";
 import { Button } from "react-bootstrap";
 import { FaTrash } from "react-icons/fa";
 import { MdModeEdit } from "react-icons/md";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function TableData({
   revenueId,
@@ -29,6 +29,7 @@ function TableData({
   identify,
 }) {
   const [openModal, setOpenModal] = useState(false);
+  const [result, setResult] = useState([]); 
 
   const deleteRevenue = () => {
     fetch(`http://localhost:8000/revenues/${revenueId}`, {
@@ -75,9 +76,20 @@ function TableData({
         </td>
       ) : (
         <td className="inex-parcelArea">
-          <div className="inex-installmentsPosition">
-            <div className="inex-installmentsContainer">
-              <p>{installments}</p>
+          <div className="dropdown">
+            <div className="inex-installmentsPosition">
+              <div className="inex-installmentsContainer">
+                <p>{installments}</p>
+              </div>
+            </div>
+
+            <div className="dropdown-content">
+              <p className="dropdown-title">Todas as parcelas</p>
+              <div className="dropdown-installment-container">
+                  <div style={{ borderLeft: "10px solid #E61818" }} className="dropdown-installment">
+                    <p className="dropdown-installment-item">teste</p>
+                  </div>
+              </div>
             </div>
           </div>
         </td>

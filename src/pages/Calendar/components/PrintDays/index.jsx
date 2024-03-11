@@ -44,9 +44,7 @@ function PrintDays(){
 
     const areDateEqual = (year, month, day, date2) => {        
         date2 = date2.split("T"); 
-        date2 = date2[0].split("-"); 
-
-        console.log(date2, year, month, day);
+        date2 = date2[0].split("-");
 
         if(date2[0] == year && date2[1] == month && date2[2] == day) {
             return true;
@@ -73,32 +71,24 @@ function PrintDays(){
 
             {presentDays.map( (number) => 
                 <div className={currantDay(number)}>
-                    {(() => {
-                        if (filterStatus === "revenue") {
-                            return (
-                                <div>
-                                    <p>{ number }</p>
-                                    <RevenueListing revenues={result?.revenues?.filter((revenue) => areDateEqual(year, month + 1, number, revenue.due_date))}/>
-                                </div>      
-                            );
-                        } else if (filterStatus === "expanse") {
-                            return (
-                                <div>
-                                    <p>{ number }</p>
-                                    <ExpanseListing expanses={result?.expanses?.filter((expanse) => areDateEqual(year, month + 1, number, expanse.due_date))}/>
-                                </div>
-                            );
-                        } else {
-                            return (
-                                <div>
-                                    <p>{ number }</p>
-                                    <RevenueListing revenues={result?.revenues?.filter((revenue) => areDateEqual(year, month + 1, number, revenue.due_date))}/>
-                                    
-                                    <ExpanseListing expanses={result?.expanses?.filter((expanse) => areDateEqual(year, month + 1, number, expanse.due_date))}/>
-                                </div>
-                            );
-                        }
-                    })()}
+                    {filterStatus === "revenue" ? (
+                        <div>
+                            <p>{ number }</p>
+                            <RevenueListing revenues={result?.revenues?.filter((revenue) => areDateEqual(year, month + 1, number, revenue.due_date))}/>
+                        </div>  
+                    ) : filterStatus === "expanse" ? (
+                        <div>
+                            <p>{ number }</p>
+                            <ExpanseListing expanses={result?.expanses?.filter((expanse) => areDateEqual(year, month + 1, number, expanse.due_date))}/>
+                        </div>
+                    ) : (
+                        <div>
+                            <p>{ number }</p>
+                            <RevenueListing revenues={result?.revenues?.filter((revenue) => areDateEqual(year, month + 1, number, revenue.due_date))}/>
+                            
+                            <ExpanseListing expanses={result?.expanses?.filter((expanse) => areDateEqual(year, month + 1, number, expanse.due_date))}/>
+                        </div>
+                    )}
                 </div>
             )}
                 
