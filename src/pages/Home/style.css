@@ -1,0 +1,17 @@
+#bodyContainer{
+    height: 65vh;
+    width: 88vw;
+    margin-top: 50px;
+    margin-left: 125px;
+}
+
+#upperBodyInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+#upperBodyInfo h1 {
+    color: #562B82;
+    font-size: 2.2em;
+}
