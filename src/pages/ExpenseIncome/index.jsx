@@ -7,10 +7,11 @@ import TableHeader from "./components/TableHeader";
 import TableData from "./components/TableData";
 
 import { useState, useEffect } from "react";
+import { FilterValueProvider } from "../../context/FilterValueContext";
 
 function ExpenseIncome() {
   const [revenues, setRevenues] = useState([]);
-  const [expenses, setExpenses] = useState([]);
+  const [expanses, setExpanses] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:8000/revenues")
@@ -21,7 +22,7 @@ function ExpenseIncome() {
   useEffect(() => {
     fetch("http://localhost:8000/expanse")
       .then((res) => res.json())
-      .then((expenses) => setExpenses(expenses));
+      .then((expanses) => setExpanses(expanses));
   }, []);
 
   return (
@@ -30,10 +31,13 @@ function ExpenseIncome() {
       <SideBar />
 
       <div id="inex-bodyContainer">
+      <FilterValueProvider>
         <UpperBodyInformation
           pageTitle={"Receitas e despesas"}
+          showMonth={false}
           simpleButton={false}
         />
+      </FilterValueProvider>
 
         <div className="inex-listBackground">
           <div className="inex-tableContainer">
@@ -59,20 +63,21 @@ function ExpenseIncome() {
                   identify={"revenue"}
                 />
               ))}
-              {expenses.map((expense, i) => (
+              {expanses.map((expanse, i) => (
                 <TableData
                   key={i}
-                  expenseId={expense.id}
-                  description={expense.name}
-                  competence={expense.competence}
-                  price={expense.gross_value}
-                  discount={expense.discount}
-                  installments={expense.installments}
-                  payment_type={expense.payment_type}
-                  payment_status={expense.payment_status}
-                  fees={expense.fees}
-                  recurrent={expense.recurrent}
-                  identify={"expense"}
+                  expenseId={expanse.id}
+                  description={expanse.name}
+                  competence={expanse.competence}
+                  price={expanse.gross_value}
+                  discount={expanse.discount}
+                  installments={expanse.installments}
+                  payment_type={expanse.payment_type}
+                  payment_status={expanse.payment_status}
+                  due_date={expanse.due_date}
+                  fees={expanse.fees}
+                  recurrent={expanse.recurrent}
+                  identify={"expanse"}
                 />
               ))}
             </table>

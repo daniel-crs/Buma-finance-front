@@ -1,0 +1,71 @@
+.days {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.days .day{
+    border: 0.1px solid #828080;
+    height: 200px;
+    margin-bottom: 0px;
+    padding: 10px 10px 0 0;
+    width: calc(100% / 7);
+}
+
+.day p {
+    text-align: end;
+    font-size: 0.9em;
+}
+
+.day-element-income {
+    width: 95%;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    background: #F5F5F6;
+    height: 30px;
+    border-radius: 10px;
+    border-left: 15px solid #568724;
+    box-shadow: 1.5px 2.5px 5px rgb(208, 208, 208);
+    display: flex;
+    justify-content: start;
+}
+
+.day-element-expanse {
+    width: 95%;
+    font-size: 1em;
+    margin: 0 auto;
+    background: #F5F5F6;
+    height: 30px;
+    border-radius: 10px;
+    border-left: 15px solid red;
+    box-shadow: 1.5px 2.5px 5px rgb(208, 208, 208);
+    display: flex;
+    justify-content: start;
+}
+
+.day-element-text {
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.day-inactive {
+    background: #e8e8e8;
+    border: 0.1px solid #828080;
+    height: 200px;
+    margin-bottom: 0px;
+    padding: 10px 10px 0 0;
+    width: calc(100% / 7);
+}
+
+.activeDay {
+    border: 0.1px solid #828080;
+    height: 200px;
+    margin-bottom: 0px;
+    padding: 10px 10px 0 0;
+    width: calc(100% / 7);
+    background: #EDF4FA;
+}
+
+.activeDay p {
+    text-align: end;
+    font-size: 0.9em;
+}

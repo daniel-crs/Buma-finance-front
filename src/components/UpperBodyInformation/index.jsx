@@ -1,21 +1,22 @@
 import "./style.css";
 
 import SimpleAddButton from "../SimpleAddButton";
+import MonthButton from "../MonthButton";
 import AdvancedAddButton from "../AdvancedAddButton";
 import FilterButton from "../FilterButton";
 
-function UpperBodyInformation({ pageTitle, simpleButton }) {
+function UpperBodyInformation({ pageTitle, showMonth, simpleButton }) {
   return (
     <div id="upperBodyInfo">
       <h1>{pageTitle}</h1>
 
       {(() => {
-        if (pageTitle === "Receitas e despesas") {
+        if (showMonth === true) {
           return (
-            <div className="dateButton">
-              <h3>Agosto</h3>
-            </div>
-          );
+            <MonthButton />
+          )
+        } else {
+          return null;
         }
       })()}
 
@@ -27,6 +28,7 @@ function UpperBodyInformation({ pageTitle, simpleButton }) {
             return <AdvancedAddButton modalChange={pageTitle} />;
           }
         })()}
+
         <FilterButton />
       </div>
     </div>

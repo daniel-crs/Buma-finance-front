@@ -7,6 +7,7 @@ import TableData from "./components/TableData";
 import RoleOptions from "./components/RoleOptions";
 
 import { useState, useEffect } from "react";
+import { FilterValueProvider } from "../../context/FilterValueContext";
 
 function Employee() {
   const [roles, setRoles] = useState([]);
@@ -29,7 +30,9 @@ function Employee() {
       <Header />
       <SideBar />
       <div id="employee-bodyContainer">
-        <UpperBodyInformation pageTitle={"Funcionario"} simpleButton={false} />
+      <FilterValueProvider>
+        <UpperBodyInformation pageTitle={"Funcionario"} showMonth={false} simpleButton={false} />
+      </FilterValueProvider>
 
         {roles.map((role, i) => (
           <div className="employee-listBackground">

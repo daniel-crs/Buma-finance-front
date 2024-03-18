@@ -2,11 +2,12 @@ import "../../style.css";
 
 import IncomeModal from "../IncomeModal";
 import ExpenseModal from "../ExpenseModal";
+import InstallmentsDropwn from "../InstallmentsDropdown";
 
 import { Button } from "react-bootstrap";
 import { FaTrash } from "react-icons/fa";
 import { MdModeEdit } from "react-icons/md";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function TableData({
   revenueId,
@@ -29,6 +30,7 @@ function TableData({
   identify,
 }) {
   const [openModal, setOpenModal] = useState(false);
+  const [result, setResult] = useState([]); 
 
   const deleteRevenue = () => {
     fetch(`http://localhost:8000/revenues/${revenueId}`, {
@@ -75,14 +77,18 @@ function TableData({
         </td>
       ) : (
         <td className="inex-parcelArea">
-          <div className="inex-installmentsPosition">
-            <div className="inex-installmentsContainer">
-              <p>{installments}</p>
+          <div className="dropdown">
+            <div className="inex-installmentsPosition">
+              <div className="inex-installmentsContainer">
+                <p>{installments}</p>
+              </div>
             </div>
+
+            <InstallmentsDropwn revenueId={revenueId} expenseId={expenseId} identify={identify} />
           </div>
         </td>
       )}
-      {payment_status === true ? (
+      {payment_status === "paid" ? (
         <td className="inex-statusArea">
           <div className="inex-statusPosition">
             <div
@@ -93,7 +99,7 @@ function TableData({
             </div>
           </div>
         </td>
-      ) : (
+      ) : payment_status === "open" ? (
         <td className="inex-statusArea">
           <div className="inex-statusPosition">
             <div
@@ -101,6 +107,18 @@ function TableData({
               className="inex-statusContainer"
             >
               <p>Aberto</p>
+            </div>
+          </div>
+        </td>
+      ) : (
+
+        <td className="inex-statusArea">
+          <div className="inex-statusPosition">
+            <div
+              style={{ backgroundColor: "#E61818" }}
+              className="inex-statusContainer"
+            >
+              <p>Atrasada</p>
             </div>
           </div>
         </td>
@@ -168,6 +186,7 @@ function TableData({
               payment_typeId={payment_type}
               payment_statusId={payment_status}
               recurrentId={recurrent}
+              due_dateId={due_date}
               feesId={fees}
             />
           )}

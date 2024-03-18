@@ -6,7 +6,9 @@ import UpperBodyInformation from "../../../components/UpperBodyInformation";
 import BtnDelete from "../../../components/BtnDelete";
 import TableHeader from "../components/TableHeader";
 import TableData from "../components/TableData";
+
 import { useEffect, useState } from "react";
+import { FilterValueProvider } from "../../../context/FilterValueContext";
 
 function Service() {
   const [data, setData] = useState([]);
@@ -23,7 +25,9 @@ function Service() {
       <Header />
       <SideBar />
       <div id="bodyContainer">
-        <UpperBodyInformation pageTitle={"Serviço"} simpleButton={true} />
+      <FilterValueProvider>
+        <UpperBodyInformation pageTitle={"Serviço"} showMonth={false} simpleButton={true} />
+      </FilterValueProvider>
 
         <div className="listBackground">
           <table className="ListContainer">

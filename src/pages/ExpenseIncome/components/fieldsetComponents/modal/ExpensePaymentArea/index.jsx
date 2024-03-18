@@ -15,6 +15,8 @@ function ExpensePaymentArea({
   setPayment_typeId,
   payment_statusId,
   setPayment_statusId,
+  due_dateId,
+  setDue_dateId,
   feesId,
   setFeesId,
   recurrentId,
@@ -52,7 +54,8 @@ function ExpensePaymentArea({
               type="text"
               id="vencimento"
               className="expense-clientFieldArea"
-              placeholder="dd/mm/aaaa"
+              value={due_dateId}
+              onChange={(e) => setDue_dateId(e.target.value)}
             />
           </div>
 
@@ -175,8 +178,9 @@ function ExpensePaymentArea({
               value={payment_statusId}
               onChange={(e) => setPayment_statusId(e.target.value)}
             >
-              <option value={true}>Pago</option>
-              <option value={false}>Aberto</option>
+              <option value={"paid"}>Pago</option>
+              <option value={"open"}>Aberto</option>
+              <option value={"overdue"}>Atrasado</option>
             </select>
           </div>
         </div>

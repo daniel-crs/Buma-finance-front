@@ -105,15 +105,8 @@ function IncomePaymentArea({
               id="parcela"
               name="parcela"
               className="income-roleDropdwon"
-              value={installmentsId}
-              onChange={(e) => setInstallmentsId(e.target.value)}
             >
-              <option value={0}>Unica</option>
-              <option value={2}>2</option>
-              <option value={3}>3</option>
-              <option value={4}>4</option>
-              <option value={5}>5</option>
-              <option value={6}>6</option>
+              <option>{installmentsId}</option>
             </select>
           </div>
         </div>
@@ -162,13 +155,14 @@ function IncomePaymentArea({
               id="parcela"
               name="parcela"
               className="income-roleDropdwon"
-              value={payment_statusId}
-              onChange={(e) => {
-                setPayment_statusId(e.target.value);
-              }}
             >
-              <option value={true}>Pago</option>
-              <option value={false}>Aberto</option>
+              {payment_statusId === "paid" ? (
+                <option>Pago</option>
+              ) : payment_statusId === "open" ? (
+                <option>Aberto</option>
+              ) : (
+                <option>Atrasado</option>
+              )}
             </select>
           </div>
         </div>
