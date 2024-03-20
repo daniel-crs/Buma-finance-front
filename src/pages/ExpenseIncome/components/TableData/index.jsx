@@ -7,7 +7,7 @@ import InstallmentsDropwn from "../InstallmentsDropdown";
 import { Button } from "react-bootstrap";
 import { FaTrash } from "react-icons/fa";
 import { MdModeEdit } from "react-icons/md";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function TableData({
   revenueId,
@@ -30,7 +30,6 @@ function TableData({
   identify,
 }) {
   const [openModal, setOpenModal] = useState(false);
-  const [result, setResult] = useState([]); 
 
   const deleteRevenue = () => {
     fetch(`http://localhost:8000/revenues/${revenueId}`, {

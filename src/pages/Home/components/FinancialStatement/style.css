@@ -1,0 +1,10 @@
+#financial-container {
+    background: #ffffff;
+    box-shadow:  0px 4px 3px #c5c5c5;
+    border-radius: 5px;
+    border-top: 3px solid #562B82;
+}
+
+.teste {
+    padding: 10px 30px 10px 30px;
+}

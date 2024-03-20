@@ -1,0 +1,29 @@
+#reports-container {
+    background: #ffffff;
+    box-shadow:  0px 4px 3px #c5c5c5;
+    border-radius: 5px;
+    border-top: 3px solid #562B82;
+}
+
+#reports-elements-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center; 
+}
+
+.elements-struct {
+ display: flex;
+ flex-direction: row;
+ align-items: center;   
+}
+
+.report-icon {
+    width: 85px;
+    height: 85px;
+    padding-bottom: 15px; 
+}
+
+.report-value-info {
+    font-size: 24px;
+    margin-bottom: 0px;
+}

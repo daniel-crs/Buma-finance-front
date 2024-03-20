@@ -14,4 +14,17 @@
 #upperBodyInfo h1 {
     color: #562B82;
     font-size: 2.2em;
+    margin-bottom: 30px;
+}
+
+#dashboard-elements-struct {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.dashboard-elements-title {
+    padding: 20px 0 15px 30px;
+    font-size: 26px;
+    color: #562B82;
 }
