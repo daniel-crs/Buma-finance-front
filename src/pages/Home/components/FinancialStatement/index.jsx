@@ -1,11 +1,9 @@
-import "./style.css";
-
 import ReactApexChart from "react-apexcharts";
 
 function FinancialStatement() {
     
     const option = {
-        colors: ['#438500', '#E61818', '#0CBCE3'],
+        colors: ['#5EBC00', '#F53B3B', '#2DD4F9'],
         chart: {
             type: "bar",
             height: 350
@@ -59,10 +57,10 @@ function FinancialStatement() {
     ];
 
     return (
-        <div id="financial-container">
+        <div id="dashboard-container">
             <h2 className="dashboard-elements-title">Balança financeiro anual</h2>
 
-            <div className="teste">
+            <div style={{ padding: "10px 30px 10px 30px" }}>
                 <ReactApexChart options={option} series={series} type="bar" height={350} />
             </div>
         </div>

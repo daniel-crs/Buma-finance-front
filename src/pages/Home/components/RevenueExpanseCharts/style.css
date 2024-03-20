@@ -1,0 +1,21 @@
+#revenue-expanse-charts-struct {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    padding-bottom: 50px;
+}
+
+.revenue-expanse-charts-container {
+    background: #ffffff;
+    box-shadow:  0px 4px 3px #c5c5c5;
+    border-radius: 5px;
+    border-top: 3px solid #562B82;
+    width: 100%;
+}
+
+.revenue-expanse-charts-position {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 15px;
+}   

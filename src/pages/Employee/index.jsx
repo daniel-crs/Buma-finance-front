@@ -28,7 +28,7 @@ function Employee() {
   return (
     <div>
       <Header />
-      <SideBar />
+      <SideBar isDashboard={"no"} />
       <div id="employee-bodyContainer">
       <FilterValueProvider>
         <UpperBodyInformation pageTitle={"Funcionario"} showMonth={false} simpleButton={false} />

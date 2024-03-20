@@ -1,4 +1,4 @@
-#bodyContainer{
+#dashboar-bodyContainer{
     height: 65vh;
     width: 88vw;
     margin-top: 50px;
@@ -28,3 +28,20 @@
     font-size: 26px;
     color: #562B82;
 }
+
+#dashboard-container {
+    background: #ffffff;
+    box-shadow:  0px 4px 3px #c5c5c5;
+    border-radius: 5px;
+    border-top: 3px solid #562B82;
+}
+
+@media (min-width: 1800px) {
+    #dashboar-bodyContainer{
+        height: 65vh;
+        width: 65vw;
+        padding-top: 50px;
+        margin: 0 auto;
+    }
+}
+

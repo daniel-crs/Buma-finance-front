@@ -4,7 +4,7 @@ import { RiMoneyDollarBoxLine } from "react-icons/ri";
 
 function Reports() {
     return (
-        <div id="reports-container">
+        <div id="dashboard-container">
             <h2 className="dashboard-elements-title">Relatorio de agosto</h2>
 
             <div id="reports-elements-container">
@@ -13,7 +13,7 @@ function Reports() {
                         <RiMoneyDollarBoxLine className="report-icon"/>
                     </div>
                     <div>
-                        <h3 style={{ color: "green" }} className="report-value-info">R$ 257.000,00</h3>
+                        <h3 style={{ color: "#5EBC00" }} className="report-value-info">R$ 257.000,00</h3>
                         <p>Receita</p>
                     </div>
                 </div>
@@ -25,7 +25,7 @@ function Reports() {
                         <RiMoneyDollarBoxLine className="report-icon"/>
                     </div>
                     <div>
-                        <h3 style={{ color: "red" }} className="report-value-info">R$ 257.000,00</h3>
+                        <h3 style={{ color: "#F53B3B" }} className="report-value-info">R$ 257.000,00</h3>
                         <p>Despesa</p>
                     </div>
                 </div>
@@ -37,7 +37,7 @@ function Reports() {
                         <RiMoneyDollarBoxLine className="report-icon"/>
                     </div>
                     <div>
-                        <h3 style={{ color: "#0CBCE3" }} className="report-value-info">R$ 257.000,00</h3>
+                        <h3 style={{ color: "#2DD4F9" }} className="report-value-info">R$ 257.000,00</h3>
                         <p>Fluxo de caixa</p>
                     </div>
                 </div>

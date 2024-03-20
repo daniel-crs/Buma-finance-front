@@ -1,14 +1,8 @@
-#reports-container {
-    background: #ffffff;
-    box-shadow:  0px 4px 3px #c5c5c5;
-    border-radius: 5px;
-    border-top: 3px solid #562B82;
-}
-
 #reports-elements-container {
     display: flex;
     justify-content: space-around;
-    align-items: center; 
+    align-items: center;
+    padding-bottom: 35px;
 }
 
 .elements-struct {
